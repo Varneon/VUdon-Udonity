@@ -1,10 +1,10 @@
 <div>
 
-# [VUdon](https://github.com/Varneon/VUdon) - Repository Template [![GitHub Repo stars](https://img.shields.io/github/stars/Varneon/Repository-Template-VUdon?style=flat&label=Stars)](https://github.com/Varneon/Repository-Template-VUdon/stargazers) [![GitHub all releases](https://img.shields.io/github/downloads/Varneon/Repository-Template-VUdon/total?color=blue&label=Downloads&style=flat)](https://github.com/Varneon/Repository-Template-VUdon/releases) [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/Varneon/Repository-Template-VUdon?color=blue&label=Release&sort=semver&style=flat)](https://github.com/Varneon/Repository-Template-VUdon/releases/latest)
+# [VUdon](https://github.com/Varneon/VUdon) - Udonity [![GitHub Repo stars](https://img.shields.io/github/stars/Varneon/VUdon-Udonity?style=flat&label=Stars)](https://github.com/Varneon/VUdon-Udonity/stargazers) [![GitHub all releases](https://img.shields.io/github/downloads/Varneon/VUdon-Udonity/total?color=blue&label=Downloads&style=flat)](https://github.com/Varneon/VUdon-Udonity/releases) [![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/Varneon/VUdon-Udonity?color=blue&label=Release&sort=semver&style=flat)](https://github.com/Varneon/VUdon-Udonity/releases/latest)
 
 </div>
 
-Template repository for VUdon packages
+Runtime Unity Editor made with Udon for editing VRChat worlds in game
 
 # Installation
 
