@@ -1,0 +1,10 @@
+/*
+!/.git
+!/.github
+!/.gitignore
+!/.LICENCE
+!/.README.md
+!/Packages
+/Packages/*
+!/Packages/com.varneon.vudon.repository-template
+*.meta

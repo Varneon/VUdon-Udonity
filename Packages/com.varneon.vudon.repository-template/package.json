@@ -1,0 +1,18 @@
+{
+  "name": "com.varneon.vudon.repository-template",
+  "displayName": "VUdon - Repository Template",
+  "version": "0.0.1",
+  "unity": "2019.4",
+  "unityRelease": "29f1",
+  "description": "Template repository for VUdon packages",
+  "author": {
+    "name": "Varneon",
+    "url": "https://github.com/Varneon"
+  },
+  "dependencies": {
+    "com.vrchat.udonsharp": "1.0.1"
+  },
+  "vpmDependencies": {
+    "com.vrchat.udonsharp": "1.x.x"
+  }
+}
