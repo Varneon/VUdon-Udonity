@@ -6,5 +6,4 @@
 !/.README.md
 !/Packages
 /Packages/*
-!/Packages/com.varneon.vudon.repository-template
-*.meta
+!/Packages/com.varneon.vudon.udonity

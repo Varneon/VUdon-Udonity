@@ -1,10 +1,10 @@
 {
-  "name": "com.varneon.vudon.repository-template",
-  "displayName": "VUdon - Repository Template",
+  "name": "com.varneon.vudon.udonity",
+  "displayName": "VUdon - Udonity",
   "version": "0.0.1",
   "unity": "2019.4",
   "unityRelease": "29f1",
-  "description": "Template repository for VUdon packages",
+  "description": "Runtime Unity Editor made with Udon for editing VRChat worlds in game",
   "author": {
     "name": "Varneon",
     "url": "https://github.com/Varneon"

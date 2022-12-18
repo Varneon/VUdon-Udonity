@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  packageName: "com.varneon.vudon.repository-template"
+  packageName: "com.varneon.vudon.udonity"
 
 jobs:
   build:
