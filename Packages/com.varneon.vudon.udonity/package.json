@@ -10,9 +10,11 @@
     "url": "https://github.com/Varneon"
   },
   "dependencies": {
-    "com.vrchat.udonsharp": "1.0.1"
+    "com.vrchat.udonsharp": "1.0.1",
+    "com.varneon.vudon.logger": "0.2.1"
   },
   "vpmDependencies": {
-    "com.vrchat.udonsharp": "1.x.x"
+    "com.vrchat.udonsharp": "1.x.x",
+    "com.varneon.vudon.logger": "0.2.1"
   }
 }
