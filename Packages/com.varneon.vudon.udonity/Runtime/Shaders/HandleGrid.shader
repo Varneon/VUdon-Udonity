@@ -15,6 +15,7 @@ Shader "Varneon/VUdon/Udonity/HandleGrid"
 		Cull Off
 		ZWrite Off
 		ZTest Less
+		Offset  -1 , 0.025
 		Blend One One
 		
 		CGPROGRAM
@@ -74,7 +75,7 @@ Node;AmplifyShaderEditor.FunctionNode;57;-722.0796,373.3162;Inherit;False;Grid;-
 Node;AmplifyShaderEditor.ClampOpNode;62;-85.07961,428.3162;Inherit;False;3;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;COLOR;1,1,1,1;False;1;COLOR;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;17;-103.4858,208.9057;Inherit;False;3;3;0;FLOAT;0;False;1;FLOAT;0;False;2;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;15;-0.4857941,83.90572;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.StandardSurfaceOutputNode;0;577,13;Float;False;True;-1;2;ASEMaterialInspector;0;0;Unlit;Varneon/VUdon/Udonity/HandleGrid;False;False;False;False;True;True;True;True;True;True;True;True;False;False;False;False;False;False;False;False;False;Off;2;False;;1;False;;False;0;False;;0;False;;False;6;Custom;0.5;True;False;0;True;Overlay;;Overlay;ForwardOnly;12;all;True;True;True;True;0;False;;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;2;15;10;25;False;0.5;False;4;1;False;;1;False;;0;5;False;;10;False;;0;False;;0;False;;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;True;Relative;0;;0;-1;-1;-1;0;False;0;0;False;;-1;0;False;;0;0;0;False;0.1;False;;0;False;;False;15;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
+Node;AmplifyShaderEditor.StandardSurfaceOutputNode;0;577,13;Float;False;True;-1;2;ASEMaterialInspector;0;0;Unlit;Varneon/VUdon/Udonity/HandleGrid;False;False;False;False;True;True;True;True;True;True;True;True;False;False;False;False;False;False;False;False;False;Off;2;False;;1;False;;True;-1;False;;0.025;False;;False;6;Custom;0.5;True;False;0;True;Overlay;;Overlay;ForwardOnly;12;all;True;True;True;True;0;False;;False;0;False;;255;False;;255;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;0;False;;False;2;15;10;25;False;0.5;False;4;1;False;;1;False;;0;5;False;;10;False;;0;False;;0;False;;0;False;0;0,0,0,0;VertexOffset;True;False;Cylindrical;False;True;Relative;0;;0;-1;-1;-1;0;False;0;0;False;;-1;0;False;;0;0;0;False;0.1;False;;0;False;;False;15;0;FLOAT3;0,0,0;False;1;FLOAT3;0,0,0;False;2;FLOAT3;0,0,0;False;3;FLOAT;0;False;4;FLOAT;0;False;6;FLOAT3;0,0,0;False;7;FLOAT3;0,0,0;False;8;FLOAT;0;False;9;FLOAT;0;False;10;FLOAT;0;False;13;FLOAT3;0,0,0;False;11;FLOAT3;0,0,0;False;12;FLOAT3;0,0,0;False;14;FLOAT4;0,0,0,0;False;15;FLOAT3;0,0,0;False;0
 WireConnection;12;0;10;0
 WireConnection;51;0;44;0
 WireConnection;51;1;58;0
@@ -92,4 +93,4 @@ WireConnection;15;1;12;0
 WireConnection;0;2;17;0
 WireConnection;0;9;15;0
 ASEEND*/
-//CHKSM=45B23A7B83398287777F1BE22FE83EE29D52880E
+//CHKSM=FDA85B254F29AD355180B13391F3B3AABE931C9B
