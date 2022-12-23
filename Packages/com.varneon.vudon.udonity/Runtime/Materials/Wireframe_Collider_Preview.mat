@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wireframe_BoxCollider_Preview
+  m_Name: Wireframe_Collider_Preview
   m_Shader: {fileID: 4800000, guid: 151e0d24146e89940bceb14a45e0aa92, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -57,6 +57,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
+    - _Culling: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
