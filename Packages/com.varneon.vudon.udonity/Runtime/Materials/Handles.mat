@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Handle
-  m_Shader: {fileID: 4800000, guid: e9c73d136fc838a43a3ddbdc0609c47d, type: 3}
+  m_Name: Handles
+  m_Shader: {fileID: 4800000, guid: 571619551b0b0a74b95b10b5cb1b0b16, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
