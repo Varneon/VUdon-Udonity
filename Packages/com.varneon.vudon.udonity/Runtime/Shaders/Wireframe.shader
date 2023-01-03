@@ -1,6 +1,6 @@
 ﻿// Unity built-in shader source. Copyright (c) 2016 Unity Technologies. MIT license (see LICENSE)
 
-Shader "Varneon/VUdon/Udonity/SpatialMapping/Wireframe"
+Shader "Varneon/VUdon/Udonity/Wireframe"
 {
     Properties
     {
