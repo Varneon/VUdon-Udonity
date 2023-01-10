@@ -22,6 +22,20 @@ Runtime Unity Editor made with Udon for editing VRChat worlds in game
 > ## When?
 > * ETA: TBD.
 
+## Follow the development progress on my [Twitter](https://twitter.com/Varneon)
+> ### Movable application windows and resizable window layout panels
+> https://twitter.com/Varneon/status/1609016903770464257
+> ### Material inspector and pinging of assets in the Project window
+> https://twitter.com/Varneon/status/1608488857577701378
+> ### Portal manipulation demo
+> https://twitter.com/Varneon/status/1607601361587142657
+> ### Position handle plane shader
+> https://twitter.com/Varneon/status/1607575682531446786
+> ### Position handle movement in 3D space
+> https://twitter.com/Varneon/status/1606129269935046656
+> ### Scene view rendering options
+> https://twitter.com/Varneon/status/1604980269886365696
+
 <div align="center">
 
 ## Developed by Varneon with :hearts:
