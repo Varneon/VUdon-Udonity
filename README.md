@@ -35,6 +35,8 @@ Runtime Unity Editor made with Udon for editing VRChat worlds in game
 > https://twitter.com/Varneon/status/1606129269935046656
 > ### Scene view rendering options
 > https://twitter.com/Varneon/status/1604980269886365696
+> ### UI line graphs and Input Monitor
+> https://twitter.com/Varneon/status/1613622014488764416
 
 <div align="center">
 
