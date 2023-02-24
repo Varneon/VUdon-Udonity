@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Varneon.VUdon.Udonity.EnumResolver
 {
@@ -50,5 +51,21 @@ namespace Varneon.VUdon.Udonity.EnumResolver
         public static CameraClearFlags FromInt(int value) => (CameraClearFlags)Items()[value];
 
         public static int ToInt(CameraClearFlags value) => (int)value - 1;
+    }
+
+    public static class UnityEngine_Rendering_LightShadowResolution
+    {
+        public static object[] Items() => new object[]
+        {
+            LightShadowResolution.FromQualitySettings,
+            LightShadowResolution.Low,
+            LightShadowResolution.Medium,
+            LightShadowResolution.High,
+            LightShadowResolution.VeryHigh
+        };
+
+        public static LightShadowResolution FromInt(int value) => (LightShadowResolution)Items()[value];
+
+        public static int ToInt(LightShadowResolution value) => (int)value - 1;
     }
 }
