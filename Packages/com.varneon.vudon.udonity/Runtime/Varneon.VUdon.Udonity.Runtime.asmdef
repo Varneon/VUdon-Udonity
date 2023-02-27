@@ -1,8 +1,15 @@
 {
     "name": "Varneon.VUdon.Udonity.Runtime",
     "references": [
+        "VRC.Udon",
         "UdonSharp.Runtime",
-        "VRC.Udon"
+        "Unity.TextMeshPro",
+        "Varneon.VUdon.ArrayExtensions.Runtime",
+        "Varneon.VUdon.LayerMaskDropdown.Runtime",
+        "Varneon.VUdon.Logger.Runtime",
+        "Varneon.VUdon.PlayerScaleUtility.Runtime",
+        "Varneon.VUdon.UdonAssetDatabase.Runtime",
+        "Varneon.V-Inspector.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
