@@ -1,7 +1,12 @@
 {
     "name": "Varneon.VUdon.Udonity.Editor",
     "references": [
-        "Varneon.VUdon.Udonity.Runtime"
+        "UdonSharp.Runtime",
+        "UdonSharp.Editor",
+        "Unity.TextMeshPro",
+        "Varneon.VUdon.Udonity.Runtime",
+        "Varneon.VUdon.UdonAssetDatabase.Runtime",
+        "VRC.Udon"
     ],
     "includePlatforms": [
         "Editor"
