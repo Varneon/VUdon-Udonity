@@ -39,6 +39,8 @@ Runtime Unity Editor made with Udon for editing VRChat worlds in game
 > https://twitter.com/Varneon/status/1613622014488764416
 > ### Profiler window and 4-color graphs
 > https://twitter.com/Varneon/status/1614109007165231104
+> ### Internal pointer stability
+> https://twitter.com/Varneon/status/1632081026330640385
 
 <div align="center">
 
