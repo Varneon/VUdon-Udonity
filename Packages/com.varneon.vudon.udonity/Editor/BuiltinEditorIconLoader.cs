@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEditor.U2D;
 using UnityEngine;
 using UnityEngine.U2D;
+using UnityEngine.UI;
 
 namespace Varneon.VUdon.Udonity.Editor
 {
@@ -79,6 +80,13 @@ namespace Varneon.VUdon.Udonity.Editor
             AssetDatabase.Refresh();
 
             EditorGUIUtility.PingObject(atlas);
+        }
+
+        internal static void Initialize(this BuiltinEditorIconImage image)
+        {
+            image.GetComponent<Image>().sprite = AssetDatabase.LoadAssetAtPath<Sprite>(Path.Combine(ICON_DIRECTORY, $"{image.IconName}.png"));
+
+            UnityEngine.Object.DestroyImmediate(image);
         }
 
         private static void SaveIcon(Texture2D icon)
