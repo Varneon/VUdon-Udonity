@@ -9,7 +9,8 @@
         "Varneon.VUdon.Logger.Runtime",
         "Varneon.VUdon.PlayerScaleUtility.Runtime",
         "Varneon.VUdon.UdonAssetDatabase.Runtime",
-        "Varneon.V-Inspector.Runtime"
+        "Varneon.V-Inspector.Runtime",
+        "VRC.Udon.Serialization.OdinSerializer"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
