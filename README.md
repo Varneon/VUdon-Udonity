@@ -41,6 +41,8 @@ Runtime Unity Editor made with Udon for editing VRChat worlds in game
 > https://twitter.com/Varneon/status/1614109007165231104
 > ### Internal pointer stability
 > https://twitter.com/Varneon/status/1632081026330640385
+> ### Vehicle debugging and manipulation demo
+> https://twitter.com/Varneon/status/1633269426362482688
 
 <div align="center">
 
