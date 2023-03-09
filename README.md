@@ -44,6 +44,10 @@ Runtime Unity Editor made with Udon for editing VRChat worlds in game
 > ### Vehicle debugging and manipulation demo
 > https://twitter.com/Varneon/status/1633269426362482688
 
+# Contributions, issues and pull requests
+
+:no_entry: I'm not accepting pull requests at this time. For bug reports and feature requests, please wait until the first publicly available release is out.
+
 <div align="center">
 
 ## Developed by Varneon with :hearts:
