@@ -1,5 +1,5 @@
-> # :construction: Udonity is currently in development.
-> This repository is public for convenience so that people can follow the development progress and access it via GitHub API
+> # :construction: Udonity hasn't been released yet!
+> This repository is public for tracking the development process before a release is available for the public. This repository is still missing hundreds of core files and downloading this repository's files at this stage will result in errors.
 
 > You can try out Udonity in its current state it the pre-alpha demo world: https://vrchat.com/home/world/wrld_f1197ac6-72de-4ee1-a56f-ddcc01f6e75d
 
@@ -9,7 +9,7 @@
 
 </div>
 
-Runtime Unity Editor made with Udon for editing VRChat worlds in game
+Upcoming runtime Unity Editor made with Udon for editing VRChat worlds in game
 
 ![preview](https://user-images.githubusercontent.com/26690821/210047940-861fa131-51e3-42c0-9e81-b4148ed5345e.png)
 
