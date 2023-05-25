@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Grid
+  m_Name: Handle_Grid
   m_Shader: {fileID: 4800000, guid: f638507d2802f594ca6151c3a99d4389, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
