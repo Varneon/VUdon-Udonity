@@ -13,7 +13,7 @@
 
 Upcoming runtime Unity Editor made with Udon for editing VRChat worlds in game
 
-![preview](https://user-images.githubusercontent.com/26690821/210047940-861fa131-51e3-42c0-9e81-b4148ed5345e.png)
+![Udonity_PreAlpha_Preview_1_FHD](https://github.com/Varneon/VUdon-Udonity/assets/26690821/5f204b04-97f1-4cd4-9ff8-d965bc56a819)
 
 > ## What?
 > * Udonity is a runtime replica of Unity Editor created to the extent of the limitations of Udon and UnityEngine UI that allows you to edit VRChat worlds that are uploaded with the Udonity Editor included in it.
