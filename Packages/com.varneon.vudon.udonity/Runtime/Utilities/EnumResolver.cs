@@ -68,4 +68,17 @@ namespace Varneon.VUdon.Udonity.EnumResolver
 
         public static int ToInt(LightShadowResolution value) => (int)value - 1;
     }
+
+    public static class UnityEngine_Rendering_AmbientMode
+    {
+        public static object[] Items() => new object[]
+        {
+            AmbientMode.Skybox,
+            AmbientMode.Trilight,
+            AmbientMode.Flat,
+            AmbientMode.Custom
+        };
+
+        public static AmbientMode FromInt(int value) => (AmbientMode)Items()[value];
+    }
 }
