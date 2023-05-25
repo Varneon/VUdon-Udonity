@@ -9,6 +9,8 @@
 
 </div>
 
+![Udonity_Banner_Alpha_1](https://github.com/Varneon/VUdon-Udonity/assets/26690821/7b150fb4-c4a6-49fe-af18-0a526c23bd26)
+
 Upcoming runtime Unity Editor made with Udon for editing VRChat worlds in game
 
 ![preview](https://user-images.githubusercontent.com/26690821/210047940-861fa131-51e3-42c0-9e81-b4148ed5345e.png)
