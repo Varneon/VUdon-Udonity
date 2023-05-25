@@ -10,15 +10,19 @@
     "url": "https://github.com/Varneon"
   },
   "dependencies": {
-    "com.vrchat.udonsharp": "1.0.1",
+    "com.vrchat.udonsharp": "1.1.8",
     "com.varneon.vudon.array-extensions": "0.3.0",
     "com.varneon.vudon.layermask-dropdown": "0.1.0-alpha.1",
-    "com.varneon.vudon.logger": "0.2.1",
-    "com.varneon.vudon.player-scale-utility": "0.1.0-alpha.1",
+    "com.varneon.vudon.logger": "0.4.0-alpha.3",
+    "com.varneon.vudon.player-scale-utility": "0.1.0-beta.1",
     "com.varneon.vudon.udon-asset-database": "0.1.0-alpha.1"
   },
   "vpmDependencies": {
-    "com.vrchat.udonsharp": "1.x.x",
-    "com.varneon.vudon.logger": "0.2.1"
+    "com.vrchat.udonsharp": ">=1.1.8 <2.0.0",
+    "com.varneon.vudon.array-extensions": ">=0.3.0",
+    "com.varneon.vudon.layermask-dropdown": ">=0.1.0-alpha.1",
+    "com.varneon.vudon.logger": ">=0.4.0-alpha.3",
+    "com.varneon.vudon.player-scale-utility": ">=0.1.0-beta.1",
+    "com.varneon.vudon.udon-asset-database": ">=0.1.0-alpha.1"
   }
 }
