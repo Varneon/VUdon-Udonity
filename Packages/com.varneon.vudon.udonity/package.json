@@ -9,6 +9,7 @@
     "name": "Varneon",
     "url": "https://github.com/Varneon"
   },
+  "resolutionStrategy": "highestMinor",
   "dependencies": {
     "com.vrchat.udonsharp": "1.1.8",
     "com.varneon.vudon.array-extensions": "0.3.0",
