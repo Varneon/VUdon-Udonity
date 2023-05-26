@@ -71,6 +71,8 @@ namespace Varneon.VUdon.Udonity.Windows.Inspector
 
         private bool[] collapsedComponents;
 
+        private GameObject target;
+
         private void Start()
         {
             int componentEditorCount = componentEditors.Length;
@@ -88,7 +90,7 @@ namespace Varneon.VUdon.Udonity.Windows.Inspector
 
         internal void Initialize(HierarchyElement element)
         {
-            GameObject gameObject = element.Target;
+            target = element.Target;
 
             ClearContainer();
 
@@ -98,14 +100,14 @@ namespace Varneon.VUdon.Udonity.Windows.Inspector
 
             activeGameObjectEditor.Initialize(element);
 
-            if(gameObject == null)
+            if(target == null)
             {
                 logger.LogError(string.Format("[<color=#F00>Udonity</color>]: Inspected GameObject is null! Has the object been destroyed?"));
 
                 return;
             }
 
-            Component[] components = gameObject.GetComponents<Component>();
+            Component[] components = target.GetComponents<Component>();
 
             int componentCount = components.Length;
 
@@ -186,7 +188,7 @@ namespace Varneon.VUdon.Udonity.Windows.Inspector
 
             crashWatcher.SetComponentEditors(editors);
 
-            handle.SetTarget(gameObject.transform);
+            handle.SetTarget(target.transform);
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(container);
         }
@@ -210,6 +212,12 @@ namespace Varneon.VUdon.Udonity.Windows.Inspector
             logger.LogError(string.Format("[<color=#F00>Udonity</color>]: Component inspector <color=#888>{0}</color> has crashed!", editor.name));
 
             Destroy(editor.gameObject);
+
+            // If the target is null after a crash, the inspected object has likely been destroyed
+            if(target == null)
+            {
+                ClearContainer();
+            }
         }
 
         internal void RebuildLayout()
