@@ -95,9 +95,14 @@ namespace Varneon.VUdon.Udonity.Editor
             UdonityEditorDescriptor editorDescriptor = Object.FindObjectOfType<UdonityEditorDescriptor>();
 
             // If there is no descriptor in the scene, return
-            if(editorDescriptor == null) { Debug.Log("Couldn't find Udonity Editor Descriptor in the scene!"); return; }
+            if(editorDescriptor == null)
+            {
+                //Debug.Log("Couldn't find Udonity Editor Descriptor in the scene!");
+                
+                return;
+            }
 
-            Debug.Log("Initializing Udonity Editor...");
+            //Debug.Log("Initializing Udonity Editor...");
 
             // Get the descriptor's Canvas RectTransform
             RectTransform editorDescriptorCanvasRectTransform = editorDescriptor.GetComponentInChildren<Canvas>().GetComponent<RectTransform>();
