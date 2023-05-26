@@ -16,7 +16,7 @@
     "com.varneon.vudon.layermask-dropdown": "0.1.0-alpha.1",
     "com.varneon.vudon.logger": "0.4.0-alpha.3",
     "com.varneon.vudon.player-scale-utility": "0.1.0-beta.1",
-    "com.varneon.vudon.udon-asset-database": "0.1.0-alpha.1"
+    "com.varneon.vudon.udon-asset-database": "0.1.0-alpha.2"
   },
   "vpmDependencies": {
     "com.vrchat.udonsharp": ">=1.1.8 <2.0.0",
@@ -24,6 +24,6 @@
     "com.varneon.vudon.layermask-dropdown": ">=0.1.0-alpha.1",
     "com.varneon.vudon.logger": ">=0.4.0-alpha.3",
     "com.varneon.vudon.player-scale-utility": ">=0.1.0-beta.1",
-    "com.varneon.vudon.udon-asset-database": ">=0.1.0-alpha.1"
+    "com.varneon.vudon.udon-asset-database": ">=0.1.0-alpha.2"
   }
 }

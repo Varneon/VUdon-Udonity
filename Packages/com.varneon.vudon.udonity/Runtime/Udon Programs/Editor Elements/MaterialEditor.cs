@@ -65,12 +65,11 @@ namespace Varneon.VUdon.Udonity.Editors
 
         internal void GenerateFields(Shader shader, UdonAssetDatabase.UdonAssetDatabase assetDatabase = null)
         {
-            string shaderData = assetDatabase == null ? string.Empty : assetDatabase.GetShaderData(shader);
-            if (string.IsNullOrWhiteSpace(shaderData)) { return; }
+            string[] shaderData = assetDatabase == null ? null : assetDatabase.GetShaderData(shader);
 
-            string[] lines = shaderData.Split('\n');
+            if (shaderData == null) { return; }
 
-            propertyCount = lines.Length;
+            propertyCount = shaderData.Length;
 
             properties = new string[propertyCount];
 
@@ -80,7 +79,7 @@ namespace Varneon.VUdon.Udonity.Editors
 
             for (int i = 0; i < propertyCount; i++)
             {
-                string line = lines[i];
+                string line = shaderData[i];
 
                 string propertyName = line.Substring(2);
 
