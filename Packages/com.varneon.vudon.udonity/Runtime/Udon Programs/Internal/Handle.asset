@@ -404,7 +404,7 @@ MonoBehaviour:
       Data: 24|System.RuntimeType, mscorlib
     - Name: 
       Entry: 1
-      Data: Varneon.VUdon.UdonUndo.UdonUndo, Varneon.VUdon.Udonity.Runtime
+      Data: Varneon.VUdon.Udonity.UdonUndo, Varneon.VUdon.Udonity.Runtime
     - Name: 
       Entry: 8
       Data: 
