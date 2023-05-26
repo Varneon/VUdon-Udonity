@@ -8,11 +8,16 @@ namespace Varneon.VUdon.Udonity.UIElements.Abstract
     public abstract class DropdownMenu : UdonSharpBehaviour
     {
         [SerializeField, HideInInspector]
-        internal Dropdown dropdown;
+        private Dropdown dropdown;
 
         public void OnMenuItemInvoked()
         {
             OnMenuItemInvoked(dropdown.value);
+        }
+
+        internal void InitializeOnBuild()
+        {
+            dropdown = GetComponentInChildren<Dropdown>(true);
         }
 
         protected abstract void OnMenuItemInvoked(int index);
