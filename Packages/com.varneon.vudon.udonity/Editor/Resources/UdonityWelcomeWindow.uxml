@@ -1,0 +1,34 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="Header" style="background-color: rgb(41, 41, 41); padding-left: 4px; padding-right: 4px; padding-top: 4px; padding-bottom: 4px;">
+        <Style src="UdonityWelcomeWindow.uss" />
+        <ui:VisualElement name="Banner" style="background-image: url(&apos;/Packages/com.varneon.vudon.udonity/Runtime/Textures/Udonity_Banner.png&apos;); width: 288px; height: 64px;" />
+    </ui:VisualElement>
+    <ui:Label text="Thank you for using Udonity!" name="Title" style="margin-left: 4px; margin-right: 4px; margin-top: 4px; margin-bottom: 0; font-size: 24px;">
+        <Style src="UdonityWelcomeWindow.uss" />
+    </ui:Label>
+    <ui:Label text="Udonity is still in pre-alpha, meaning that everything is subject to change, but it is still suitable for testing purposes and light troubleshooting in controlled enviroments, which are not critical to production." name="Paragraph" style="margin-left: 4px; margin-right: 4px; margin-top: 4px; margin-bottom: 0; white-space: normal;">
+        <Style src="UdonityWelcomeWindow.uss" />
+    </ui:Label>
+    <ui:VisualElement name="Action_EnableSpritePacking" class="required-action-prompt">
+        <Style src="UdonityWelcomeWindow.uss" />
+        <ui:Label text="Sprite packing is not enabled!" name="Title" style="font-size: 16px; color: rgba(255, 149, 0, 255);" />
+        <ui:Label text="Udonity uses sprite atlases to optimize simultaneous use of dozens of icons and sprite packing is required in order for it to function properly." name="Description" style="white-space: normal;" />
+        <ui:Button text="Enable Sprite Packing" name="Button_EnableSpritePacking" />
+    </ui:VisualElement>
+    <ui:VisualElement name="Action_LoadBuiltInEditorIcons" class="required-action-prompt">
+        <Style src="UdonityWelcomeWindow.uss" />
+        <ui:Label text="Editor icons haven&apos;t been loaded!" name="Title" style="font-size: 16px; color: rgb(255, 149, 0);" />
+        <ui:Label text="Udonity uses dozens of built-in icons from Unity Editor. The end user has to load the icons into their project using the provided utility." name="Description" style="white-space: normal;" />
+        <ui:Button text="Load Built-In Editor Icons" name="Button_LoadBuiltInEditorIcons" />
+    </ui:VisualElement>
+    <ui:VisualElement name="Footer" style="background-color: rgb(82, 82, 82); position: absolute; left: 0; right: 0; bottom: 0;">
+        <Style src="UdonityWelcomeWindow.uss" />
+        <ui:VisualElement name="Links" style="flex-direction: row; justify-content: space-around; background-color: rgba(41, 41, 41, 255); padding-left: 8px; padding-right: 8px; padding-top: 8px; padding-bottom: 8px;">
+            <ui:Button name="Link_GitHub" tooltip="https://github.com/Varneon" binding-path="OpenGitHub" class="link-button" style="background-image: url(&apos;/Packages/com.varneon.vudon.udonity/Runtime/Textures/Icon_GitHub.png&apos;);" />
+            <ui:Button name="Link_Twitter" tooltip="https://twitter.com/Varneon" binding-path="OpenTwitter" class="link-button" style="background-image: url(&apos;/Packages/com.varneon.vudon.udonity/Runtime/Textures/Icon_Twitter.png&apos;);" />
+            <ui:Button name="Link_Discord" tooltip="https://discord.gg/bPF9Ha6" binding-path="OpenDiscord" class="link-button" style="background-image: url(&apos;/Packages/com.varneon.vudon.udonity/Runtime/Textures/Icon_Discord.png&apos;);" />
+            <ui:Button name="Link_Patreon" tooltip="https://www.patreon.com/Varneon" binding-path="OpenPatreon" class="link-button" style="background-image: url(&apos;/Packages/com.varneon.vudon.udonity/Runtime/Textures/Icon_Patreon.png&apos;);" />
+        </ui:VisualElement>
+        <ui:Label text="Developed by Varneon with ♥" name="Credits" style="-unity-text-align: upper-center; margin-left: 4px; margin-right: 4px; margin-top: 4px; margin-bottom: 4px;" />
+    </ui:VisualElement>
+</ui:UXML>
