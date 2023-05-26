@@ -5,6 +5,7 @@ namespace Varneon.VUdon.Udonity
     /// <summary>
     /// Descriptor for Udonity Editor
     /// </summary>
+    [AddComponentMenu("")]
     public class UdonityEditorDescriptor : MonoBehaviour
     {
         [SerializeField]
