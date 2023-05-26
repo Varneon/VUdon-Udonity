@@ -7,3 +7,7 @@
 !/Packages
 /Packages/*
 !/Packages/com.varneon.vudon.udonity
+Packages/com.varneon.vudon.udonity/Runtime/Utilities/SceneLoader.cs
+Packages/com.varneon.vudon.udonity/Runtime/Utilities/SceneLoader.cs.meta
+Packages/com.varneon.vudon.udonity/Runtime/Utilities/YAMLUtility.cs
+Packages/com.varneon.vudon.udonity/Runtime/Utilities/YAMLUtility.cs.meta
