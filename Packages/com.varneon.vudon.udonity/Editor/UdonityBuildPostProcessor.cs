@@ -322,7 +322,7 @@ namespace Varneon.VUdon.Udonity.Editor
 
             Editors.MaterialEditor materialEditor = AssetDatabase.LoadAssetAtPath<Editors.MaterialEditor>("Packages/com.varneon.vudon.udonity/Runtime/Prefabs/UI/Editor Elements/EditorElement_UnityEditor.Material.prefab");
 
-            string[] shaderNames = udonAssetDatabase.ShaderNames;
+            string[] shaderNames = udonAssetDatabase == null ? new string[0] : udonAssetDatabase.ShaderNames;
 
             foreach (string shaderName in shaderNames)
             {
@@ -348,9 +348,9 @@ namespace Varneon.VUdon.Udonity.Editor
 
             projectWindow.assetDatabase = udonAssetDatabase;
 
-            projectWindow.folderHierarchies = string.Join("\n", udonAssetDatabase.FolderPaths);
+            string[] folders = udonAssetDatabase == null ? new string[0] : udonAssetDatabase.FolderPaths;
 
-            string[] folders = udonAssetDatabase.FolderPaths;
+            projectWindow.folderHierarchies = string.Join("\n", folders);
 
             for (int i = 0; i < folders.Length; i++)
             {
