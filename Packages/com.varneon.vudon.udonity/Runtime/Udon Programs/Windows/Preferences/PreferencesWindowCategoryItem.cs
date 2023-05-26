@@ -1,5 +1,8 @@
 ﻿using UdonSharp;
 using UnityEngine;
 
-[AddComponentMenu("")]
-public class PreferencesWindowCategoryItem : UdonSharpBehaviour { }
+namespace Varneon.VUdon.Udonity.Windows.Preferences
+{
+    [AddComponentMenu("")]
+    public class PreferencesWindowCategoryItem : UdonSharpBehaviour { }
+}
