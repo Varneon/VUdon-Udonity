@@ -1,4 +1,4 @@
-﻿namespace Varneon.VUdon.UdonUndo.Enums
+﻿namespace Varneon.VUdon.Udonity.Enums
 {
     public enum GameObjectUndoType
     {
