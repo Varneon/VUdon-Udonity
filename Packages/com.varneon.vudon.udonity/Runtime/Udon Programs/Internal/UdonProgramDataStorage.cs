@@ -6,6 +6,7 @@ using Varneon.VUdon.ArrayExtensions;
 
 namespace Varneon.VUdon.Udonity
 {
+    [AddComponentMenu("")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class UdonProgramDataStorage : UdonSharpBehaviour
     {

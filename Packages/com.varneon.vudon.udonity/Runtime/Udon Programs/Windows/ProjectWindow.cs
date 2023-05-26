@@ -5,6 +5,7 @@ using UnityEngine.Serialization;
 
 namespace Varneon.VUdon.Udonity.Windows.Project
 {
+    [AddComponentMenu("")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ProjectWindow : Abstract.EditorWindow
     {

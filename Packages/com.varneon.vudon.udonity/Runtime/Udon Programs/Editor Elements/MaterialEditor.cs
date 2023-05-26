@@ -8,6 +8,7 @@ using Varneon.VUdon.Udonity.UIElements;
 
 namespace Varneon.VUdon.Udonity.Editors
 {
+    [AddComponentMenu("")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class MaterialEditor : UdonSharpBehaviour
     {

@@ -5,6 +5,7 @@ using VRC.SDK3.Components;
 
 namespace Varneon.VUdon.Udonity.Editors
 {
+    [AddComponentMenu("")]
     public class VRCMirrorReflectionEditor : Abstract.ComponentEditor
     {
         [SerializeField]

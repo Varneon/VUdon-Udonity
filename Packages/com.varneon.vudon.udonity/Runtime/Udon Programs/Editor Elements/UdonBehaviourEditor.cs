@@ -6,6 +6,7 @@ using VRC.Udon;
 
 namespace Varneon.VUdon.Udonity.Editors
 {
+    [AddComponentMenu("")]
     public class UdonBehaviourEditor : Abstract.ComponentEditor
     {
         [SerializeField]

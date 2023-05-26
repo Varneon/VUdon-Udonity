@@ -12,6 +12,7 @@ namespace Varneon.VUdon.Udonity.Windows
     /// <summary>
     /// In-game console window for debugging UdonBehaviours
     /// </summary>
+    [AddComponentMenu("")]
     [SelectionBase]
     [DefaultExecutionOrder(-2146483648)]
     public class ConsoleWindow : UdonLogger

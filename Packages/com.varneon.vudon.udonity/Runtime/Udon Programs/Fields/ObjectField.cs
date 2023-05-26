@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Varneon.VUdon.Udonity.Fields
 {
+    [AddComponentMenu("")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ObjectField : Abstract.Field
     {

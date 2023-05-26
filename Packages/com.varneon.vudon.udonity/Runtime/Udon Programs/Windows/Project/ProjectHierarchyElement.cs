@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Varneon.VUdon.Udonity.Windows.Project
 {
+    [AddComponentMenu("")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ProjectHierarchyElement : UdonSharpBehaviour
     {

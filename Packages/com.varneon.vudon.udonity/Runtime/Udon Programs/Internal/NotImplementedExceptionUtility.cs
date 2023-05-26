@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Varneon.VUdon.Udonity.Utilities
 {
+    [AddComponentMenu("")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class NotImplementedExceptionUtility : UdonSharpBehaviour
     {

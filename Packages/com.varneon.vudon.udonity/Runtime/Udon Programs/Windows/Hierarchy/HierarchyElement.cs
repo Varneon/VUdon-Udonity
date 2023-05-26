@@ -6,6 +6,7 @@ using Varneon.VUdon.Udonity.Editors;
 
 namespace Varneon.VUdon.Udonity.Windows.Hierarchy
 {
+    [AddComponentMenu("")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class HierarchyElement : UdonSharpBehaviour
     {

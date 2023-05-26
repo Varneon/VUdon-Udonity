@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace Varneon.VUdon.Udonity.Windows.Scene
 {
+    [AddComponentMenu("")]
     [RequireComponent(typeof(Camera))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class SceneViewCamera : UdonSharpBehaviour

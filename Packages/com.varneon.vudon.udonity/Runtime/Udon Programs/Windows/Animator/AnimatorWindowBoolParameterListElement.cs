@@ -4,6 +4,7 @@ namespace Varneon.VUdon.Udonity.Windows.Animator
 {
     using Animator = UnityEngine.Animator;
 
+    [AddComponentMenu("")]
     public class AnimatorWindowBoolParameterListElement : Abstract.AnimatorWindowParameterListElement
     {
         [SerializeField]

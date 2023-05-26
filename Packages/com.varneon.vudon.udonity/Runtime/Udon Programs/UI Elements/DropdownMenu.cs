@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 namespace Varneon.VUdon.Udonity.UIElements
 {
+    [AddComponentMenu("")]
     public class DropdownMenu : Abstract.DropdownMenu
     {
         [SerializeField]

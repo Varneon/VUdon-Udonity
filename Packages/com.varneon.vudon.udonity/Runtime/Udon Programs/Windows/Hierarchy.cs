@@ -9,6 +9,7 @@ using VRC.SDKBase;
 
 namespace Varneon.VUdon.Udonity.Windows.Hierarchy
 {
+    [AddComponentMenu("")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class Hierarchy : Abstract.EditorWindow
     {

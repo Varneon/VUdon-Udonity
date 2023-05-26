@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Varneon.VUdon.Udonity
 {
+    [AddComponentMenu("")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class WindowSubLayoutElement : WindowLayoutElement
     {

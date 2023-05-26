@@ -5,6 +5,7 @@ using VRC.SDKBase;
 
 namespace Varneon.VUdon.Udonity
 {
+    [AddComponentMenu("")]
     [DefaultExecutionOrder(10000)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class Pointer : UdonSharpBehaviour

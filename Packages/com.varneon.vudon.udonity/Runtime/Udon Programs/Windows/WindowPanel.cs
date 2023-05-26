@@ -4,6 +4,7 @@ using Varneon.VUdon.Udonity.Windows.Abstract;
 
 namespace Varneon.VUdon.Udonity.Windows
 {
+    [AddComponentMenu("")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class WindowPanel : WindowLayoutElement
     {

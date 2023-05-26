@@ -5,6 +5,7 @@ using Varneon.VUdon.Udonity.Enums;
 
 namespace Varneon.VUdon.Udonity
 {
+    [AddComponentMenu("")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class UdonUndo : UdonSharpBehaviour
     {

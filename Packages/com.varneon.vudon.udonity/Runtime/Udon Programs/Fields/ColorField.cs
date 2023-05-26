@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace Varneon.VUdon.Udonity.Fields
 {
+    [AddComponentMenu("")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ColorField : Abstract.Field
     {

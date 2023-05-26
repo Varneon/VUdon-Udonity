@@ -8,6 +8,7 @@ using Varneon.VUdon.ArrayExtensions;
 
 namespace Varneon.VUdon.Udonity.Windows.UdonMonitor
 {
+    [AddComponentMenu("")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class UdonMonitorWindow : EditorWindow
     {

@@ -3,6 +3,7 @@ using Varneon.VUdon.Udonity.Fields;
 
 namespace Varneon.VUdon.Udonity.Editors
 {
+    [AddComponentMenu("")]
     public class WheelColliderEditor : Abstract.ComponentEditor
     {
         public override System.Type InspectedType => typeof(WheelCollider);

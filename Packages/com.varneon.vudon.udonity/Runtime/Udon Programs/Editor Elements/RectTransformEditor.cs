@@ -4,6 +4,7 @@ using Varneon.VUdon.Udonity.Fields;
 
 namespace Varneon.VUdon.Udonity.Editors
 {
+    [AddComponentMenu("")]
     public class RectTransformEditor : Abstract.ComponentEditor
     {
         [SerializeField]

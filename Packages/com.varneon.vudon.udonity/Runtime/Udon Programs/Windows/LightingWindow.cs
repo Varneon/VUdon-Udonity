@@ -5,6 +5,7 @@ using Varneon.VUdon.Udonity.Fields;
 
 namespace Varneon.VUdon.Udonity.Windows
 {
+    [AddComponentMenu("")]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class LightingWindow : Abstract.EditorWindow
     {
