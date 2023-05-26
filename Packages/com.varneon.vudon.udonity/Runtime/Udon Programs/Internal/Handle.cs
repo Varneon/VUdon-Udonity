@@ -1,7 +1,6 @@
 ﻿using UdonSharp;
 using UnityEngine;
 using Varneon.VUdon.Udonity.Enums;
-using Varneon.VUdon.UdonUndo.Enums;
 using VRC.SDKBase;
 using VRC.Udon.Common;
 
@@ -26,7 +25,7 @@ namespace Varneon.VUdon.Udonity
         private Transform pointerRoot;
 
         [SerializeField]
-        private UdonUndo.UdonUndo udonUndo;
+        private UdonUndo udonUndo;
 
         [SerializeField]
         private Logger.Abstract.UdonLogger logger;
@@ -76,6 +75,8 @@ namespace Varneon.VUdon.Udonity
         private bool hasRigidbody;
 
         private Quaternion lockedRotation;
+
+        private object undoData;
 
         private void Start()
         {
@@ -162,7 +163,7 @@ namespace Varneon.VUdon.Udonity
                 {
                     grabbing = false;
 
-                    //if (Target) { udonUndo.RecordObject(Target, TransformUndoType.LocalPosition, "Move"); }
+                    if (Target) { udonUndo.EndRecordObject(Target, TransformUndoType.LocalPosition, "Move", undoData); }
                 }
 
                 lockedRotation = Quaternion.identity;
@@ -225,7 +226,7 @@ namespace Varneon.VUdon.Udonity
                 grabbing = Vector3.Distance(posZX, transformPos) < Size;
             }
 
-            if (grabbing && Target) { udonUndo.RecordObject(Target, TransformUndoType.LocalPosition, "Move"); }
+            if (grabbing && Target) { undoData = udonUndo.BeginRecordObject(Target, TransformUndoType.LocalPosition); }
 
             lockedRotation = SpaceMode == Space.World ? Quaternion.identity : Target.rotation;
         }
