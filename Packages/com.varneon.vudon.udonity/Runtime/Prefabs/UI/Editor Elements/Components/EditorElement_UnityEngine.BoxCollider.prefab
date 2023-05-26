@@ -62,7 +62,7 @@ MonoBehaviour:
   materialField: {fileID: 7015691188823863301}
   centerField: {fileID: 7404629021853736148}
   sizeField: {fileID: 6907369370763873600}
-  visualizerPrefab: {fileID: 5254464063997453186, guid: 2df3ff8931372ec42b6bfcab2e50c841,
+  visualizerPrefab: {fileID: 6567740455409412606, guid: 2df3ff8931372ec42b6bfcab2e50c841,
     type: 3}
 --- !u!1001 &1973257409387287603
 PrefabInstance:

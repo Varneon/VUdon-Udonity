@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3411486431635834822}
   - component: {fileID: 5748433471523444267}
   - component: {fileID: 1490731425144817800}
-  - component: {fileID: 5254464063997453186}
-  - component: {fileID: 3073183970304313152}
+  - component: {fileID: 6567740455409412606}
+  - component: {fileID: 6222008630974120238}
   m_Layer: 0
   m_Name: BoxColliderVisualizer
   m_TagString: Untagged
@@ -81,7 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &5254464063997453186
+--- !u!114 &6567740455409412606
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,9 +102,9 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  _udonSharpBackingUdonBehaviour: {fileID: 3073183970304313152}
+  _udonSharpBackingUdonBehaviour: {fileID: 6222008630974120238}
   material: {fileID: 2100000, guid: 19a2bb7994af92e4e82ff97e9be184c3, type: 2}
---- !u!114 &3073183970304313152
+--- !u!114 &6222008630974120238
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,7 +123,7 @@ MonoBehaviour:
   SynchronizePosition: 0
   AllowCollisionOwnershipTransfer: 0
   Reliable: 0
-  _syncMethod: 1
+  _syncMethod: 0
   serializedProgramAsset: {fileID: 11400000, guid: a03fae196c838434fb8ad83e31a9f2c3,
     type: 2}
   programSource: {fileID: 11400000, guid: 0195267254aecad4b906ef9b61089e90, type: 2}

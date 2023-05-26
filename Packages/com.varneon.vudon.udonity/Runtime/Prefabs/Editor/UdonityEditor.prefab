@@ -19376,7 +19376,7 @@ MonoBehaviour:
   udonMonitorWindow: {fileID: 0}
   handle: {fileID: 4246588488190622118}
   container: {fileID: 5784208661859448197}
-  gameObjectEditor: {fileID: 6677046044984934957, guid: 1ebeeb72f3ec4ed4482b34a57e53089a,
+  gameObjectEditor: {fileID: 3628358247936260365, guid: 1ebeeb72f3ec4ed4482b34a57e53089a,
     type: 3}
   componentEditors: []
   defaultComponentEditor: {fileID: 3725891504877879578, guid: e1a9ab5e4252d9c4fbfaf1fbae6cd4a0,
@@ -19387,7 +19387,7 @@ MonoBehaviour:
     type: 3}
   availableMaterialEditors: []
   materialEditors: []
-  materialEditor: {fileID: 1498473940747084506, guid: a795426e725391e4e9fe729d1cc72ac4,
+  materialEditor: {fileID: 6912089315720486434, guid: a795426e725391e4e9fe729d1cc72ac4,
     type: 3}
   crashWatcher: {fileID: 5784208662385605803}
   logger: {fileID: 5784208661488795422}

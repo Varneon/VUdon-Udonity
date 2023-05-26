@@ -156,18 +156,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: SendCustomEvent
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: ToggleExpanded
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!1 &6677046044984934958
 GameObject:
@@ -180,8 +169,8 @@ GameObject:
   - component: {fileID: 6677046044984934959}
   - component: {fileID: 6677046044984934955}
   - component: {fileID: 6677046044984934954}
-  - component: {fileID: 6677046044984934957}
-  - component: {fileID: 6677046044984934956}
+  - component: {fileID: 3628358247936260365}
+  - component: {fileID: 8339418260460203369}
   m_Layer: 0
   m_Name: EditorElement_UnityEngine.GameObject
   m_TagString: Untagged
@@ -254,7 +243,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6677046044984934957
+--- !u!114 &3628358247936260365
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,12 +264,12 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  _udonSharpBackingUdonBehaviour: {fileID: 6677046044984934956}
+  _udonSharpBackingUdonBehaviour: {fileID: 8339418260460203369}
   nameField: {fileID: 4033720085681583714}
   layerField: {fileID: 5140281293814275429}
   activeToggle: {fileID: 454487206976642293}
   staticToggle: {fileID: 454487205567274613}
---- !u!114 &6677046044984934956
+--- !u!114 &8339418260460203369
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -299,7 +288,7 @@ MonoBehaviour:
   SynchronizePosition: 0
   AllowCollisionOwnershipTransfer: 0
   Reliable: 0
-  _syncMethod: 1
+  _syncMethod: 0
   serializedProgramAsset: {fileID: 11400000, guid: fce51a4894afaac47897ce45354113ec,
     type: 2}
   programSource: {fileID: 11400000, guid: 39430804ff4b68b41804176c96dffc18, type: 2}
@@ -437,7 +426,7 @@ PrefabInstance:
         type: 3}
       propertyPath: valueChangedCallbackReceiver
       value: 
-      objectReference: {fileID: 6677046044984934957}
+      objectReference: {fileID: 0}
     - target: {fileID: 2051062971580503968, guid: d3f749143e58b7142915b76e51c11b1e,
         type: 3}
       propertyPath: m_IsActive
@@ -1664,7 +1653,7 @@ PrefabInstance:
         type: 3}
       propertyPath: valueChangedCallbackReceiver
       value: 
-      objectReference: {fileID: 6677046044984934957}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dbcc61eec72e4f45b3fbc873d6510a2, type: 3}
 --- !u!114 &4033720085681583714 stripped
@@ -1852,7 +1841,7 @@ PrefabInstance:
         type: 3}
       propertyPath: valueChangedCallbackReceiver
       value: 
-      objectReference: {fileID: 6677046044984934957}
+      objectReference: {fileID: 0}
     - target: {fileID: 7459993247261356446, guid: d60e45b0919e4ff419b7be7258c9ec16,
         type: 3}
       propertyPath: m_IsActive
