@@ -14,11 +14,16 @@ namespace Varneon.VUdon.Udonity.Editor
         [SerializeField]
         private Texture2D windowIcon;
 
-        private static readonly bool dataLocatorExists;
+        private static bool dataLocatorExists;
 
-        private static readonly bool isSpritePackingEnabled;
+        private static bool isSpritePackingEnabled;
 
         static UdonityWelcomeWindow()
+        {
+            EditorApplication.delayCall += DelayedInitialization;
+        }
+
+        private static void DelayedInitialization()
         {
             UdonityDataLocator dataLocator = AssetDatabase.FindAssets("t:UdonityDataLocator").Select(a => AssetDatabase.LoadAssetAtPath<UdonityDataLocator>(AssetDatabase.GUIDToAssetPath(a))).FirstOrDefault();
 
