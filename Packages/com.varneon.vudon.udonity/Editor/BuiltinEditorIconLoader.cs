@@ -15,17 +15,61 @@ namespace Varneon.VUdon.Udonity.Editor
     /// </summary>
     public static class BuiltinEditorIconLoader
     {
-        /// <summary>
-        /// Directory where the icons will be saved
-        /// </summary>
-        public const string ICON_DIRECTORY = "Assets/Udonity/Builtin Editor Icons";
+        private static UdonityDataLocator DataLocator
+        {
+            get
+            {
+                if (dataLocator == null)
+                {
+                    dataLocator = AssetDatabase.FindAssets("t:UdonityDataLocator").Select(a => AssetDatabase.LoadAssetAtPath<UdonityDataLocator>(AssetDatabase.GUIDToAssetPath(a))).FirstOrDefault();
+                }
+
+                return dataLocator;
+            }
+        }
+
+        private static UdonityDataLocator dataLocator;
+
+        private static string DataDirectory
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(dataDirectory))
+                {
+                    dataDirectory = DataLocator == null ? DEFAULT_UDONITY_DATA_FOLDER : Path.GetDirectoryName(AssetDatabase.GetAssetPath(DataLocator));
+                }
+
+                return dataDirectory;
+            }
+        }
+
+        private static string dataDirectory;
+
+        private static string IconDirectory
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(iconDirectory))
+                {
+                    iconDirectory = Path.Combine(DataDirectory, ICON_FOLDER);
+                }
+
+                return iconDirectory;
+            }
+        }
+
+        private static string iconDirectory;
+
+        private const string DEFAULT_UDONITY_DATA_FOLDER = "Assets/Udonity";
+
+        private const string ICON_FOLDER = "Builtin Editor Icons";
 
         [MenuItem("Varneon/VUdon/Udonity/Load Builtin Editor Icons")]
         internal static void LoadBuiltinEditorIcons()
         {
             HashSet<string> icons = new HashSet<string>(Resources.FindObjectsOfTypeAll<BuiltinEditorIconImage>().Select(i => i.IconName).Where(i => !string.IsNullOrWhiteSpace(i)));
 
-            foreach(string iconName in icons)
+            foreach (string iconName in icons)
             {
                 try
                 {
@@ -39,7 +83,7 @@ namespace Varneon.VUdon.Udonity.Editor
 
                     SaveIcon(readableIcon);
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Debug.LogError(e);
                 }
@@ -64,6 +108,13 @@ namespace Varneon.VUdon.Udonity.Editor
             }
             finally
             {
+                if (DataLocator == null)
+                {
+                    UdonityDataLocator newDataLocator = ScriptableObject.CreateInstance<UdonityDataLocator>();
+
+                    AssetDatabase.CreateAsset(newDataLocator, Path.Combine(DataDirectory, string.Concat(nameof(UdonityDataLocator), ".asset")));
+                }
+
                 AssetDatabase.StopAssetEditing();
             }
 
@@ -75,7 +126,7 @@ namespace Varneon.VUdon.Udonity.Editor
 
             atlas.Add(sprites);
 
-            AssetDatabase.CreateAsset(atlas, Path.Combine(ICON_DIRECTORY, "BuiltinEditorIconAtlas.spriteatlas"));
+            AssetDatabase.CreateAsset(atlas, Path.Combine(IconDirectory, "BuiltinEditorIconAtlas.spriteatlas"));
 
             AssetDatabase.Refresh();
 
@@ -84,21 +135,21 @@ namespace Varneon.VUdon.Udonity.Editor
 
         internal static void Initialize(this BuiltinEditorIconImage image)
         {
-            image.GetComponent<Image>().sprite = AssetDatabase.LoadAssetAtPath<Sprite>(Path.Combine(ICON_DIRECTORY, $"{image.IconName}.png"));
+            image.GetComponent<Image>().sprite = AssetDatabase.LoadAssetAtPath<Sprite>(Path.Combine(IconDirectory, $"{image.IconName}.png"));
 
             UnityEngine.Object.DestroyImmediate(image);
         }
 
         private static void SaveIcon(Texture2D icon)
         {
-            if (!Directory.Exists(ICON_DIRECTORY))
+            if (!Directory.Exists(IconDirectory))
             {
-                Directory.CreateDirectory(ICON_DIRECTORY);
+                Directory.CreateDirectory(IconDirectory);
             }
 
             File.WriteAllBytes(GetIconSavePath(icon.name), icon.EncodeToPNG());
         }
 
-        private static string GetIconSavePath(string iconName) => Path.Combine(ICON_DIRECTORY, $"{iconName}.png");
+        private static string GetIconSavePath(string iconName) => Path.Combine(IconDirectory, $"{iconName}.png");
     }
 }
