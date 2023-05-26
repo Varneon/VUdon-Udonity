@@ -35,7 +35,7 @@ namespace Varneon.VUdon.Udonity
 
         public ObjectDialog ObjectDialog => objectDialog;
 
-        internal Transform[] roots;
+        internal Transform[] roots = new Transform[0];
 
         [Header("Windows")]
         [SerializeField]
