@@ -11,5 +11,8 @@ namespace Varneon.VUdon.Udonity
     {
         [SerializeField, HideInInspector]
         internal List<Transform> hierarchyRoots;
+
+        [SerializeField, HideInInspector]
+        internal bool hideRootInclusionTip;
     }
 }

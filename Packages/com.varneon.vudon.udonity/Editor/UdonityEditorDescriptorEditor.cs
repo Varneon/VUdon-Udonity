@@ -1,6 +1,8 @@
-﻿using UnityEditor;
+﻿using System.Linq;
+using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Varneon.VUdon.Editors.Editor;
 
 namespace Varneon.VUdon.Udonity.Editor
@@ -17,6 +19,8 @@ namespace Varneon.VUdon.Udonity.Editor
 
         private ReorderableList rootReorderableList;
 
+        private UdonityRootInclusionDescriptor[] rootInclusionDescriptors;
+
         protected override string FoldoutPersistenceKey => null;
 
         protected override InspectorHeader Header => new InspectorHeaderBuilder()
@@ -28,6 +32,8 @@ namespace Varneon.VUdon.Udonity.Editor
 
         protected override void OnEnable()
         {
+            rootInclusionDescriptors = SceneManager.GetActiveScene().GetRootGameObjects().SelectMany(r => r.GetComponentsInChildren<UdonityRootInclusionDescriptor>(true)).ToArray();
+
             base.OnEnable();
 
             editorDescriptor = (UdonityEditorDescriptor)target;
@@ -107,6 +113,22 @@ namespace Varneon.VUdon.Udonity.Editor
             }
 
             GUILayout.Space(18);
+
+            UdonityEditorDescriptor descriptor = target as UdonityEditorDescriptor;
+
+            if (!descriptor.hideRootInclusionTip)
+            {
+                EditorGUILayout.HelpBox("Tip: You can add inspected roots to Udonity's hierarchy by adding a component 'VUdon' > 'Udonity' > 'Root Inclusion Descriptor'", MessageType.Info);
+
+                if (GUILayout.Button("OK") || rootInclusionDescriptors.Length > 0)
+                {
+                    Undo.RecordObject(descriptor, "Hide Inspector Tip");
+
+                    descriptor.hideRootInclusionTip = true;
+                }
+
+                GUILayout.Space(18);
+            }
 
             serializedObject.Update();
 
