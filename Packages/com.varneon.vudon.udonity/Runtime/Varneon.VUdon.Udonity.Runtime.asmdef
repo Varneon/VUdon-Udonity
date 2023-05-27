@@ -10,7 +10,8 @@
         "Varneon.VUdon.PlayerScaleUtility.Runtime",
         "Varneon.VUdon.UdonAssetDatabase.Runtime",
         "Varneon.V-Inspector.Runtime",
-        "VRC.Udon.Serialization.OdinSerializer"
+        "VRC.Udon.Serialization.OdinSerializer",
+        "Varneon.VUdon.Editors.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
