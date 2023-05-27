@@ -67,14 +67,8 @@ namespace Varneon.VUdon.Udonity.Editor
         {
             GUILayout.Space(18);
 
-            GUI.color = Color.black;
-
             using (EditorGUILayout.VerticalScope verticalScope = new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
             {
-                GUI.Box(verticalScope.rect, string.Empty);
-
-                GUI.color = Color.white;
-
                 using (var scope = new EditorGUI.ChangeCheckScope())
                 {
                     float width = EditorGUILayout.Slider("Width", canvasRectTransform.sizeDelta.x, 1920f, 2560f);
