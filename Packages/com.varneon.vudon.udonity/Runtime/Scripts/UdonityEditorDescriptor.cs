@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Varneon.VUdon.Udonity
 {
@@ -8,8 +9,7 @@ namespace Varneon.VUdon.Udonity
     [AddComponentMenu("")]
     public class UdonityEditorDescriptor : MonoBehaviour
     {
-        [SerializeField]
-        [Tooltip("Root transforms that will be inspected in the hierarchy")]
-        internal Transform[] hierarchyRoots;
+        [SerializeField, HideInInspector]
+        internal List<Transform> hierarchyRoots;
     }
 }

@@ -126,7 +126,7 @@ namespace Varneon.VUdon.Udonity.Editor
             udonity = editorInstance.GetComponentInChildren<Udonity>();
 
             // Assign the inspected scope roots to the editor
-            udonity.roots = editorDescriptor.hierarchyRoots;
+            udonity.roots = editorDescriptor.hierarchyRoots.ToArray();
 
             editorRoot = editorInstance.transform;
 
