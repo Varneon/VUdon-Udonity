@@ -1,17 +1,35 @@
 ﻿using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
+using Varneon.VUdon.Editors.Editor;
 
 namespace Varneon.VUdon.Udonity.Editor
 {
     [CustomEditor(typeof(UdonityEditorDescriptor))]
-    public class UdonityEditorDescriptorEditor : UnityEditor.Editor
+    public class UdonityEditorDescriptorEditor : InspectorBase
     {
+        [SerializeField]
+        private Texture2D headerIcon;
+
         private UdonityEditorDescriptor editorDescriptor;
 
         private RectTransform canvasRectTransform;
 
-        private void OnEnable()
+        private ReorderableList rootReorderableList;
+
+        protected override string FoldoutPersistenceKey => null;
+
+        protected override InspectorHeader Header => new InspectorHeaderBuilder()
+            .WithTitle("Udonity Editor")
+            .WithDescription("Runtime Unity Editor for VRChat worlds")
+            .WithIcon(headerIcon)
+            .WithURL("GitHub", "https://github.com/Varneon/VUdon-Udonity")
+            .Build();
+
+        protected override void OnEnable()
         {
+            base.OnEnable();
+
             editorDescriptor = (UdonityEditorDescriptor)target;
 
             canvasRectTransform = editorDescriptor.GetComponentInChildren<Canvas>().GetComponent<RectTransform>();
@@ -20,49 +38,83 @@ namespace Varneon.VUdon.Udonity.Editor
             {
                 editorDescriptor.transform.GetChild(i).gameObject.hideFlags = HideFlags.None;// HideFlags.HideInHierarchy | HideFlags.NotEditable;
             }
+
+            rootReorderableList = new ReorderableList(serializedObject, serializedObject.FindProperty(nameof(UdonityEditorDescriptor.hierarchyRoots)), true, true, true, true);
+
+            rootReorderableList.drawElementCallback = (Rect rect, int index, bool isActive, bool isFocused) =>
+            {
+                SerializedProperty element = rootReorderableList.serializedProperty.GetArrayElementAtIndex(index);
+
+                rect.y += 1;
+                rect.height -= 2;
+
+                EditorGUI.PropertyField(rect, element, GUIContent.none);
+            };
+
+            rootReorderableList.drawHeaderCallback = (Rect rect) =>
+            {
+                GUI.Label(rect, string.Concat(rootReorderableList.serializedProperty.arraySize, " Inspected Hierarchy Roots"));
+            };
         }
 
-        public override void OnInspectorGUI()
+        protected override void OnPreDrawFields()
         {
-            base.OnInspectorGUI();
+            GUILayout.Space(18);
 
-            GUILayout.Space(20);
+            GUI.color = Color.black;
 
-            using (var scope = new EditorGUI.ChangeCheckScope())
+            using (EditorGUILayout.VerticalScope verticalScope = new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
             {
-                float width = EditorGUILayout.Slider("Width", canvasRectTransform.sizeDelta.x, 1920f, 2560f);
+                GUI.Box(verticalScope.rect, string.Empty);
 
-                if (scope.changed)
+                GUI.color = Color.white;
+
+                using (var scope = new EditorGUI.ChangeCheckScope())
                 {
-                    Undo.RecordObject(canvasRectTransform, "Adjust Udonity Editor resolution");
+                    float width = EditorGUILayout.Slider("Width", canvasRectTransform.sizeDelta.x, 1920f, 2560f);
 
-                    canvasRectTransform.sizeDelta = new Vector2(width, canvasRectTransform.sizeDelta.y);
+                    if (scope.changed)
+                    {
+                        Undo.RecordObject(canvasRectTransform, "Adjust Udonity Editor resolution");
+
+                        canvasRectTransform.sizeDelta = new Vector2(width, canvasRectTransform.sizeDelta.y);
+                    }
+                }
+
+                using (var scope = new EditorGUI.ChangeCheckScope())
+                {
+                    float height = EditorGUILayout.Slider("Height", canvasRectTransform.sizeDelta.y, 1000f, 1440f);
+
+                    if (scope.changed)
+                    {
+                        Undo.RecordObject(canvasRectTransform, "Adjust Udonity Editor resolution");
+
+                        canvasRectTransform.sizeDelta = new Vector2(canvasRectTransform.sizeDelta.x, height);
+                    }
+                }
+
+                using (var scope = new EditorGUI.ChangeCheckScope())
+                {
+                    float scale = EditorGUILayout.FloatField("Canvas Scale", canvasRectTransform.localScale.x);
+
+                    if (scope.changed)
+                    {
+                        Undo.RecordObject(canvasRectTransform, "Adjust Udonity Editor scale");
+
+                        canvasRectTransform.localScale = Vector3.one * scale;
+                    }
                 }
             }
 
-            using (var scope = new EditorGUI.ChangeCheckScope())
-            {
-                float height = EditorGUILayout.Slider("Height", canvasRectTransform.sizeDelta.y, 1000f, 1440f);
+            GUILayout.Space(18);
 
-                if (scope.changed)
-                {
-                    Undo.RecordObject(canvasRectTransform, "Adjust Udonity Editor resolution");
+            serializedObject.Update();
 
-                    canvasRectTransform.sizeDelta = new Vector2(canvasRectTransform.sizeDelta.x, height);
-                }
-            }
+            rootReorderableList.DoLayoutList();
 
-            using (var scope = new EditorGUI.ChangeCheckScope())
-            {
-                float scale = EditorGUILayout.FloatField("Canvas Scale", canvasRectTransform.localScale.x);
+            serializedObject.ApplyModifiedProperties();
 
-                if (scope.changed)
-                {
-                    Undo.RecordObject(canvasRectTransform, "Adjust Udonity Editor scale");
-
-                    canvasRectTransform.localScale = Vector3.one * scale;
-                }
-            }
+            GUILayout.Space(18);
         }
     }
 }
