@@ -2,6 +2,7 @@
 
 namespace Varneon.VUdon.Udonity
 {
+    [DisallowMultipleComponent]
     [AddComponentMenu("VUdon/Udonity/Udonity Root Inclusion Descriptor")]
     public class UdonityRootInclusionDescriptor : MonoBehaviour { }
 
