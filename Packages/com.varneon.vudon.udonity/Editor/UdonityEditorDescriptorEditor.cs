@@ -60,6 +60,22 @@ namespace Varneon.VUdon.Udonity.Editor
             rootReorderableList.drawHeaderCallback = (Rect rect) =>
             {
                 GUI.Label(rect, string.Concat(rootReorderableList.serializedProperty.arraySize, " Inspected Hierarchy Roots"));
+
+                if (rect.Contains(Event.current.mousePosition))
+                {
+                    switch (Event.current.type)
+                    {
+                        case EventType.DragUpdated:
+                            DragAndDrop.visualMode = DragAndDrop.objectReferences.All(o => o.GetType().Equals(typeof(GameObject))) ? DragAndDropVisualMode.Copy : DragAndDropVisualMode.Rejected;
+                            Event.current.Use();
+                            return;
+                        case EventType.DragPerform:
+                            Undo.RecordObject(target, "Add Inspected Roots");
+                            editorDescriptor.hierarchyRoots = editorDescriptor.hierarchyRoots.Union(DragAndDrop.objectReferences.Select(o => ((GameObject)o).transform)).ToList();
+                            Event.current.Use();
+                            return;
+                    }
+                }
             };
         }
 
