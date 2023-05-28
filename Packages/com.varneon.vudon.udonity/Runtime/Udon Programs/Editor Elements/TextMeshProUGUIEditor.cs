@@ -6,6 +6,7 @@ using Varneon.VUdon.Udonity.Fields;
 namespace Varneon.VUdon.Udonity.Editors
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     public class TextMeshProUGUIEditor : Abstract.ComponentEditor
     {
         [SerializeField]

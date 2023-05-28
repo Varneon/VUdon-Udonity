@@ -7,6 +7,7 @@ namespace Varneon.VUdon.Udonity.Windows.Animator
     using Animator = UnityEngine.Animator;
 
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     public class AnimatorWindow : Windows.Abstract.EditorWindow
     {
         public override Vector2 MinSize => new Vector2(600f, 300f);

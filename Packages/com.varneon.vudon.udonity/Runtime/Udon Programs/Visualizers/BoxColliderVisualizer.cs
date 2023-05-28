@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Varneon.VUdon.Udonity.Visualizers
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     [DefaultExecutionOrder(2147483647)] // Ensure that visualization executes as late as possible
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class BoxColliderVisualizer : UdonSharpBehaviour

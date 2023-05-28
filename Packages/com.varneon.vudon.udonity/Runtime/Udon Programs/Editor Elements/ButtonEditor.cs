@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Varneon.VUdon.Udonity.Editors
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     public class ButtonEditor : SelectableEditor
     {
         public override Type InspectedType => typeof(UnityEngine.UI.Button);

@@ -4,6 +4,7 @@ using Varneon.VUdon.Udonity.Windows.Scene;
 namespace Varneon.VUdon.Udonity.Windows
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     public class SceneView : Abstract.EditorWindow
     {
         public override Vector2 MinSize => new Vector2(600f, 400f);

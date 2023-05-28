@@ -6,6 +6,7 @@ using UnityEngine.UI;
 namespace Varneon.VUdon.Udonity.UIElements
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(Toggle))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class FoldoutToggle : UdonSharpBehaviour

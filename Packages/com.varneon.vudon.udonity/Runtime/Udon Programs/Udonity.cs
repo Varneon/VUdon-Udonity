@@ -12,6 +12,7 @@ using VRC.Udon.Common;
 namespace Varneon.VUdon.Udonity
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     [DefaultExecutionOrder(-1)]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class Udonity : UdonSharpBehaviour

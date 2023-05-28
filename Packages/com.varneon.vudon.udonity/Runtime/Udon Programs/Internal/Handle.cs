@@ -7,6 +7,7 @@ using VRC.Udon.Common;
 namespace Varneon.VUdon.Udonity
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class Handle : UdonSharpBehaviour
     {

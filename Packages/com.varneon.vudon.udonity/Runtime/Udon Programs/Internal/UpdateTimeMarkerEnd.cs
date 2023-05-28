@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Varneon.VUdon.Udonity.Utilities
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     [DefaultExecutionOrder(2147483647)]
     public class UpdateTimeMarkerEnd : UdonSharpBehaviour
     {

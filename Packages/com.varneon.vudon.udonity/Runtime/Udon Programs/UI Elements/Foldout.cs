@@ -5,6 +5,7 @@ using UnityEngine.UI;
 namespace Varneon.VUdon.Udonity.UIElements
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(LayoutGroup))]
     [RequireComponent(typeof(ContentSizeFitter))]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]

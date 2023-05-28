@@ -6,6 +6,7 @@ using VRC.SDK3.Components;
 namespace Varneon.VUdon.Udonity.Editors
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     public class VRCAvatarPedestalEditor : Abstract.ComponentEditor
     {
         [SerializeField]

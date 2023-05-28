@@ -13,6 +13,7 @@ using Varneon.VUdon.Udonity.Windows.UdonMonitor;
 namespace Varneon.VUdon.Udonity.Windows.Inspector
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class Inspector : Abstract.EditorWindow
     {

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace Varneon.VUdon.Udonity.UIElements.Abstract
 {
+    [DisallowMultipleComponent]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public abstract class DropdownMenu : UdonSharpBehaviour
     {

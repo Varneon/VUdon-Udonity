@@ -9,6 +9,7 @@ using VRC.SDKBase;
 namespace Varneon.VUdon.Udonity.Editors
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class GameObjectEditor : UdonSharpBehaviour
     {

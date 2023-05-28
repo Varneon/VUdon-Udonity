@@ -6,6 +6,7 @@ using Varneon.VUdon.Udonity.Visualizers;
 namespace Varneon.VUdon.Udonity.Editors
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     public class BoxColliderEditor : Abstract.ComponentEditor
     {
         [Header("BoxCollider EditorElement References")]

@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Varneon.VUdon.Udonity.Windows.UdonMonitor
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class UdonMonitorEntryPointElement : UdonSharpBehaviour
     {

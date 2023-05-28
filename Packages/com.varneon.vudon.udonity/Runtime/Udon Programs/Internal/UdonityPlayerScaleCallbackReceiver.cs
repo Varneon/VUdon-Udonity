@@ -5,6 +5,7 @@ using Varneon.VUdon.PlayerScaleUtility.Abstract;
 namespace Varneon.VUdon.Udonity.Utilities
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class UdonityPlayerScaleCallbackReceiver : PlayerScaleCallbackReceiver
     {

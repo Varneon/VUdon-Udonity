@@ -5,6 +5,7 @@ using Varneon.VUdon.ArrayExtensions;
 namespace Varneon.VUdon.Udonity
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class AnimatorControllerDataStorage : UdonSharpBehaviour
     {

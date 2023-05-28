@@ -6,6 +6,7 @@ using Varneon.VUdon.Udonity.Utilities;
 namespace Varneon.VUdon.Udonity.Windows
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     public class Profiler : Abstract.EditorWindow
     {
         public override Vector2 MinSize => new Vector2(600f, 300f);

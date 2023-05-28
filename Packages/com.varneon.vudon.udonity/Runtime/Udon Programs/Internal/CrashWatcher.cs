@@ -6,6 +6,7 @@ using VRC.Udon;
 namespace Varneon.VUdon.Udonity.Utilities
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class CrashWatcher : UdonSharpBehaviour
     {

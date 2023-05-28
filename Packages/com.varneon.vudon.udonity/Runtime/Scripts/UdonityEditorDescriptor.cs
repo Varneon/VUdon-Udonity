@@ -7,6 +7,7 @@ namespace Varneon.VUdon.Udonity
     /// Descriptor for Udonity Editor
     /// </summary>
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     public class UdonityEditorDescriptor : MonoBehaviour
     {
         [SerializeField, HideInInspector]

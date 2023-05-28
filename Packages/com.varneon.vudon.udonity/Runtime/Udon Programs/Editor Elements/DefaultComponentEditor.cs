@@ -5,6 +5,7 @@ using UnityEngine;
 namespace Varneon.VUdon.Udonity.Editors
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     public class DefaultComponentEditor : Abstract.ComponentEditor
     {
         [SerializeField]

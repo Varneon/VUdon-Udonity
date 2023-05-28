@@ -6,6 +6,7 @@ namespace Varneon.VUdon.Udonity.Windows.Animator
     using Animator = UnityEngine.Animator;
 
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     public class AnimatorWindowFloatParameterListElement : Abstract.AnimatorWindowParameterListElement
     {
         [SerializeField]

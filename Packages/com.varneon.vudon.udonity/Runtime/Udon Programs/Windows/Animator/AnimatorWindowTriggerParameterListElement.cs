@@ -4,6 +4,7 @@
     using Animator = UnityEngine.Animator;
 
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     public class AnimatorWindowTriggerParameterListElement : Abstract.AnimatorWindowParameterListElement
     {
         internal void Intialize(Animator animator, string parameter)

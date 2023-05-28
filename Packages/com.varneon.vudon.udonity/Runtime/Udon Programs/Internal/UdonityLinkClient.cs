@@ -10,6 +10,7 @@ using VRC.Udon.Common.Interfaces;
 namespace Varneon.VUdon.Udonity.UdonityLink
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class UdonityLinkClient : UdonSharpBehaviour
     {

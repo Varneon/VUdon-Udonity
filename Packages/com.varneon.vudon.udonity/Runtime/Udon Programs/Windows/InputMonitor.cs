@@ -6,6 +6,7 @@ using VRC.Udon.Common;
 namespace Varneon.VUdon.Udonity.Windows
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     public class InputMonitor : Abstract.EditorWindow
     {
         public override Vector2 MinSize => new Vector2(600f, 400f);

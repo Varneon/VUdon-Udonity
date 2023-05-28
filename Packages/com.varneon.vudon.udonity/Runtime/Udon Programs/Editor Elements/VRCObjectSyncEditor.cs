@@ -8,6 +8,7 @@ using VRC.SDKBase;
 namespace Varneon.VUdon.Udonity.Editors
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     public class VRCObjectSyncEditor : Abstract.ComponentEditor
     {
         [SerializeField]

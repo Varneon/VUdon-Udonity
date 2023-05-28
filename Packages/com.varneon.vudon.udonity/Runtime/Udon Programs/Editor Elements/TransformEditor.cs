@@ -5,6 +5,7 @@ using Varneon.VUdon.Udonity.Fields;
 namespace Varneon.VUdon.Udonity.Editors
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     public class TransformEditor : Abstract.ComponentEditor
     {
         [Header("Transform EditorElement References")]

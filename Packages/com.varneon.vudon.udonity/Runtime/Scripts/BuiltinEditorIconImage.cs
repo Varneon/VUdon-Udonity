@@ -7,6 +7,7 @@ namespace Varneon.VUdon.Udonity
     /// Component for describing an Image component that uses a built-in Unity Editor icon
     /// </summary>
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(Image))]
     public class BuiltinEditorIconImage : MonoBehaviour
     {

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 namespace Varneon.VUdon.Udonity.Fields
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class LayerMaskField : Abstract.Field
     {

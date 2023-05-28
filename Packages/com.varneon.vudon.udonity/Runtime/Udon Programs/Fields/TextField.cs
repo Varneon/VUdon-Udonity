@@ -5,6 +5,7 @@ using UnityEngine.UI;
 namespace Varneon.VUdon.Udonity.Fields
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class TextField : Abstract.Field
     {

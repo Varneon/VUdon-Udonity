@@ -5,6 +5,7 @@ using Varneon.VUdon.ArrayExtensions;
 namespace Varneon.VUdon.Udonity.Windows
 {
     [AddComponentMenu("")]
+    [DisallowMultipleComponent]
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class WindowPanelSeparator : WindowLayoutElement
     {
