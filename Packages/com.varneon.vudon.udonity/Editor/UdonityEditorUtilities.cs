@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿using System;
+using System.Reflection;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -28,6 +30,18 @@ namespace Varneon.VUdon.Udonity.Editor
             {
                 Selection.activeGameObject = descriptorInstance;
             }
+        }
+
+        internal static void HideUdonitySceneIcons()
+        {
+            Type annotationUtilityType = Type.GetType("UnityEditor.AnnotationUtility,UnityEditor");
+
+            BindingFlags bindingFlags = BindingFlags.Static | BindingFlags.NonPublic;
+
+            MethodInfo setIconEnabledMethod = annotationUtilityType.GetMethod("SetIconEnabled", bindingFlags);
+
+            setIconEnabledMethod.Invoke(null, new object[] { 114, "UdonityEditorDescriptor", 0 });
+            setIconEnabledMethod.Invoke(null, new object[] { 114, "UdonityRootInclusionDescriptor", 0 });
         }
     }
 }
