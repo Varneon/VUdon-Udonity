@@ -94,7 +94,10 @@ namespace Varneon.VUdon.Udonity.Editor
                     HideElement(addUdonityEditorToSceneButton);
                 };
             }
+        }
 
+        private void OnDestroy()
+        {
             UdonityEditorUtilities.HideUdonitySceneIcons();
         }
 
