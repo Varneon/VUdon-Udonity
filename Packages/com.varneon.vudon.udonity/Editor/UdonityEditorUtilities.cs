@@ -22,6 +22,8 @@ namespace Varneon.VUdon.Udonity.Editor
 
             GameObject descriptorInstance = PrefabUtility.InstantiatePrefab(descriptorPrefab, activeScene) as GameObject;
 
+            Undo.RegisterCreatedObjectUndo(descriptorInstance, "Add Udonity To Scene");
+
             if (setAsActiveSelection)
             {
                 Selection.activeGameObject = descriptorInstance;
