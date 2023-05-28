@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace Varneon.VUdon.Udonity.Editor
@@ -77,6 +78,22 @@ namespace Varneon.VUdon.Udonity.Editor
 
             if (dataLocatorExists) { HideElement(loadBuiltinEditorIconsAction); }
             else { loadBuiltinEditorIconsAction.Q<Button>().clicked += () => { BuiltinEditorIconLoader.LoadBuiltinEditorIcons(); HideElement(loadBuiltinEditorIconsAction); }; }
+
+            GameObject[] sceneRoots = SceneManager.GetActiveScene().GetRootGameObjects();
+
+            bool hasUdonityEditorInScene = sceneRoots.Any(r => r.GetComponentInChildren<UdonityEditorDescriptor>()) || sceneRoots.Any(r => r.GetComponentInChildren<Udonity>());
+
+            if(isSpritePackingEnabled && dataLocatorExists && !hasUdonityEditorInScene)
+            {
+                Button addUdonityEditorToSceneButton = rootVisualElement.Q<Button>("Button_AddUdonityEditorToScene");
+
+                addUdonityEditorToSceneButton.RemoveFromClassList("hidden");
+                addUdonityEditorToSceneButton.clicked += () =>
+                {
+                    UdonityEditorUtilities.AddUdonityEditorDescriptorToScene(true);
+                    HideElement(addUdonityEditorToSceneButton);
+                };
+            }
         }
 
         private static void HideElement(VisualElement element)
