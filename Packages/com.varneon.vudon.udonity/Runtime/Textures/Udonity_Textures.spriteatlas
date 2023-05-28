@@ -38,9 +38,12 @@ SpriteAtlas:
     - {fileID: 2800000, guid: b278136356da01d478e1df7ebced188b, type: 3}
     - {fileID: 2800000, guid: 5a4475cb17be5b5409023d63f5b77cac, type: 3}
     - {fileID: 2800000, guid: fade1c2bdd28e074fa96e76a2366c39b, type: 3}
+    - {fileID: 2800000, guid: 89850a7d15e2db74faf3776997e2fb9d, type: 3}
+    - {fileID: 2800000, guid: 39323e1071ccbd84198cae08c73b925f, type: 3}
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 39323e1071ccbd84198cae08c73b925f, type: 3}
   - {fileID: 21300000, guid: b278136356da01d478e1df7ebced188b, type: 3}
   - {fileID: 21300000, guid: c1853b04c2bdc2a44ba5238a1c637a38, type: 3}
   - {fileID: 21300000, guid: 6a325515ff1f1d542989eeaacf7bb969, type: 3}
@@ -48,8 +51,10 @@ SpriteAtlas:
   - {fileID: 21300000, guid: cd278438b1038194b9200166d0e1e423, type: 3}
   - {fileID: 21300000, guid: fade1c2bdd28e074fa96e76a2366c39b, type: 3}
   - {fileID: 21300000, guid: 5a4475cb17be5b5409023d63f5b77cac, type: 3}
+  - {fileID: 21300000, guid: 89850a7d15e2db74faf3776997e2fb9d, type: 3}
   - {fileID: 21300000, guid: 40661def2c0729b409ab25197c5d739a, type: 3}
   m_PackedSpriteNamesToIndex:
+  - Icon_Folder_Generic
   - Icon_Udonity_256_Color
   - Icon_Arrow
   - Icon_Collapse_Window
@@ -57,6 +62,7 @@ SpriteAtlas:
   - Icon_Close_Window
   - Icon_Udonity_128_White
   - Icon_VRC_Component_Addition
+  - Icon_File_Generic
   - Icon_Restore_Window
   m_Tag: Udonity_Textures
   m_IsVariant: 0
