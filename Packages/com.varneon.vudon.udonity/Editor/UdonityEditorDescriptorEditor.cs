@@ -21,6 +21,8 @@ namespace Varneon.VUdon.Udonity.Editor
 
         private UdonityRootInclusionDescriptor[] rootInclusionDescriptors;
 
+        private bool isDragAndDropValid;
+
         protected override string FoldoutPersistenceKey => null;
 
         protected override InspectorHeader Header => new InspectorHeaderBuilder()
@@ -59,22 +61,38 @@ namespace Varneon.VUdon.Udonity.Editor
 
             rootReorderableList.drawHeaderCallback = (Rect rect) =>
             {
-                GUI.Label(rect, string.Concat(rootReorderableList.serializedProperty.arraySize, " Inspected Hierarchy Roots"));
+                if(Event.current.type == EventType.DragExited)
+                {
+                    isDragAndDropValid = false;
+                }
 
                 if (rect.Contains(Event.current.mousePosition))
                 {
                     switch (Event.current.type)
                     {
                         case EventType.DragUpdated:
-                            DragAndDrop.visualMode = DragAndDrop.objectReferences.All(o => o.GetType().Equals(typeof(GameObject))) ? DragAndDropVisualMode.Copy : DragAndDropVisualMode.Rejected;
+                            isDragAndDropValid = DragAndDrop.objectReferences.All(o => o.GetType().Equals(typeof(GameObject)));
+                            DragAndDrop.visualMode = isDragAndDropValid ? DragAndDropVisualMode.Copy : DragAndDropVisualMode.Rejected;
                             Event.current.Use();
-                            return;
+                            break;
                         case EventType.DragPerform:
+                            isDragAndDropValid = false;
                             Undo.RecordObject(target, "Add Inspected Roots");
                             editorDescriptor.hierarchyRoots = editorDescriptor.hierarchyRoots.Union(DragAndDrop.objectReferences.Select(o => ((GameObject)o).transform)).ToList();
                             Event.current.Use();
-                            return;
+                            break;
                     }
+                }
+
+                if (isDragAndDropValid)
+                {
+                    int objectCount = DragAndDrop.objectReferences.Length;
+
+                    GUI.Label(rect, string.Concat("Add ", objectCount, " root", objectCount > 1 ? "s" : string.Empty, " to Udonity's hierarchy"));
+                }
+                else
+                {
+                    GUI.Label(rect, new GUIContent(string.Concat(rootReorderableList.serializedProperty.arraySize, " Inspected Hierarchy Roots"), "Drag and drop objects here to add them"));
                 }
             };
         }
