@@ -73,26 +73,58 @@ namespace Varneon.VUdon.Udonity.Editor
             VisualElement enableSpritePackingAction = rootVisualElement.Q("Action_EnableSpritePacking");
             VisualElement loadBuiltinEditorIconsAction = rootVisualElement.Q("Action_LoadBuiltInEditorIcons");
 
-            if (isSpritePackingEnabled) { HideElement(enableSpritePackingAction); }
-            else { enableSpritePackingAction.Q<Button>().clicked += () => { EditorSettings.spritePackerMode = SpritePackerMode.AlwaysOnAtlas; HideElement(enableSpritePackingAction); }; }
+            Button addUdonityEditorToSceneButton = rootVisualElement.Q<Button>("Button_AddUdonityEditorToScene");
 
-            if (dataLocatorExists) { HideElement(loadBuiltinEditorIconsAction); }
-            else { loadBuiltinEditorIconsAction.Q<Button>().clicked += () => { BuiltinEditorIconLoader.LoadBuiltinEditorIcons(); HideElement(loadBuiltinEditorIconsAction); }; }
+            addUdonityEditorToSceneButton.clicked += () =>
+            {
+                UdonityEditorUtilities.AddUdonityEditorDescriptorToScene(true);
+                SetElementHiddenState(addUdonityEditorToSceneButton, true);
+            };
 
             GameObject[] sceneRoots = SceneManager.GetActiveScene().GetRootGameObjects();
 
             bool hasUdonityEditorInScene = sceneRoots.Any(r => r.GetComponentInChildren<UdonityEditorDescriptor>()) || sceneRoots.Any(r => r.GetComponentInChildren<Udonity>());
 
-            if(isSpritePackingEnabled && dataLocatorExists && !hasUdonityEditorInScene)
+            if (isSpritePackingEnabled && dataLocatorExists && !hasUdonityEditorInScene)
             {
-                Button addUdonityEditorToSceneButton = rootVisualElement.Q<Button>("Button_AddUdonityEditorToScene");
-
                 addUdonityEditorToSceneButton.RemoveFromClassList("hidden");
-                addUdonityEditorToSceneButton.clicked += () =>
+            }
+
+            if (isSpritePackingEnabled) { SetElementHiddenState(enableSpritePackingAction, true); }
+            else
+            {
+                enableSpritePackingAction.Q<Button>().clicked += () =>
                 {
-                    UdonityEditorUtilities.AddUdonityEditorDescriptorToScene(true);
-                    HideElement(addUdonityEditorToSceneButton);
+                    EditorSettings.spritePackerMode = SpritePackerMode.AlwaysOnAtlas;
+
+                    isSpritePackingEnabled = true;
+
+                    SetElementHiddenState(enableSpritePackingAction, true);
+
+                    TryEnableAddUdonityToSceneButton();
                 };
+            }
+
+            if (dataLocatorExists) { SetElementHiddenState(loadBuiltinEditorIconsAction, true); }
+            else
+            {
+                loadBuiltinEditorIconsAction.Q<Button>().clicked += () =>
+                {
+                    BuiltinEditorIconLoader.LoadBuiltinEditorIcons();
+
+                    dataLocatorExists = true;
+
+                    SetElementHiddenState(loadBuiltinEditorIconsAction, true);
+
+                    TryEnableAddUdonityToSceneButton();
+                };
+            }
+
+            void TryEnableAddUdonityToSceneButton()
+            {
+                if (!isSpritePackingEnabled || !dataLocatorExists) { return; }
+
+                SetElementHiddenState(addUdonityEditorToSceneButton, false);
             }
         }
 
@@ -101,9 +133,9 @@ namespace Varneon.VUdon.Udonity.Editor
             UdonityEditorUtilities.HideUdonitySceneIcons();
         }
 
-        private static void HideElement(VisualElement element)
+        private static void SetElementHiddenState(VisualElement element, bool hidden)
         {
-            element.AddToClassList("hidden");
+            element.EnableInClassList("hidden", hidden);
         }
     }
 }
