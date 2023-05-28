@@ -28629,6 +28629,18 @@ MonoBehaviour:
   linkClient: {fileID: 5699054764127932304}
   projectWindowTab: {fileID: 8063767970223861011}
   animatorWindowTab: {fileID: 8063767969253889204}
+  boxColliderVisualizerPrefab: {fileID: 6567740455409412606, guid: 2df3ff8931372ec42b6bfcab2e50c841,
+    type: 3}
+  colorFieldPrefab: {fileID: 1195879520915560244, guid: 64b057eeeb8e43949a204a40f2a7240b,
+    type: 3}
+  vector3FieldPrefab: {fileID: 1383401300499385296, guid: 3fd2bd80b663d7a41aa8459b9abc13b4,
+    type: 3}
+  floatFieldPrefab: {fileID: 2310161440028833806, guid: b966fbcd879a2fa4d9c04449d5824467,
+    type: 3}
+  rangedFloatFieldPrefab: {fileID: 241185359570730103, guid: 6372893cb9a8adf49ad5ff0774681988,
+    type: 3}
+  objectFieldPrefab: {fileID: 5932905678837611460, guid: f7f64ef1dcb712c43aedb67e27468f5a,
+    type: 3}
 --- !u!114 &5784208661731676360
 MonoBehaviour:
   m_ObjectHideFlags: 0

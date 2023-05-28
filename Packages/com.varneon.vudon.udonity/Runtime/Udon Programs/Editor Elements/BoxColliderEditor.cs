@@ -22,8 +22,8 @@ namespace Varneon.VUdon.Udonity.Editors
         [SerializeField]
         private Vector3Field sizeField;
 
-        [SerializeField]
-        private BoxColliderVisualizer visualizerPrefab;
+        [SerializeField, HideInInspector]
+        internal BoxColliderVisualizer visualizerPrefab;
 
         private BoxColliderVisualizer activeVisualizer;
 
@@ -112,6 +112,8 @@ namespace Varneon.VUdon.Udonity.Editors
             if (centerField) { centerField.RegisterValueChangedCallback(this, nameof(OnCenterChanged)); }
 
             if(sizeField) { sizeField.RegisterValueChangedCallback(this, nameof(OnSizeChanged)); }
+
+            visualizerPrefab = GetComponentInParent<Udonity>().BoxColliderVisualizerPrefab;
         }
     }
 }

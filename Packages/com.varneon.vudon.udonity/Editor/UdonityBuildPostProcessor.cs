@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using TMPro;
+using UdonSharp;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
@@ -156,6 +157,8 @@ namespace Varneon.VUdon.Udonity.Editor
 
             //Debug.Log(string.Concat("Postprocessing Udonity: ", udonity), udonity);
 
+            udonity.InitializeOnBuild();
+
             consoleWindow = udonity.ConsoleWindow;
 
             hierarchyWindow = udonity.Hierarchy;
@@ -211,6 +214,20 @@ namespace Varneon.VUdon.Udonity.Editor
                 image.Initialize();
             }
         }
+
+        //[UsedImplicitly]
+        //[PostProcessScene(2147483647)]
+        //private static void CleanUpEditorHierarchy()
+        //{
+        //    if (udonity == null) { return; }
+
+        //    foreach (UdonSharpBehaviour usb in editorRoot.GetComponentsInChildren<UdonSharpBehaviour>(true))
+        //    {
+        //        Debug.Log(string.Concat("Destroying UdonSharpBehaviour: ", usb));
+
+        //        Object.DestroyImmediate(usb);
+        //    }
+        //}
 
         [UsedImplicitly]
         [PostProcessScene(2)]

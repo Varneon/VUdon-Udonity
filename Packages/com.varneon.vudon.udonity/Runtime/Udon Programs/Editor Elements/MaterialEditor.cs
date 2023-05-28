@@ -236,6 +236,18 @@ namespace Varneon.VUdon.Udonity.Editors
 #if !COMPILER_UDONSHARP
         internal void InitializeOnBuild()
         {
+            Udonity udonity = GetComponentInParent<Udonity>();
+
+            colorField = udonity.ColorFieldPrefab;
+
+            vector3Field = udonity.Vector3FieldPrefab;
+
+            floatField = udonity.FloatFieldPrefab;
+
+            rangedFloatField = udonity.RangedFloatFieldPrefab;
+
+            textureField = udonity.ObjectFieldPrefab;
+
             if (inspectorFoldout) { inspectorFoldout.RegisterValueChangedCallback(this, nameof(OnExpandedStateChanged)); }
         }
 #endif

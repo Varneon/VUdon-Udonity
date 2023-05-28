@@ -1,6 +1,8 @@
 ﻿using UdonSharp;
 using UnityEngine;
+using Varneon.VUdon.Udonity.Fields;
 using Varneon.VUdon.Udonity.UdonityLink;
+using Varneon.VUdon.Udonity.Visualizers;
 using Varneon.VUdon.Udonity.Windows;
 using Varneon.VUdon.Udonity.Windows.Animator;
 using Varneon.VUdon.Udonity.Windows.Hierarchy;
@@ -36,6 +38,18 @@ namespace Varneon.VUdon.Udonity
         public ColorDialog ColorDialog => colorDialog;
 
         public ObjectDialog ObjectDialog => objectDialog;
+
+        public BoxColliderVisualizer BoxColliderVisualizerPrefab => boxColliderVisualizerPrefab;
+
+        public ColorField ColorFieldPrefab => colorFieldPrefab;
+
+        public Vector3Field Vector3FieldPrefab => vector3FieldPrefab;
+
+        public FloatField FloatFieldPrefab => floatFieldPrefab;
+
+        public FloatField RangedFloatFieldPrefab => rangedFloatFieldPrefab;
+
+        public ObjectField ObjectFieldPrefab => objectFieldPrefab;
 
         internal Transform[] roots = new Transform[0];
 
@@ -80,6 +94,25 @@ namespace Varneon.VUdon.Udonity
 
         [SerializeField]
         private WindowTab animatorWindowTab;
+
+        [Header("Runtime Prefabs")]
+        [SerializeField]
+        private BoxColliderVisualizer boxColliderVisualizerPrefab;
+
+        [SerializeField]
+        private ColorField colorFieldPrefab;
+
+        [SerializeField]
+        private Vector3Field vector3FieldPrefab;
+
+        [SerializeField]
+        private FloatField floatFieldPrefab;
+
+        [SerializeField]
+        private FloatField rangedFloatFieldPrefab;
+
+        [SerializeField]
+        private ObjectField objectFieldPrefab;
 
         private GameObject draggedObject;
 
@@ -199,5 +232,22 @@ namespace Varneon.VUdon.Udonity
                 if (draggedObject) { draggedObject = null; }
             }
         }
+
+#if !COMPILER_UDONSHARP
+        internal void InitializeOnBuild()
+        {
+            GameObject runtimePrefabRoot = new GameObject("RUNTIME_PREFABS");
+            runtimePrefabRoot.SetActive(false);
+            Transform runtimePrefabParent = runtimePrefabRoot.transform;
+            runtimePrefabParent.SetParent(transform.parent);
+
+            boxColliderVisualizerPrefab = Instantiate(boxColliderVisualizerPrefab, runtimePrefabParent);
+            colorFieldPrefab = Instantiate(colorFieldPrefab, runtimePrefabParent);
+            vector3FieldPrefab = Instantiate(vector3FieldPrefab, runtimePrefabParent);
+            floatFieldPrefab = Instantiate(floatFieldPrefab, runtimePrefabParent);
+            rangedFloatFieldPrefab = Instantiate(rangedFloatFieldPrefab, runtimePrefabParent);
+            objectFieldPrefab = Instantiate(objectFieldPrefab, runtimePrefabParent);
+        }
+#endif
     }
 }
