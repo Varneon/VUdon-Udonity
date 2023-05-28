@@ -2,7 +2,7 @@
 
 namespace Varneon.VUdon.Udonity
 {
-    [AddComponentMenu("VUdon/Udonity/Root Inclusion Descriptor")]
+    [AddComponentMenu("VUdon/Udonity/Udonity Root Inclusion Descriptor")]
     public class UdonityRootInclusionDescriptor : MonoBehaviour { }
 
 #if UNITY_EDITOR && !COMPILER_UDONSHARP
