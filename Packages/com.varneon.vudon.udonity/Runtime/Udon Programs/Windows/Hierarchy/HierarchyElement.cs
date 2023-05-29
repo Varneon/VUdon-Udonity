@@ -160,13 +160,15 @@ namespace Varneon.VUdon.Udonity.Windows.Hierarchy
             }
         }
 
-        internal void Refresh()
+        /// <summary>
+        /// Refreshes the hierarchy element
+        /// </summary>
+        /// <returns>Should the element be destroyed</returns>
+        internal bool Refresh()
         {
             if(target == null)
             {
-                Destroy(gameObject);
-
-                return;
+                return true;
             }
 
             bool active = target.activeSelf;
@@ -181,6 +183,8 @@ namespace Varneon.VUdon.Udonity.Windows.Hierarchy
 
                 hierarchy.SetElementActiveState(transform.GetSiblingIndex(), hierarchyDepth, active);
             }
+
+            return false;
         }
 
         public void ToggleActive()

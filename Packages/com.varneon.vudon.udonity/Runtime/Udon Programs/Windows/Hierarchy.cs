@@ -307,7 +307,7 @@ namespace Varneon.VUdon.Udonity.Windows.Hierarchy
 
                 HierarchyElement element = elements[i];
 
-                if(element == null) { RemoveHierarchyElementAtIndex(i); break; }
+                if(element == null) { RemoveHierarchyElementTreeAtIndex(i); continue; }
 
                 element.SetActiveInHierarchyState(active);
 
@@ -322,29 +322,36 @@ namespace Varneon.VUdon.Udonity.Windows.Hierarchy
 
         public void IterateHierarchyElements()
         {
+            // Do not check for negative index. If everything is working, negative index should never occur
             if(elementIteratorIndex >= objectCount) { elementIteratorIndex = 0; }
 
             HierarchyElement element = elements[elementIteratorIndex];
 
+            // This really shouldn't ever happen
             if(element == null)
             {
-                if (selectedGameObject == null)
-                {
-                    RemoveHierarchyElementAtIndex(elementIteratorIndex);
-                }
+                LogError(string.Concat("Hierarchy element at ", elementIteratorIndex, " was null!"));
+
+                RemoveHierarchyElementTreeAtIndex(elementIteratorIndex);
+            }
+            else if (element.Refresh()) // Refresh the hierarchy element (missing target, active state, etc.)
+            {
+                RemoveHierarchyElementTreeAtIndex(elementIteratorIndex);
             }
             else
             {
-                element.Refresh();
+                // If nothing was removed, increment iterator
+                elementIteratorIndex++;
             }
-
-            elementIteratorIndex++;
 
             SendCustomEventDelayedFrames(nameof(IterateHierarchyElements), 0);
         }
 
+        [Obsolete("Use RemoveHierarchyElementTreeAtIndex instead")]
         private void RemoveHierarchyElementAtIndex(int index)
         {
+            Destroy(elements[index].gameObject);
+
             depthLookup = depthLookup.RemoveAt(index);
 
             elements = elements.RemoveAt(index);
@@ -352,6 +359,61 @@ namespace Varneon.VUdon.Udonity.Windows.Hierarchy
             expandedStates = expandedStates.RemoveAt(index);
 
             objectCount--;
+        }
+
+        /// <summary>
+        /// Removes a tree of hierarchy elements at index
+        /// </summary>
+        /// <param name="index">Index of the parent element</param>
+        /// <returns>How many elements was removed during this action</returns>
+        private int RemoveHierarchyElementTreeAtIndex(int index)
+        {
+            if (index < 0) { return 0; }
+
+            // Get the starting depth
+            int selectedObjectDepth = depthLookup[index];
+
+            // At least one object will be removed from the hierarchy
+            int hierarchyCount = 1;
+
+            // Assign iteration index starting value
+            int lookupIndex = index;
+
+            // Cache the current length of the lookup
+            int depthLookupLength = depthLookup.Length;
+
+            HierarchyElement firstElement = elements[lookupIndex];
+
+            if(firstElement != null)
+            {
+                Destroy(elements[lookupIndex].gameObject);
+            }
+
+            // Iterate and remove elements until we reach the end or depth is less
+            while (++lookupIndex < depthLookupLength && depthLookup[lookupIndex] > selectedObjectDepth)
+            {
+                HierarchyElement element = elements[lookupIndex];
+
+                if (element != null)
+                {
+                    Destroy(element.gameObject);
+                }
+
+                // Increment the count of elements removed
+                hierarchyCount++;
+            }
+
+            // Remove the appropriate range of array elements based on how many elements were removed
+            elements = elements.RemoveRange(index, hierarchyCount);
+
+            depthLookup = depthLookup.RemoveRange(index, hierarchyCount);
+
+            expandedStates = expandedStates.RemoveRange(index, hierarchyCount);
+
+            // Subtract the number of removed objects from total count
+            objectCount -= hierarchyCount;
+
+            return hierarchyCount;
         }
 
         #region Initialization Methods
@@ -408,32 +470,13 @@ namespace Varneon.VUdon.Udonity.Windows.Hierarchy
         {
             if(selectedGameObject == null) { return; }
 
-            Destroy(selectedGameObject);
-
             int selectedObjectIndex = elements.IndexOf(activeHierarchyElement);
 
-            int selectedObjectDepth = depthLookup[selectedObjectIndex];
+            if(selectedObjectIndex < 0) { return; }
 
-            int hierarchyCount = 0;
+            RemoveHierarchyElementTreeAtIndex(selectedObjectIndex);
 
-            int lookupIndex = selectedObjectIndex;
-
-            int depthLookupLength = depthLookup.Length;
-
-            while (depthLookup[lookupIndex] > selectedObjectDepth && lookupIndex < depthLookupLength)
-            {
-                lookupIndex = selectedObjectIndex + hierarchyCount++;
-            }
-
-            elements = elements.RemoveRange(selectedObjectIndex, hierarchyCount);
-
-            depthLookup = depthLookup.RemoveRange(selectedObjectIndex, hierarchyCount);
-
-            expandedStates = expandedStates.RemoveRange(selectedObjectIndex, hierarchyCount);
-
-            objectCount -= hierarchyCount;
-
-            elementIteratorIndex = 0;
+            Destroy(selectedGameObject);
         }
         #endregion
 
