@@ -82,7 +82,7 @@ namespace Varneon.VUdon.Udonity.Windows.Inspector
             collapsedComponents = new bool[componentEditorCount];
         }
 
-        private void ClearContainer()
+        internal void ClearContainer()
         {
             for(int i = 0; i < container.childCount; i++)
             {

@@ -476,6 +476,8 @@ namespace Varneon.VUdon.Udonity.Windows.Hierarchy
 
             RemoveHierarchyElementTreeAtIndex(selectedObjectIndex);
 
+            inspector.ClearContainer();
+
             Destroy(selectedGameObject);
         }
         #endregion
