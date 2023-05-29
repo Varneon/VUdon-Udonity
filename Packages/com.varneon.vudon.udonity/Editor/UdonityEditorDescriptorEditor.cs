@@ -129,7 +129,7 @@ namespace Varneon.VUdon.Udonity.Editor
 
                 using (var scope = new EditorGUI.ChangeCheckScope())
                 {
-                    float scale = EditorGUILayout.FloatField("Canvas Scale", canvasRectTransform.localScale.x);
+                    float scale = Mathf.Clamp(EditorGUILayout.FloatField("Canvas Scale", canvasRectTransform.localScale.x), 0.0001f, 10f);
 
                     if (scope.changed)
                     {
