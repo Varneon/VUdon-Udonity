@@ -605,6 +605,13 @@ namespace Varneon.VUdon.Udonity.Windows.Hierarchy
         {
             string searchInput = searchInputField.text;
 
+            if (searchInput.Equals("UdonityEditor(Clone)"))
+            {
+                LogError("Inspecting the Udonity Editor would cause crash from recursion, this is not allowed!");
+
+                return;
+            }
+
             GameObject foundObject = GameObject.Find(searchInput);
 
             if(foundObject == null)
@@ -612,6 +619,27 @@ namespace Varneon.VUdon.Udonity.Windows.Hierarchy
                 LogError($"Couldn't find object: '<color=#888>{searchInput}</color>'");
 
                 return;
+            }
+
+            if (foundObject.transform.root.name.Equals("UdonityEditor(Clone)"))
+            {
+                LogError("Found object was an internal Udonity Editor object!");
+
+                return;
+            }
+
+            for(int i = 0; i < objectCount; i++)
+            {
+                HierarchyElement element = elements[i];
+
+                if(element == null) { RemoveHierarchyElementTreeAtIndex(i); continue; }
+
+                if (element.Target.Equals(foundObject))
+                {
+                    LogWarning(string.Concat("Object '<color=#888>", searchInput, "</color>' already exists in the hierarchy!"));
+
+                    return;
+                }
             }
 
             AddRootToHierarchy(foundObject.transform);
@@ -624,6 +652,14 @@ namespace Varneon.VUdon.Udonity.Windows.Hierarchy
             if (logger)
             {
                 logger.Log(string.Format("{0} {1}", LOG_PREFIX, message));
+            }
+        }
+
+        private void LogWarning(string message)
+        {
+            if (logger)
+            {
+                logger.LogWarning(string.Format("{0} {1}", LOG_PREFIX, message));
             }
         }
 
