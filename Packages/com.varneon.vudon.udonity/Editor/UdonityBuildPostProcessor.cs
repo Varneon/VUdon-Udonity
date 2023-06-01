@@ -157,7 +157,7 @@ namespace Varneon.VUdon.Udonity.Editor
 
             //Debug.Log(string.Concat("Postprocessing Udonity: ", udonity), udonity);
 
-            udonity.InitializeOnBuild();
+            udonity.InitializeOnBuild(ActiveScene.name, UdonityEditorUtilities.GetUdonityVersion());
 
             consoleWindow = udonity.ConsoleWindow;
 

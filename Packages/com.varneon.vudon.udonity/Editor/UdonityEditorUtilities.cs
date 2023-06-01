@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Reflection;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -42,6 +45,19 @@ namespace Varneon.VUdon.Udonity.Editor
 
             setIconEnabledMethod.Invoke(null, new object[] { 114, "UdonityEditorDescriptor", 0 });
             setIconEnabledMethod.Invoke(null, new object[] { 114, "UdonityRootInclusionDescriptor", 0 });
+        }
+
+        public static string GetUdonityVersion()
+        {
+            const string MANIFEST_PATH = "Packages/com.varneon.vudon.udonity/package.json";
+
+            PackageManifest manifest = AssetDatabase.LoadAssetAtPath<PackageManifest>(MANIFEST_PATH);
+
+            if(manifest == null) { return "0.0.0"; }
+
+            JObject manifestObject = JsonConvert.DeserializeObject<JObject>(manifest.text);
+
+            return manifestObject.GetValue("version").ToString();
         }
     }
 }

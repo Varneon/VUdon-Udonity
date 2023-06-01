@@ -1,4 +1,5 @@
-﻿using UdonSharp;
+﻿using TMPro;
+using UdonSharp;
 using UnityEngine;
 using Varneon.VUdon.Udonity.Fields;
 using Varneon.VUdon.Udonity.UdonityLink;
@@ -94,6 +95,19 @@ namespace Varneon.VUdon.Udonity
 
         [SerializeField]
         private WindowTab animatorWindowTab;
+
+        [Header("Dynamic Texts")]
+        [SerializeField]
+        private TextMeshProUGUI editorTitleText;
+
+        [SerializeField]
+        private TextMeshProUGUI sceneHeaderText;
+
+        [SerializeField]
+        private TextMeshProUGUI aboutWindowBannerText;
+
+        [SerializeField]
+        private TextMeshProUGUI notRespondingTitleText;
 
         [Header("Runtime Prefabs")]
         [SerializeField]
@@ -234,7 +248,7 @@ namespace Varneon.VUdon.Udonity
         }
 
 #if !COMPILER_UDONSHARP
-        internal void InitializeOnBuild()
+        internal void InitializeOnBuild(string sceneName, string version)
         {
             GameObject runtimePrefabRoot = new GameObject("RUNTIME_PREFABS");
             runtimePrefabRoot.SetActive(false);
@@ -247,6 +261,11 @@ namespace Varneon.VUdon.Udonity
             floatFieldPrefab = Instantiate(floatFieldPrefab, runtimePrefabParent);
             rangedFloatFieldPrefab = Instantiate(rangedFloatFieldPrefab, runtimePrefabParent);
             objectFieldPrefab = Instantiate(objectFieldPrefab, runtimePrefabParent);
+
+            editorTitleText.text = editorTitleText.text.Replace("{{scene}}", sceneName).Replace("{{version}}", version);
+            sceneHeaderText.text = sceneName;
+            aboutWindowBannerText.text = aboutWindowBannerText.text.Replace("{{version}}", version);
+            notRespondingTitleText.text = notRespondingTitleText.text.Replace("{{version}}", version);
         }
 #endif
     }
