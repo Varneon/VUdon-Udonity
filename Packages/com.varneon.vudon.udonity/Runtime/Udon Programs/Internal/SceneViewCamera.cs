@@ -119,5 +119,17 @@ namespace Varneon.VUdon.Udonity.Windows.Scene
         {
             target.SetPositionAndRotation(transform.position, transform.rotation);
         }
+
+        internal void Rotate(Vector3 delta)
+        {
+            transform.localEulerAngles += delta;
+        }
+
+        internal void RotateAroundTarget(Vector3 axis, float angle)
+        {
+            Vector3 pivot = followTarget == null ? transform.position + transform.forward * 3f : followTarget.position;
+
+            transform.RotateAround(pivot, Quaternion.Euler(0f, transform.localEulerAngles.y, 0f) * axis, angle);
+        }
     }
 }
