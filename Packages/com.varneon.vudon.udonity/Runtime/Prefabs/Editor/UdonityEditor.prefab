@@ -6839,6 +6839,7 @@ MonoBehaviour:
     type: 3}
   entryPointListItem: {fileID: 7529181235983169324, guid: 802af46f7abfb4c4eb8baf3aaa05e878,
     type: 3}
+  logger: {fileID: 5784208661488795422}
 --- !u!114 &3879182372026259038
 MonoBehaviour:
   m_ObjectHideFlags: 0

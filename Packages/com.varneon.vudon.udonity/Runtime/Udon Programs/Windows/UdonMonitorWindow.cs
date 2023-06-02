@@ -5,6 +5,7 @@ using UnityEngine;
 using Varneon.VUdon.Udonity.Windows.Abstract;
 using VRC.Udon;
 using Varneon.VUdon.ArrayExtensions;
+using Varneon.VUdon.Logger.Abstract;
 
 namespace Varneon.VUdon.Udonity.Windows.UdonMonitor
 {
@@ -33,15 +34,25 @@ namespace Varneon.VUdon.Udonity.Windows.UdonMonitor
         [SerializeField]
         private GameObject entryPointListItem;
 
+        [SerializeField]
+        private UdonLogger logger;
+
         private int symbolCount;
 
         private UdonBehaviour target;
+
+        private const string LOG_PREFIX = "[<color=#ABCDEF>UdonMonitor</color>]: ";
 
         internal void OpenUdonBehaviour(UdonBehaviour udonBehaviour)
         {
             Clear();
 
-            if(!programDataStorage.TryGetProgramIndex(udonBehaviour, out int programIndex, out long id, out string name)) { return; }
+            if(!programDataStorage.TryGetProgramIndex(udonBehaviour, out int programIndex, out long id, out string name))
+            {
+                LogWarning("Couldn't load UdonBehaviour data! UdonBehaviour's program source likely wasn't UdonSharpProgramAsset.");
+
+                return;
+            }
 
             target = udonBehaviour;
 
@@ -91,6 +102,14 @@ namespace Varneon.VUdon.Udonity.Windows.UdonMonitor
             for(int i = 0; i < entryPointContainer.childCount; i++)
             {
                 Destroy(entryPointContainer.GetChild(i).gameObject);
+            }
+        }
+
+        private void LogWarning(string message)
+        {
+            if (logger)
+            {
+                logger.LogWarning(string.Concat(LOG_PREFIX, message));
             }
         }
     }
