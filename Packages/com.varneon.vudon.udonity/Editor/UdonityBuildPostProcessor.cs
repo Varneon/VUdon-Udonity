@@ -435,6 +435,13 @@ namespace Varneon.VUdon.Udonity.Editor
             {
                 dropdownMenu.InitializeOnBuild();
             }
+
+            DropdownToggleMenu[] dropdownToggleMenus = FindSceneComponentsOfTypeAll<DropdownToggleMenu>();
+
+            foreach (DropdownToggleMenu dropdownToggleMenu in dropdownToggleMenus)
+            {
+                dropdownToggleMenu.InitializeOnBuild();
+            }
         }
 
         private static void PostProcessEditors()
