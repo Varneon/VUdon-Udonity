@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEditorInternal;
@@ -58,6 +59,28 @@ namespace Varneon.VUdon.Udonity.Editor
             JObject manifestObject = JsonConvert.DeserializeObject<JObject>(manifest.text);
 
             return manifestObject.GetValue("version").ToString();
+        }
+
+        public static GameObject[] GetSceneRoots()
+        {
+            return SceneManager.GetActiveScene().GetRootGameObjects();
+        }
+
+        public static T[] FindSceneComponentsOfTypeAll<T>() where T : Component
+        {
+            return GetSceneRoots().SelectMany(r => r.GetComponentsInChildren<T>(true)).ToArray();
+        }
+
+        public static T FindSceneComponentOfType<T>() where T : Component
+        {
+            return GetSceneRoots().Select(r => r.GetComponentInChildren<T>(true)).FirstOrDefault(c => c != null);
+        }
+
+        public static bool TryFindSceneComponentOfType<T>(out T component) where T : Component
+        {
+            component = FindSceneComponentOfType<T>();
+
+            return component;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using UdonSharpEditor;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -22,6 +23,8 @@ namespace Varneon.VUdon.Udonity.Editor
         private UdonityRootInclusionDescriptor[] rootInclusionDescriptors;
 
         private bool isDragAndDropValid;
+
+        private UdonAssetDatabase.UdonAssetDatabase udonAssetDatabase;
 
         protected override string FoldoutPersistenceKey => null;
 
@@ -95,6 +98,8 @@ namespace Varneon.VUdon.Udonity.Editor
                     GUI.Label(rect, new GUIContent(string.Concat(rootReorderableList.serializedProperty.arraySize, " Inspected Hierarchy Roots"), "Drag and drop objects here to add them"));
                 }
             };
+
+            udonAssetDatabase = UdonityEditorUtilities.FindSceneComponentOfType<UdonAssetDatabase.UdonAssetDatabase>();
         }
 
         protected override void OnPreDrawFields()
@@ -153,6 +158,24 @@ namespace Varneon.VUdon.Udonity.Editor
                     Undo.RecordObject(descriptor, "Hide Inspector Tip");
 
                     descriptor.hideRootInclusionTip = true;
+                }
+
+                GUILayout.Space(18);
+            }
+
+            if (udonAssetDatabase == null)
+            {
+                EditorGUILayout.HelpBox("Tip: You can add 'UdonAssetDatabase' into your scene to clone your project's AssetDatabase, making it available during runtime.\n\nProject window and material inspection are only available if UdonAssetDatabase is present.", MessageType.Info);
+
+                if (GUILayout.Button("Add UdonAssetDatabase To Scene"))
+                {
+                    UdonAssetDatabase.UdonAssetDatabase udonAssetDatabase = new GameObject(nameof(UdonAssetDatabase.UdonAssetDatabase)).AddUdonSharpComponent<UdonAssetDatabase.UdonAssetDatabase>();
+
+                    UdonSharpEditorUtility.GetBackingUdonBehaviour(udonAssetDatabase).SyncMethod = VRC.SDKBase.Networking.SyncType.None;
+
+                    Selection.activeGameObject = udonAssetDatabase.gameObject;
+
+                    Undo.RegisterCreatedObjectUndo(udonAssetDatabase.gameObject, "Add UdonAssetDatabase To Scene");
                 }
 
                 GUILayout.Space(18);
