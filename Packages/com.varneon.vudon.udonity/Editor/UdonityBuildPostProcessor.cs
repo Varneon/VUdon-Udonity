@@ -173,6 +173,8 @@ namespace Varneon.VUdon.Udonity.Editor
 
             udonAssetDatabase = FindSceneComponentOfType<UdonAssetDatabase.UdonAssetDatabase>();
 
+            if (udonAssetDatabase) { udonAssetDatabase.TryAssignDefaultLogger(udonity.Logger); }
+
             if (udonityLinkClient) { udonityLinkClient.udonAssetDatabase = udonAssetDatabase; }
 
             PostProcessApplicationWindows();
