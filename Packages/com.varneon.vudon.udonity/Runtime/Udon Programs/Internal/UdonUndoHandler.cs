@@ -32,7 +32,7 @@ namespace Varneon.VUdon.Udonity
             {
                 ApplyUndoValues((GameObject)objectToUndo, (GameObjectUndoType)undoType, values);
             }
-            else if (objectType.Equals(typeof(Transform)))
+            else if (objectType.Equals(typeof(Transform)) || objectType.Equals(typeof(RectTransform)))
             {
                 ApplyUndoValues((Transform)objectToUndo, (TransformUndoType)undoType, values);
             }
