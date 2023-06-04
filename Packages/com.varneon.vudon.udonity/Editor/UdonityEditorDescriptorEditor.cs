@@ -80,7 +80,7 @@ namespace Varneon.VUdon.Udonity.Editor
                             break;
                         case EventType.DragPerform:
                             isDragAndDropValid = false;
-                            Undo.RecordObject(target, "Add Inspected Roots");
+                            Undo.RecordObject(editorDescriptor, "Add Inspected Roots");
                             editorDescriptor.hierarchyRoots = editorDescriptor.hierarchyRoots.Union(DragAndDrop.objectReferences.Select(o => ((GameObject)o).transform)).ToList();
                             Event.current.Use();
                             break;
