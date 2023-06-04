@@ -1,5 +1,5 @@
 > # :construction: Udonity hasn't been released yet!
-> This repository is public for tracking the development process before a release is available for the public. This repository is still missing hundreds of core files and downloading this repository's files at this stage will result in errors.
+> This repository is public for tracking the development progress before a release is available for the public. If you want to know when Udonity can be downloaded and used, keep an eye on this milestone: https://github.com/Varneon/VUdon-Udonity/milestone/1
 
 > You can try out Udonity in its current state it the pre-alpha demo world: https://vrchat.com/home/world/wrld_f1197ac6-72de-4ee1-a56f-ddcc01f6e75d
 
