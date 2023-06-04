@@ -42,6 +42,11 @@ namespace Varneon.VUdon.Udonity.Editor
 
             BindingFlags bindingFlags = BindingFlags.Static | BindingFlags.NonPublic;
 
+            // Get annotations before attempting to set newly added icons disabled
+            // If this is not called or the 'Gizmos' menu on scene view opened beforehand,
+            // AnnotationUtility won't be able to find the annotations
+            annotationUtilityType.GetMethod("GetAnnotations", bindingFlags).Invoke(null, null);
+
             MethodInfo setIconEnabledMethod = annotationUtilityType.GetMethod("SetIconEnabled", bindingFlags);
 
             setIconEnabledMethod.Invoke(null, new object[] { 114, "UdonityEditorDescriptor", 0 });
