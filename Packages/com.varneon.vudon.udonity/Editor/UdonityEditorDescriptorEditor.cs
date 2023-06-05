@@ -45,9 +45,16 @@ namespace Varneon.VUdon.Udonity.Editor
 
             canvasRectTransform = editorDescriptor.GetComponentInChildren<Canvas>().GetComponent<RectTransform>();
 
-            for(int i = 0; i < editorDescriptor.transform.childCount; i++)
+            // If we are currently not in prefab editing mode and the descriptor is not part of a prefab asset, hide the placeholder canvas
+            if(UnityEditor.Experimental.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage() == null && !PrefabUtility.IsPartOfPrefabAsset(editorDescriptor))
             {
-                editorDescriptor.transform.GetChild(i).gameObject.hideFlags = HideFlags.None;// HideFlags.HideInHierarchy | HideFlags.NotEditable;
+                foreach(Transform t in canvasRectTransform.GetComponentsInChildren<Transform>())
+                {
+                    t.gameObject.hideFlags = HideFlags.HideInHierarchy | HideFlags.NotEditable;
+                }
+
+                // Ensure that the expand arrow gets hidden
+                EditorApplication.RepaintHierarchyWindow();
             }
 
             rootReorderableList = new ReorderableList(serializedObject, serializedObject.FindProperty(nameof(UdonityEditorDescriptor.hierarchyRoots)), true, true, true, true);
