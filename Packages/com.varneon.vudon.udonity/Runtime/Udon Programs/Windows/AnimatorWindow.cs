@@ -47,8 +47,6 @@ namespace Varneon.VUdon.Udonity.Windows.Animator
                 selectedRuntimeAnimatorController = ((AnimatorOverrideController)selectedRuntimeAnimatorController).runtimeAnimatorController;
             }
 
-            Debug.Log(selectedRuntimeAnimatorController);
-
             if(!dataStorage.TryGetControllerIndex(selectedRuntimeAnimatorController, out int index)) { return; }
 
             string[] parameterNames = dataStorage.GetControllerParameterNames(index);
