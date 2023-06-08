@@ -1190,7 +1190,7 @@ PrefabInstance:
     - target: {fileID: 8504480721008351422, guid: 79c4c01bcff31a040a15dd080e44bfb9,
         type: 3}
       propertyPath: m_text
-      value: UdonBehaviour
+      value: UdonBehaviour (Script)
       objectReference: {fileID: 0}
     - target: {fileID: 8583789128495280444, guid: 79c4c01bcff31a040a15dd080e44bfb9,
         type: 3}
