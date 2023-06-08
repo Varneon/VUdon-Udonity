@@ -9,6 +9,7 @@ using Varneon.VUdon.Udonity.Editors.Abstract;
 using Varneon.VUdon.Udonity.Utilities;
 using Varneon.VUdon.Udonity.Windows.Hierarchy;
 using Varneon.VUdon.Udonity.Windows.UdonMonitor;
+using VRC.Udon;
 
 namespace Varneon.VUdon.Udonity.Windows.Inspector
 {
@@ -29,6 +30,9 @@ namespace Varneon.VUdon.Udonity.Windows.Inspector
 
         [SerializeField, HideInInspector]
         internal UdonMonitorWindow udonMonitorWindow;
+
+        [SerializeField, HideInInspector]
+        internal UdonProgramDataStorage udonProgramDataStorage;
 
         [SerializeField, HideInInspector]
         internal Type[] availableComponentEditorTypes;
@@ -141,6 +145,17 @@ namespace Varneon.VUdon.Udonity.Windows.Inspector
 
                 if (editorIndex >= 0)
                 {
+                    if(componentType == typeof(UdonBehaviour) && udonProgramDataStorage.TryGetProgramIndex((UdonBehaviour)component, out int index, out long id, out string name))
+                    {
+                        int udonSharpBehaviourEditorIndex = availableComponentEditorTypes.IndexOf(Type.GetType("UdonSharp.UdonSharpBehaviour"));
+
+                        UdonSharpBehaviourEditor newUdonSharpBehaviourEditor = Instantiate(componentEditors[udonSharpBehaviourEditorIndex].gameObject, container, false).GetComponent<UdonSharpBehaviourEditor>();
+
+                        newUdonSharpBehaviourEditor.Initialize(component, this, collapsedComponents[udonSharpBehaviourEditorIndex]);
+
+                        newUdonSharpBehaviourEditor.InitializeUdonSharpBehaviourEditor(name, udonProgramDataStorage.GetProgramEntryPoints(index).Contains("_start"), udonProgramDataStorage.programScripts[index], udonProgramDataStorage.programScriptIcons[index]);
+                    }
+
                     editor = Instantiate(componentEditors[editorIndex].gameObject, container, false).GetComponent<ComponentEditor>();
 
                     editor.Initialize(component, this, collapsedComponents[editorIndex]);
