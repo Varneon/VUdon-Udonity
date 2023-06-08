@@ -613,7 +613,7 @@ PrefabInstance:
     - target: {fileID: 7731197451674189389, guid: b10dde4c70957e642beff8ff468ad122,
         type: 3}
       propertyPath: serializationData.SerializedFormat
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8709095145802947537, guid: b10dde4c70957e642beff8ff468ad122,
         type: 3}
@@ -1099,17 +1099,17 @@ PrefabInstance:
     - target: {fileID: 5416702486528400320, guid: 79c4c01bcff31a040a15dd080e44bfb9,
         type: 3}
       propertyPath: m_Options.m_Options.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6602265503714205614, guid: 79c4c01bcff31a040a15dd080e44bfb9,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6602265503714205614, guid: 79c4c01bcff31a040a15dd080e44bfb9,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6602265503714205614, guid: 79c4c01bcff31a040a15dd080e44bfb9,
         type: 3}
@@ -1129,12 +1129,12 @@ PrefabInstance:
     - target: {fileID: 6602265503714205614, guid: 79c4c01bcff31a040a15dd080e44bfb9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -60.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6661409489192304114, guid: 79c4c01bcff31a040a15dd080e44bfb9,
         type: 3}
       propertyPath: m_Options.m_Options.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6661409489192304114, guid: 79c4c01bcff31a040a15dd080e44bfb9,
         type: 3}
@@ -1160,7 +1160,7 @@ PrefabInstance:
     - target: {fileID: 7759094919348694844, guid: 79c4c01bcff31a040a15dd080e44bfb9,
         type: 3}
       propertyPath: serializationData.SerializedFormat
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7759094919348694845, guid: 79c4c01bcff31a040a15dd080e44bfb9,
         type: 3}

@@ -82,17 +82,5 @@ namespace Varneon.VUdon.Udonity.Editors
         {
             if (expanded) { UpdateFields(); }
         }
-
-        protected override void OnContextDropdownActionInvoked(int index)
-        {
-            base.OnContextDropdownActionInvoked(index);
-
-            switch (index)
-            {
-                case 1:
-                    OpenInUdonMonitor();
-                    break;
-            }
-        }
     }
 }

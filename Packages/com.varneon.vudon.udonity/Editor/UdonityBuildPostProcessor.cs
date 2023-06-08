@@ -315,6 +315,8 @@ namespace Varneon.VUdon.Udonity.Editor
 
             inspectorWindow.udonMonitorWindow = editorRoot.GetComponentInChildren<UdonMonitorWindow>(true);
 
+            inspectorWindow.udonProgramDataStorage = editorRoot.GetComponentInChildren<UdonProgramDataStorage>(true);
+
             Transform inspectorTransform = inspectorWindow.transform;
 
             List<ComponentEditor> editors = new List<ComponentEditor>();

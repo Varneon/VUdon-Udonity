@@ -3,6 +3,7 @@ using UdonSharp;
 using UnityEngine;
 using VRC.Udon;
 using Varneon.VUdon.ArrayExtensions;
+using Object = UnityEngine.Object;
 
 namespace Varneon.VUdon.Udonity
 {
@@ -22,6 +23,12 @@ namespace Varneon.VUdon.Udonity
 
         [SerializeField]
         internal string[][] programEntryPoints;
+
+        [SerializeField]
+        internal Object[] programScripts;
+
+        [SerializeField]
+        internal Texture[] programScriptIcons;
 
         private const string
             TYPE_ID_SYMBOL = "__refl_typeid",

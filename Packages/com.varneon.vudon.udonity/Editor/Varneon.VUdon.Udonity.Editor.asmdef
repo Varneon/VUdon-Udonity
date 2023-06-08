@@ -7,6 +7,7 @@
         "Varneon.VUdon.Udonity.Runtime",
         "Varneon.VUdon.UdonAssetDatabase.Runtime",
         "VRC.Udon",
+        "VRC.Udon.Editor",
         "Varneon.VUdon.Logger.Runtime",
         "Varneon.VUdon.Editors.Editor"
     ],
