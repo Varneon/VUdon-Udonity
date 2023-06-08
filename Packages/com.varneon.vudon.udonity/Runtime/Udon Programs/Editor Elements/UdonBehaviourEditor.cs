@@ -16,6 +16,9 @@ namespace Varneon.VUdon.Udonity.Editors
         [SerializeField]
         private TextField interactionTextField;
 
+        [SerializeField]
+        private TextField eventNameField;
+
         public override Type InspectedType => typeof(UdonBehaviour);
 
         private UdonBehaviour target;
@@ -66,6 +69,15 @@ namespace Varneon.VUdon.Udonity.Editors
         public void OnInteract()
         {
             target.SendCustomEvent("_interact");
+        }
+
+        public void OnSendCustomEvent()
+        {
+            string eventName = eventNameField.Value;
+
+            if (string.IsNullOrWhiteSpace(eventName)) { return; }
+
+            target.SendCustomEvent(eventName);
         }
 
         public void OnTakeOwnership()
