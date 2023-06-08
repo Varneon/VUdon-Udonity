@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UdonSharp;
 using UnityEditor;
 using UnityEngine;
 using VRC.Udon;
@@ -27,6 +28,10 @@ namespace Varneon.VUdon.UdonProgramDataStorage
             List<Type[]> programSymbolTypes = new List<Type[]>();
 
             List<string[]> programEntryPoints = new List<string[]>();
+
+            List<MonoScript> programScripts = new List<MonoScript>();
+
+            List<Texture> programScriptIcons = new List<Texture>();
 
             foreach (AbstractUdonProgramSource programSource in programSources)
             {
@@ -69,6 +74,14 @@ namespace Varneon.VUdon.UdonProgramDataStorage
                 IEnumerable<string> filteredEntryPoints = entryPointTable.GetSymbols().Where(s => !s.StartsWith("_onVarChange_"));
 
                 programEntryPoints.Add(filteredEntryPoints.ToArray());
+
+                MonoScript programScript = ((UdonSharpProgramAsset)programSource).sourceCsScript;
+
+                programScripts.Add(programScript);
+
+                Texture programScriptIcon = AssetDatabase.GetCachedIcon(AssetDatabase.GetAssetPath(programScript));
+
+                programScriptIcons.Add(programScriptIcon.hideFlags.HasFlag(HideFlags.DontSave) ? null : programScriptIcon);
             }
 
             Udonity.UdonProgramDataStorage dataStorage = Resources.FindObjectsOfTypeAll<Udonity.UdonProgramDataStorage>().Where(s => s.gameObject.scene.IsValid()).FirstOrDefault();
@@ -84,6 +97,10 @@ namespace Varneon.VUdon.UdonProgramDataStorage
                 dataStorage.programSymbolTypes = programSymbolTypes.ToArray();
 
                 dataStorage.programEntryPoints = programEntryPoints.ToArray();
+
+                dataStorage.programScripts = programScripts.ToArray();
+
+                dataStorage.programScriptIcons = programScriptIcons.ToArray();
             }
         }
     }
