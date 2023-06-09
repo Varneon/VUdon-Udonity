@@ -24,22 +24,7 @@ namespace Varneon.VUdon.Udonity.Editor
     public static class UdonityBuildPostProcessor
     {
         #region Scene
-        private static GameObject[] SceneRoots
-        {
-            get
-            {
-                if(sceneRoots == null || sceneRoots.Length != ActiveScene.rootCount)
-                {
-                    //Debug.Log("Scene roots were null or didn't match the previous ones, attempting to reassign them...");
-
-                    sceneRoots = ActiveScene.GetRootGameObjects();
-                }
-
-                return sceneRoots;
-            }
-        }
-
-        private static GameObject[] sceneRoots;
+        private static GameObject[] SceneRoots => ActiveScene.GetRootGameObjects();
 
         private static Scene ActiveScene
         {
