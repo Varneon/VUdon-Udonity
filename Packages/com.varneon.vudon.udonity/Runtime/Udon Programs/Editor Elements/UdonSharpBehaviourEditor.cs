@@ -42,7 +42,9 @@ namespace Varneon.VUdon.Udonity.Editors
         {
             if(classIcon != null)
             {
-                scriptIcon.material.mainTexture = classIcon;
+                scriptIcon.materialForRendering.mainTexture = classIcon;
+
+                scriptIcon.material = scriptIcon.materialForRendering;
 
                 scriptIcon.sprite = null;
             }
