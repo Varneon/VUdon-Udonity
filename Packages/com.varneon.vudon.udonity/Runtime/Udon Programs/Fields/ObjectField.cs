@@ -60,6 +60,8 @@ namespace Varneon.VUdon.Udonity.Fields
 
         public void PingObject()
         {
+            if(_value == null) { return; }
+
             GetComponentInParent<Udonity>().SelectAssetInProjectWindow(_value);
         }
 
