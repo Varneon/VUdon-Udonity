@@ -39,7 +39,7 @@ namespace Varneon.VUdon.Udonity.Fields
 
         public void SetFieldType(System.Type type)
         {
-            fieldType = type;
+            fieldType = type ?? typeof(Object);
         }
 
         internal void ApplyObjectDialogValue(Object value)
