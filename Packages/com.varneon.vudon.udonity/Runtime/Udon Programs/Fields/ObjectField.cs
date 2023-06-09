@@ -19,6 +19,8 @@ namespace Varneon.VUdon.Udonity.Fields
         //[SerializeField, HideInInspector]
         private System.Type fieldType = typeof(Object);
 
+        public string FieldTypeNameOverride;
+
         private bool lockForDialogEditing;
 
         [SerializeField, HideInInspector]
@@ -32,14 +34,26 @@ namespace Varneon.VUdon.Udonity.Fields
             //Debug.Log(fieldType);
             //Debug.Log(value);
 
-            _value = value;
+            if(_value != value)
+            {
+                _value = value;
 
-            valueLabel.text = _value == null ? $"None ({fieldType.Name})" : _value.ToString();
+                bool hasCustomTypeName = string.IsNullOrWhiteSpace(FieldTypeNameOverride);
+
+                if (_value == null)
+                {
+                    valueLabel.text = $"None ({(hasCustomTypeName ? fieldType.Name : FieldTypeNameOverride)})";
+                }
+                else
+                {
+                    valueLabel.text = $"{_value.name} ({(hasCustomTypeName ? (fieldType.Equals(typeof(Object)) ? _value.GetType().Name : fieldType.Name) : FieldTypeNameOverride)})";
+                }
+            }
         }
 
         public void SetFieldType(System.Type type)
         {
-            fieldType = type;
+            fieldType = type ?? typeof(Object);
         }
 
         internal void ApplyObjectDialogValue(Object value)
@@ -60,6 +74,8 @@ namespace Varneon.VUdon.Udonity.Fields
 
         public void PingObject()
         {
+            if(_value == null) { return; }
+
             GetComponentInParent<Udonity>().SelectAssetInProjectWindow(_value);
         }
 
