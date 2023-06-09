@@ -34,7 +34,7 @@ namespace Varneon.VUdon.Udonity.Fields
 
             _value = value;
 
-            valueLabel.text = _value == null ? $"None ({fieldType.Name})" : _value.ToString();
+            valueLabel.text = _value == null ? $"None ({fieldType.Name})" : $"{_value.name} ({(fieldType.Equals(typeof(Object)) ? _value.GetType().Name : fieldType.Name)})";
         }
 
         public void SetFieldType(System.Type type)
