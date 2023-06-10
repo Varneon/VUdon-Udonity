@@ -11,6 +11,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Varneon.VUdon.Udonity.Editors;
 using Varneon.VUdon.Udonity.Editors.Abstract;
+using Varneon.VUdon.Udonity.Fields;
 using Varneon.VUdon.Udonity.UIElements.Abstract;
 using Varneon.VUdon.Udonity.Windows.Abstract;
 using Varneon.VUdon.Udonity.Windows.Project;
@@ -181,6 +182,8 @@ namespace Varneon.VUdon.Udonity.Editor
             PostProcessDropdownMenus();
 
             PostProcessEditors();
+
+            PostProcessFields();
 
             UdonProgramDataStorageGenerator.GenerateProgramDataStorage();
 
@@ -390,7 +393,7 @@ namespace Varneon.VUdon.Udonity.Editor
 
                 newElement.transform.GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(depth * -16f, 0f);
 
-                if (!hasSubfolders) { newElement.GetComponentInChildren<Toggle>().gameObject.SetActive(false); }
+                if (!hasSubfolders) { newElement.GetComponentInChildren<UnityEngine.UI.Toggle>().gameObject.SetActive(false); }
             }
         }
 
@@ -448,6 +451,14 @@ namespace Varneon.VUdon.Udonity.Editor
             foreach(GameObjectEditor gameObjectEditor in FindSceneComponentsOfTypeAll<GameObjectEditor>())
             {
                 gameObjectEditor.InitializeOnBuild();
+            }
+        }
+
+        private static void PostProcessFields()
+        {
+            foreach(ColorField colorField in FindSceneComponentsOfTypeAll<ColorField>())
+            {
+                colorField.InitializeOnBuild();
             }
         }
 
