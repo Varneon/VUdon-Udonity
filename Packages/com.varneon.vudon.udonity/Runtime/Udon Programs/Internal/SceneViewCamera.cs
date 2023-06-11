@@ -28,6 +28,8 @@ namespace Varneon.VUdon.Udonity.Windows.Scene
 
         private Transform followTarget;
 
+        private float distance = 5f;
+
         private void Start()
         {
             camera = GetComponent<Camera>();
@@ -88,14 +90,14 @@ namespace Varneon.VUdon.Udonity.Windows.Scene
 
             Vector3 rotationalOffset = transform.rotation * Vector3.forward;
 
-            transform.position = target.position + rotationalOffset * -5f; // TODO: Detect target bounds
+            transform.position = target.position + rotationalOffset * -distance; // TODO: Detect target bounds
         }
 
         private void FrameLockedTransform()
         {
             Vector3 rotationalOffset = transform.rotation * Vector3.forward;
 
-            transform.position = followTarget.position + rotationalOffset * -5f; // TODO: Detect target bounds
+            transform.position = followTarget.position + rotationalOffset * -distance; // TODO: Detect target bounds
         }
 
         internal void LockViewToSelected(Transform target)
@@ -127,11 +129,20 @@ namespace Varneon.VUdon.Udonity.Windows.Scene
 
         internal void RotateAroundTarget(Vector3 delta)
         {
-            Vector3 pivot = followTarget == null ? transform.position + transform.forward * 5f : followTarget.position;
+            Vector3 pivot = followTarget == null ? transform.position + transform.forward * distance : followTarget.position;
 
             Quaternion rotation = Quaternion.Euler(transform.eulerAngles + delta);
 
-            transform.SetPositionAndRotation(pivot - rotation * Vector3.forward * 5f, rotation);
+            transform.SetPositionAndRotation(pivot - rotation * Vector3.forward * distance, rotation);
+        }
+
+        internal void ApplyScrollInput(float scrollInput)
+        {
+            float delta = scrollInput * Time.deltaTime * 10f;
+
+            if (followTarget == null) { transform.Translate(Vector3.forward * delta, Space.Self); }
+
+            distance = Mathf.Clamp(distance - delta, 0.1f, 10f);
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Varneon.VUdon.Udonity.Windows.Scene;
+using VRC.SDKBase;
+using VRC.Udon.Common;
 
 namespace Varneon.VUdon.Udonity.Windows
 {
@@ -24,6 +26,15 @@ namespace Varneon.VUdon.Udonity.Windows
         private Vector3 originalPointerPos;
 
         private bool altKeyPressed;
+
+        private bool isLocalPlayerInVR;
+
+        private float vrScrollInput;
+
+        private void Start()
+        {
+            isLocalPlayerInVR = Networking.LocalPlayer.IsUserInVR();
+        }
 
         protected override void OnWindowActiveStateChanged(bool active)
         {
@@ -65,6 +76,35 @@ namespace Varneon.VUdon.Udonity.Windows
                 originalPointerPos = pointerPos;
 
                 SendCustomEventDelayedFrames(nameof(OnSceneViewDrag), 0);
+
+                if(TryGetScrollInput(out float scrollInput))
+                {
+                    sceneViewCamera.ApplyScrollInput(scrollInput);
+                }
+            }
+        }
+
+        private bool TryGetScrollInput(out float scrollInput)
+        {
+            if (isLocalPlayerInVR)
+            {
+                scrollInput = vrScrollInput;
+
+                return Mathf.Abs(scrollInput) > 0.1f;
+            }
+            else
+            {
+                scrollInput = Input.GetAxisRaw("Mouse ScrollWheel") * 5f;
+
+                return Mathf.Abs(scrollInput) > 0f;
+            }
+        }
+
+        public override void InputLookVertical(float value, UdonInputEventArgs args)
+        {
+            if(isLocalPlayerInVR && args.handType == HandType.RIGHT)
+            {
+                vrScrollInput = value;
             }
         }
 
