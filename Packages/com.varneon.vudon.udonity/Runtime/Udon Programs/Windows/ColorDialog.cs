@@ -122,7 +122,7 @@ namespace Varneon.VUdon.Udonity.Windows
 
             Color originalPreviewColor = originalColor;
 
-            originalPreviewColor.a = 0f;
+            originalPreviewColor.a = 1f;
 
             originalColorPreview.color = originalPreviewColor;
 
