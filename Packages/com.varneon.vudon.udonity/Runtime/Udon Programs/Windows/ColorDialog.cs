@@ -1,4 +1,5 @@
-﻿using UdonSharp;
+﻿using TMPro;
+using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
 using Varneon.VUdon.Udonity.Enums;
@@ -28,6 +29,9 @@ namespace Varneon.VUdon.Udonity.Windows
 
         [SerializeField]
         private EnumField modeField;
+
+        [SerializeField]
+        private FloatField intensityField;
 
         [SerializeField]
         private Slider
@@ -62,6 +66,9 @@ namespace Varneon.VUdon.Udonity.Windows
         [SerializeField]
         private GameObject alphaContainer;
 
+        [SerializeField]
+        private TextMeshProUGUI windowTitle;
+
         private ColorDisplayMode activeColorDisplayMode;
 
         private ColorField activeColorField;
@@ -78,20 +85,36 @@ namespace Varneon.VUdon.Udonity.Windows
 
         private Vector3 svQuadGrabOffset;
 
+        private bool isCurrentColorHDR;
+
+        private float intensity;
+
+        private const float MAX_OVEREXPOSED_COLOR_COMPONENT = 191f;
+
         private void Start()
         {
             modeField.RegisterValueChangedCallback(this, nameof(OnColorDisplayModeChanged));
 
             modeField.SetValueWithoutNotify((int)activeColorDisplayMode);
+
+            intensityField.RegisterValueChangedCallback(this, nameof(OnIntensityChanged));
         }
 
         public void OpenWithField(ColorField colorField)
         {
             gameObject.SetActive(true);
 
+            isCurrentColorHDR = colorField.IsHDR;
+
+            windowTitle.text = isCurrentColorHDR ? "HDR Color" : "Color";
+
+            intensityField.gameObject.SetActive(isCurrentColorHDR);
+
             bool hasAlpha = colorField.HasAlpha;
 
-            alphaContainer.SetActive(hasAlpha);
+            alphaContainer.SetActive(hasAlpha && !isCurrentColorHDR);
+
+            inputFieldHex.gameObject.SetActive(!isCurrentColorHDR);
 
             activeColorField = colorField;
 
@@ -116,6 +139,30 @@ namespace Varneon.VUdon.Udonity.Windows
         private void SetColor(Color color)
         {
             currentColor = color;
+
+            if (isCurrentColorHDR)
+            {
+                float scaleFactor = MAX_OVEREXPOSED_COLOR_COMPONENT / currentColor.maxColorComponent;
+
+                float totalIntensity = Mathf.Log(255f / scaleFactor) / Mathf.Log(2f);
+
+                if (totalIntensity > 0f)
+                {
+                    intensityField.SetValueWithoutNotify(totalIntensity);
+
+                    intensity = totalIntensity;
+
+                    float originalAlpha = currentColor.a;
+
+                    currentColor /= Mathf.Pow(2, totalIntensity);
+
+                    currentColor.a = originalAlpha;
+                }
+                else
+                {
+                    intensityField.Value = 0f;
+                }
+            }
 
             Color.RGBToHSV(currentColor, out float h, out float s, out float v);
 
@@ -177,6 +224,13 @@ namespace Varneon.VUdon.Udonity.Windows
             hueBackground.gameObject.SetActive(isHSV);
             saturationBackground.gameObject.SetActive(isHSV);
             valueBackground.gameObject.SetActive(isHSV);
+        }
+
+        public void OnIntensityChanged()
+        {
+            intensity = intensityField.Value;
+
+            ApplyColorToField();
         }
 
         public void OnRedOrHueSliderUpdated()
@@ -398,7 +452,11 @@ namespace Varneon.VUdon.Udonity.Windows
 
             inputFieldHex.text = string.Format("{0}{1}{2}", ((byte)(Mathf.Clamp01(currentColor.r) * 255f)).ToString("X2"), ((byte)(Mathf.Clamp01(currentColor.g) * 255f)).ToString("X2"), ((byte)(Mathf.Clamp01(currentColor.b) * 255f)).ToString("X2"));
 
-            colorPreview.color = currentColor;
+            Color previewOutputColor = GetOutputColor();
+
+            previewOutputColor.a = 1f;
+
+            colorPreview.color = previewOutputColor;
         }
 
         private void UpdateFields()
@@ -440,9 +498,27 @@ namespace Varneon.VUdon.Udonity.Windows
             }
         }
 
+        private Color GetOutputColor()
+        {
+            if (isCurrentColorHDR)
+            {
+                float originalAlpha = currentColor.a;
+
+                Color hdrColor = currentColor * Mathf.Pow(2f, intensity);
+
+                hdrColor.a = originalAlpha;
+
+                return hdrColor;
+            }
+            else
+            {
+                return currentColor;
+            }
+        }
+
         private void ApplyColorToField()
         {
-            activeColorField.ApplyColorDialogValue(currentColor);
+            activeColorField.ApplyColorDialogValue(GetOutputColor());
         }
     }
 }
