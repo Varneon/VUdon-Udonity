@@ -49,9 +49,9 @@ namespace Varneon.VUdon.Udonity.Windows
         {
             if (sceneViewDragging && pointer.TryGetPointOnPlane(transform, transform.forward, out Vector3 pointerPos))
             {
-                Vector3 delta = pointerPos - originalPointerPos;
+                Vector3 delta = transform.InverseTransformVector(pointerPos - originalPointerPos);
 
-                Vector3 cameraDelta = new Vector3(-delta.y, delta.x, 0f) * 50f; // TODO: Parametrize
+                Vector3 cameraDelta = new Vector3(-delta.y, delta.x, 0f) * 0.125f; // TODO: Parametrize
 
                 if (altKeyPressed)
                 {
@@ -59,9 +59,7 @@ namespace Varneon.VUdon.Udonity.Windows
                 }
                 else
                 {
-                    Vector3 axis = cameraDelta.normalized;
-
-                    sceneViewCamera.RotateAroundTarget(axis, Vector3.SignedAngle(Vector3.forward, Quaternion.Euler(cameraDelta) * Vector3.forward, axis));
+                    sceneViewCamera.RotateAroundTarget(cameraDelta);
                 }
 
                 originalPointerPos = pointerPos;

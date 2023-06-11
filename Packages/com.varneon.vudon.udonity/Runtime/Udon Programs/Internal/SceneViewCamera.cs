@@ -125,11 +125,13 @@ namespace Varneon.VUdon.Udonity.Windows.Scene
             transform.eulerAngles += delta;
         }
 
-        internal void RotateAroundTarget(Vector3 axis, float angle)
+        internal void RotateAroundTarget(Vector3 delta)
         {
-            Vector3 pivot = followTarget == null ? transform.position + transform.forward * 3f : followTarget.position;
+            Vector3 pivot = followTarget == null ? transform.position + transform.forward * 5f : followTarget.position;
 
-            transform.RotateAround(pivot, Quaternion.Euler(0f, transform.eulerAngles.y, 0f) * axis, angle);
+            Quaternion rotation = Quaternion.Euler(transform.eulerAngles + delta);
+
+            transform.SetPositionAndRotation(pivot - rotation * Vector3.forward * 5f, rotation);
         }
     }
 }
