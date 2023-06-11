@@ -11,6 +11,8 @@ namespace Varneon.VUdon.Udonity.Fields
     {
         public bool HasAlpha => hasAlpha;
 
+        public bool IsHDR => isHDR;
+
         [SerializeField]
         private Image colorPreview;
 
@@ -23,6 +25,9 @@ namespace Varneon.VUdon.Udonity.Fields
         [SerializeField, HideInInspector]
         private bool hasAlpha;
 
+        [SerializeField]
+        private bool isHDR;
+
         public Color Value { get => _value; set { SetValueWithoutNotify(value); OnValueChanged(); } }
 
         private Color _value;
@@ -34,6 +39,9 @@ namespace Varneon.VUdon.Udonity.Fields
             if (lockForDialogEditing) { return; }
 
             _value = value;
+
+            // Temporary method of detecting HDR colors
+            if(_value.maxColorComponent > 1f) { isHDR = true; } // TODO: Scan fields for attributes
 
             //colorPreview.color = value;
             UpdateColorPreview();
