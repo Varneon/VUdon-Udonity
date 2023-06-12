@@ -61,6 +61,12 @@ namespace Varneon.VUdon.Udonity.Windows
             blueBackground;
 
         [SerializeField]
+        private TextMeshProUGUI
+            redHueSliderLabel,
+            greenSaturationSliderLabel,
+            blueValueSliderLabel;
+
+        [SerializeField]
         private Image svQuad;
 
         [SerializeField]
@@ -224,6 +230,10 @@ namespace Varneon.VUdon.Udonity.Windows
             hueBackground.gameObject.SetActive(isHSV);
             saturationBackground.gameObject.SetActive(isHSV);
             valueBackground.gameObject.SetActive(isHSV);
+
+            redHueSliderLabel.text = isHSV ? "H" : "R";
+            greenSaturationSliderLabel.text = isHSV ? "S" : "G";
+            blueValueSliderLabel.text = isHSV ? "V" : "B";
         }
 
         public void OnIntensityChanged()

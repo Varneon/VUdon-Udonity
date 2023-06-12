@@ -27952,6 +27952,9 @@ MonoBehaviour:
   redBackground: {fileID: 5784208661847109991}
   greenBackground: {fileID: 5784208662282074047}
   blueBackground: {fileID: 5784208662693781449}
+  redHueSliderLabel: {fileID: 5784208661595474791}
+  greenSaturationSliderLabel: {fileID: 5784208661886953593}
+  blueValueSliderLabel: {fileID: 5784208660843634501}
   svQuad: {fileID: 5784208662612229223}
   alphaContainer: {fileID: 5784208660765187359}
   windowTitle: {fileID: 5784208662303424747}
