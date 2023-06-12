@@ -1,14 +1,21 @@
-﻿using System;
-using UdonSharp;
+﻿using UdonSharp;
 using UnityEngine;
-using VRC.Udon.Common.Interfaces;
 
 namespace Varneon.VUdon.Udonity.Fields.Abstract
 {
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public abstract class Field : UdonSharpBehaviour
     {
-        public bool Interactive;
+        public bool Interactive
+        {
+            get => interactive;
+            set
+            {
+                OnInteractiveChanged(interactive = value);
+            }
+        }
+
+        private bool interactive;
 
         [SerializeField, HideInInspector]
         private UdonSharpBehaviour valueChangedCallbackReceiver;
@@ -48,5 +55,7 @@ namespace Varneon.VUdon.Udonity.Fields.Abstract
                 valueChangedCallbackReceiver.SendCustomEvent(valueChangedCallbackMethod);
             }
         }
+
+        protected virtual void OnInteractiveChanged(bool interactive) { }
     }
 }
