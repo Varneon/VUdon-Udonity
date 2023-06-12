@@ -206,6 +206,11 @@ namespace Varneon.VUdon.Udonity.Editors
             target.maxDistance = maxDistanceField.Value;
         }
 
+        protected override void OnToggleEnabled(bool enabled)
+        {
+            target.enabled = enabled;
+        }
+
         protected override void OnToggleExpanded(bool expanded)
         {
             if (expanded) { UpdateFields(); }

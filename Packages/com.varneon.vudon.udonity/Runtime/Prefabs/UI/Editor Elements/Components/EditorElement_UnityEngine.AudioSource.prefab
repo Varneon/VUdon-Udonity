@@ -490,6 +490,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: TOGGLE_COMPONENT_ENABLED
       objectReference: {fileID: 0}
+    - target: {fileID: 6555810773202508518, guid: 6b177417448a5d94e984f9c25673d87d,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8889624201401802993}
+    - target: {fileID: 6555810773202508518, guid: 6b177417448a5d94e984f9c25673d87d,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SendCustomEvent
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b177417448a5d94e984f9c25673d87d, type: 3}
 --- !u!114 &4617083241262089430 stripped
@@ -3574,7 +3584,7 @@ PrefabInstance:
     - target: {fileID: 7759094919348694844, guid: 79c4c01bcff31a040a15dd080e44bfb9,
         type: 3}
       propertyPath: serializationData.SerializedFormat
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7759094919348694845, guid: 79c4c01bcff31a040a15dd080e44bfb9,
         type: 3}
