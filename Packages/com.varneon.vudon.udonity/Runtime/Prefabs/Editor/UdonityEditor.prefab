@@ -30179,6 +30179,8 @@ MonoBehaviour:
   notRespondingTitleText: {fileID: 5784208660918990961}
   boxColliderVisualizerPrefab: {fileID: 6567740455409412606, guid: 2df3ff8931372ec42b6bfcab2e50c841,
     type: 3}
+  meshColliderVisualizerPrefab: {fileID: 5571147441174118855, guid: d2131877fead73c4f89145ed79b561d2,
+    type: 3}
   colorFieldPrefab: {fileID: 1195879520915560244, guid: 64b057eeeb8e43949a204a40f2a7240b,
     type: 3}
   vector3FieldPrefab: {fileID: 1383401300499385296, guid: 3fd2bd80b663d7a41aa8459b9abc13b4,
@@ -61348,7 +61350,7 @@ PrefabInstance:
     - target: {fileID: 1956522948946119398, guid: ffc46c6fcd9a56641a679ce74d2d67d8,
         type: 3}
       propertyPath: serializationData.SerializedFormat
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1956522948946119400, guid: ffc46c6fcd9a56641a679ce74d2d67d8,
         type: 3}
@@ -66730,7 +66732,7 @@ PrefabInstance:
     - target: {fileID: 1956522948946119398, guid: ffc46c6fcd9a56641a679ce74d2d67d8,
         type: 3}
       propertyPath: serializationData.SerializedFormat
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1956522948946119400, guid: ffc46c6fcd9a56641a679ce74d2d67d8,
         type: 3}

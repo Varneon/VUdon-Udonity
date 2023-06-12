@@ -42,6 +42,8 @@ namespace Varneon.VUdon.Udonity
 
         public BoxColliderVisualizer BoxColliderVisualizerPrefab => boxColliderVisualizerPrefab;
 
+        public MeshColliderVisualizer MeshColliderVisualizerPrefab => meshColliderVisualizerPrefab;
+
         public ColorField ColorFieldPrefab => colorFieldPrefab;
 
         public Vector3Field Vector3FieldPrefab => vector3FieldPrefab;
@@ -112,6 +114,9 @@ namespace Varneon.VUdon.Udonity
         [Header("Runtime Prefabs")]
         [SerializeField]
         private BoxColliderVisualizer boxColliderVisualizerPrefab;
+
+        [SerializeField]
+        private MeshColliderVisualizer meshColliderVisualizerPrefab;
 
         [SerializeField]
         private ColorField colorFieldPrefab;
@@ -256,6 +261,7 @@ namespace Varneon.VUdon.Udonity
             runtimePrefabParent.SetParent(transform.parent);
 
             boxColliderVisualizerPrefab = Instantiate(boxColliderVisualizerPrefab, runtimePrefabParent);
+            meshColliderVisualizerPrefab = Instantiate(meshColliderVisualizerPrefab, runtimePrefabParent);
             colorFieldPrefab = Instantiate(colorFieldPrefab, runtimePrefabParent);
             vector3FieldPrefab = Instantiate(vector3FieldPrefab, runtimePrefabParent);
             floatFieldPrefab = Instantiate(floatFieldPrefab, runtimePrefabParent);
