@@ -1,4 +1,5 @@
-﻿using UdonSharp;
+﻿using TMPro;
+using UdonSharp;
 using UnityEngine;
 
 namespace Varneon.VUdon.Udonity.Fields.Abstract
@@ -11,11 +12,18 @@ namespace Varneon.VUdon.Udonity.Fields.Abstract
             get => interactive;
             set
             {
-                OnInteractiveChanged(interactive = value);
+                interactive = value;
+
+                fieldLabel.color = interactive ? new Color(0.8f, 0.8f, 0.8f, 1f) : new Color(0.8f, 0.8f, 0.8f, 0.2509804f);
+
+                OnInteractiveChanged(interactive);
             }
         }
 
         private bool interactive;
+
+        [SerializeField]
+        private TextMeshProUGUI fieldLabel;
 
         [SerializeField, HideInInspector]
         private UdonSharpBehaviour valueChangedCallbackReceiver;
