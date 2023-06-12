@@ -53,7 +53,7 @@ namespace Varneon.VUdon.Udonity.Editors
         {
             isTriggerField.SetValueWithoutNotify(target.isTrigger);
 
-            materialField.SetValueWithoutNotify(target.material);
+            materialField.SetValueWithoutNotify(target.sharedMaterial);
 
             centerField.SetValueWithoutNotify(target.center);
 
