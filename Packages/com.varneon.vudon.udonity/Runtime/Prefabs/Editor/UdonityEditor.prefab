@@ -21787,7 +21787,7 @@ MonoBehaviour:
   m_Script: {fileID: -572891575, guid: 661092b4961be7145bfbe56e1e62337b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _overrideBehavior: 1
+  _overrideBehavior: 0
 --- !u!1 &5784208661075914303
 GameObject:
   m_ObjectHideFlags: 0
@@ -61348,7 +61348,7 @@ PrefabInstance:
     - target: {fileID: 1956522948946119398, guid: ffc46c6fcd9a56641a679ce74d2d67d8,
         type: 3}
       propertyPath: serializationData.SerializedFormat
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1956522948946119400, guid: ffc46c6fcd9a56641a679ce74d2d67d8,
         type: 3}
@@ -66730,7 +66730,7 @@ PrefabInstance:
     - target: {fileID: 1956522948946119398, guid: ffc46c6fcd9a56641a679ce74d2d67d8,
         type: 3}
       propertyPath: serializationData.SerializedFormat
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1956522948946119400, guid: ffc46c6fcd9a56641a679ce74d2d67d8,
         type: 3}
