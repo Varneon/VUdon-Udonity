@@ -220,7 +220,7 @@ namespace Varneon.VUdon.Udonity.Windows
         {
             activeColorDisplayMode = (ColorDisplayMode)modeField.Value;
 
-            SetColor(currentColor);
+            SetColor(GetOutputColor());
 
             bool isHSV = activeColorDisplayMode == ColorDisplayMode.HSV;
 
