@@ -25,7 +25,7 @@ namespace Varneon.VUdon.Udonity.Windows
 
         private Vector3 originalPointerPos;
 
-        private bool altKeyPressed;
+        private bool altKeyPressed = true;
 
         private bool isLocalPlayerInVR;
 
