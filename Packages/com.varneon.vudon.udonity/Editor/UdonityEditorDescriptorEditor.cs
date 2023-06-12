@@ -113,6 +113,8 @@ namespace Varneon.VUdon.Udonity.Editor
         {
             GUILayout.Space(18);
 
+            GUILayout.Label("Window Settings", EditorStyles.boldLabel);
+
             using (EditorGUILayout.VerticalScope verticalScope = new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
             {
                 using (var scope = new EditorGUI.ChangeCheckScope())
