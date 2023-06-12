@@ -113,6 +113,28 @@ namespace Varneon.VUdon.Udonity.Editor
         {
             GUILayout.Space(18);
 
+            if (editorDescriptor.transform.localScale != Vector3.one)
+            {
+                EditorGUILayout.HelpBox("Do not change the editor descriptor transform's scale!\n\nIf you want to scale the entire editor window, use the 'Canvas Scale' option in 'Window Settings' panel below.", MessageType.Error);
+
+                if (GUILayout.Button("Apply Descriptor Scale To Canvas"))
+                {
+                    Undo.RecordObjects(new Object[] { editorDescriptor.transform, canvasRectTransform }, "Fix Editor Scale");
+
+                    Vector3 localScale = editorDescriptor.transform.localScale;
+
+                    float transformScale = (localScale.x + localScale.y + localScale.z) / 3f;
+
+                    float finalCanvasScale = canvasRectTransform.localScale.x * transformScale;
+
+                    editorDescriptor.transform.localScale = Vector3.one;
+
+                    canvasRectTransform.localScale = Vector3.one * finalCanvasScale;
+                }
+
+                GUILayout.Space(18);
+            }
+
             GUILayout.Label("Window Settings", EditorStyles.boldLabel);
 
             using (EditorGUILayout.VerticalScope verticalScope = new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
