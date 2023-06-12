@@ -38,22 +38,29 @@ namespace Varneon.VUdon.Udonity.Fields
             {
                 _value = value;
 
-                bool hasCustomTypeName = string.IsNullOrWhiteSpace(FieldTypeNameOverride);
+                UpdateValueLabel();
+            }
+        }
 
-                if (_value == null)
-                {
-                    valueLabel.text = $"None ({(hasCustomTypeName ? fieldType.Name : FieldTypeNameOverride)})";
-                }
-                else
-                {
-                    valueLabel.text = $"{_value.name} ({(hasCustomTypeName ? (fieldType.Equals(typeof(Object)) ? _value.GetType().Name : fieldType.Name) : FieldTypeNameOverride)})";
-                }
+        private void UpdateValueLabel()
+        {
+            bool hasCustomTypeName = string.IsNullOrWhiteSpace(FieldTypeNameOverride);
+
+            if (_value == null)
+            {
+                valueLabel.text = $"None ({(hasCustomTypeName ? fieldType.Name : FieldTypeNameOverride)})";
+            }
+            else
+            {
+                valueLabel.text = $"{_value.name} ({(hasCustomTypeName ? (fieldType.Equals(typeof(Object)) ? _value.GetType().Name : fieldType.Name) : FieldTypeNameOverride)})";
             }
         }
 
         public void SetFieldType(System.Type type)
         {
             fieldType = type ?? typeof(Object);
+
+            UpdateValueLabel();
         }
 
         internal void ApplyObjectDialogValue(Object value)
