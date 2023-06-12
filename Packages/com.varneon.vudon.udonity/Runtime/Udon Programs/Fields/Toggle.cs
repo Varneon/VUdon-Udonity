@@ -26,5 +26,10 @@ namespace Varneon.VUdon.Udonity.Fields
         {
             Value = toggle.isOn;
         }
+
+        protected override void OnInteractiveChanged(bool interactive)
+        {
+            toggle.interactable = interactive;
+        }
     }
 }
