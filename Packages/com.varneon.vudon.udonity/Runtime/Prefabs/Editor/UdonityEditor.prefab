@@ -58605,6 +58605,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4244366696789715352, guid: 911c8ef07e50f284486fa019b10efae1,
         type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4244366696789715352, guid: 911c8ef07e50f284486fa019b10efae1,
+        type: 3}
       propertyPath: m_Colors.m_DisabledColor.a
       value: 1
       objectReference: {fileID: 0}
@@ -58667,6 +58672,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_text
       value: File
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892371301955731642, guid: 911c8ef07e50f284486fa019b10efae1,
+        type: 3}
+      propertyPath: m_fontColor.a
+      value: 0.5019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892371301955731642, guid: 911c8ef07e50f284486fa019b10efae1,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 2147483648
       objectReference: {fileID: 0}
     - target: {fileID: 8092104695207467050, guid: 911c8ef07e50f284486fa019b10efae1,
         type: 3}
