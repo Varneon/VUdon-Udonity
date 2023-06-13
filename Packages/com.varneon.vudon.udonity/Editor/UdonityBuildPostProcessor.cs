@@ -197,6 +197,11 @@ namespace Varneon.VUdon.Udonity.Editor
         [PostProcessScene(1000)]
         private static void PostProcessEditorIcons()
         {
+            //if (!BuiltinEditorIconLoader.AreBuiltinEditorIconsLoaded())
+            //{
+            //    BuiltinEditorIconLoader.LoadBuiltinEditorIcons();
+            //}
+
             BuiltinEditorIconImage[] images = FindSceneComponentsOfTypeAll<BuiltinEditorIconImage>();
 
             foreach (BuiltinEditorIconImage image in images)

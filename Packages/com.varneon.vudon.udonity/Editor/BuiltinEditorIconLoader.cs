@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
 using UnityEditor;
@@ -64,10 +65,23 @@ namespace Varneon.VUdon.Udonity.Editor
 
         private const string ICON_FOLDER = "Builtin Editor Icons";
 
+        internal static ImmutableArray<string> GetAllBuiltinEditorIconNames() => new HashSet<string>(Resources.FindObjectsOfTypeAll<BuiltinEditorIconImage>().Select(i => i.IconName).Where(i => !string.IsNullOrWhiteSpace(i))).ToImmutableArray();
+
+        internal static ImmutableArray<string> GetLoadedBuiltinEditorIconNames() => Directory.GetFiles(IconDirectory, "*.png").Select(f => Path.GetFileNameWithoutExtension(f)).ToImmutableArray();
+
+        internal static bool AreBuiltinEditorIconsLoaded()
+        {
+            if(DataLocator == null) { return false; }
+
+            ImmutableArray<string> loadedIcons = GetLoadedBuiltinEditorIconNames();
+
+            return GetAllBuiltinEditorIconNames().All(i => loadedIcons.Contains(i));
+        }
+
         [MenuItem("Varneon/VUdon/Udonity/Load Builtin Editor Icons")]
         internal static void LoadBuiltinEditorIcons()
         {
-            HashSet<string> icons = new HashSet<string>(Resources.FindObjectsOfTypeAll<BuiltinEditorIconImage>().Select(i => i.IconName).Where(i => !string.IsNullOrWhiteSpace(i)));
+            ImmutableArray<string> icons = GetAllBuiltinEditorIconNames();
 
             foreach (string iconName in icons)
             {

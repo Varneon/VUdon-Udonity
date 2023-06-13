@@ -15,7 +15,7 @@ namespace Varneon.VUdon.Udonity.Editor
         [SerializeField]
         private Texture2D windowIcon;
 
-        private static bool dataLocatorExists;
+        private static bool areBuiltinEditorIconsLoaded;
 
         private static bool isSpritePackingEnabled;
 
@@ -26,15 +26,13 @@ namespace Varneon.VUdon.Udonity.Editor
 
         private static void DelayedInitialization()
         {
-            UdonityDataLocator dataLocator = AssetDatabase.FindAssets("t:UdonityDataLocator").Select(a => AssetDatabase.LoadAssetAtPath<UdonityDataLocator>(AssetDatabase.GUIDToAssetPath(a))).FirstOrDefault();
-
-            dataLocatorExists = dataLocator != null;
+            areBuiltinEditorIconsLoaded = BuiltinEditorIconLoader.AreBuiltinEditorIconsLoaded();
 
             SpritePackerMode spritePackerMode = EditorSettings.spritePackerMode;
 
             isSpritePackingEnabled = spritePackerMode == SpritePackerMode.AlwaysOnAtlas;
 
-            if (!dataLocatorExists || !isSpritePackingEnabled)
+            if (!areBuiltinEditorIconsLoaded || !isSpritePackingEnabled)
             {
                 if (EditorApplication.isCompiling || EditorApplication.isUpdating)
                 {
@@ -85,7 +83,7 @@ namespace Varneon.VUdon.Udonity.Editor
 
             bool hasUdonityEditorInScene = sceneRoots.Any(r => r.GetComponentInChildren<UdonityEditorDescriptor>()) || sceneRoots.Any(r => r.GetComponentInChildren<Udonity>());
 
-            if (isSpritePackingEnabled && dataLocatorExists && !hasUdonityEditorInScene)
+            if (isSpritePackingEnabled && areBuiltinEditorIconsLoaded && !hasUdonityEditorInScene)
             {
                 addUdonityEditorToSceneButton.RemoveFromClassList("hidden");
             }
@@ -105,14 +103,14 @@ namespace Varneon.VUdon.Udonity.Editor
                 };
             }
 
-            if (dataLocatorExists) { SetElementHiddenState(loadBuiltinEditorIconsAction, true); }
+            if (areBuiltinEditorIconsLoaded) { SetElementHiddenState(loadBuiltinEditorIconsAction, true); }
             else
             {
                 loadBuiltinEditorIconsAction.Q<Button>().clicked += () =>
                 {
                     BuiltinEditorIconLoader.LoadBuiltinEditorIcons();
 
-                    dataLocatorExists = true;
+                    areBuiltinEditorIconsLoaded = true;
 
                     SetElementHiddenState(loadBuiltinEditorIconsAction, true);
 
@@ -122,7 +120,7 @@ namespace Varneon.VUdon.Udonity.Editor
 
             void TryEnableAddUdonityToSceneButton()
             {
-                if (!isSpritePackingEnabled || !dataLocatorExists) { return; }
+                if (!isSpritePackingEnabled || !areBuiltinEditorIconsLoaded) { return; }
 
                 SetElementHiddenState(addUdonityEditorToSceneButton, false);
             }
