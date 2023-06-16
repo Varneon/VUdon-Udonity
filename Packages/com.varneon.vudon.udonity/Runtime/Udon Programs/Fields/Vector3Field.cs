@@ -12,11 +12,19 @@ namespace Varneon.VUdon.Udonity.Fields
         [SerializeField]
         private InputField inputFieldX, inputFieldY, inputFieldZ;
 
+        [SerializeField]
+        private UnityEngine.UI.Toggle constrainProportionsToggle;
+
         private bool editingX, editingY, editingZ;
 
         public Vector3 Value { get => _value; set { SetValueWithoutNotify(value); OnValueChanged(); } }
 
         private Vector3 _value;
+
+        [HideInInspector]
+        public bool ConstrainProportions;
+
+        private Vector3 constrainedProportions;
 
         public void SetValueWithoutNotify(Vector3 value)
         {
@@ -29,11 +37,11 @@ namespace Varneon.VUdon.Udonity.Fields
             if (!editingZ) { inputFieldZ.text = Mathf.DeltaAngle(0f, value.z).ToString(); }
         }
 
-        public void BeginEditingX() { editingX = true; }
+        public void BeginEditingX() { ApplyConstrainedProportions(0); editingX = true; }
 
-        public void BeginEditingY() { editingY = true; }
+        public void BeginEditingY() { ApplyConstrainedProportions(1); editingY = true; }
 
-        public void BeginEditingZ() { editingZ = true; }
+        public void BeginEditingZ() { ApplyConstrainedProportions(2); editingZ = true; }
 
         public void OnSubmitX()
         {
@@ -41,11 +49,18 @@ namespace Varneon.VUdon.Udonity.Fields
 
             if (float.TryParse(inputFieldX.text, out value))
             {
-                Vector3 currentValue = Value;
+                if (ConstrainProportions)
+                {
+                    Value = new Vector3(value, value * constrainedProportions.y, value * constrainedProportions.z);
+                }
+                else
+                {
+                    Vector3 currentValue = Value;
 
-                currentValue.x = value;
+                    currentValue.x = value;
 
-                Value = currentValue;
+                    Value = currentValue;
+                }
             }
 
             editingX = false;
@@ -57,11 +72,18 @@ namespace Varneon.VUdon.Udonity.Fields
 
             if (float.TryParse(inputFieldY.text, out value))
             {
-                Vector3 currentValue = Value;
+                if (ConstrainProportions)
+                {
+                    Value = new Vector3(value * constrainedProportions.x, value, value * constrainedProportions.z);
+                }
+                else
+                {
+                    Vector3 currentValue = Value;
 
-                currentValue.y = value;
+                    currentValue.y = value;
 
-                Value = currentValue;
+                    Value = currentValue;
+                }
             }
 
             editingY = false;
@@ -73,14 +95,33 @@ namespace Varneon.VUdon.Udonity.Fields
 
             if (float.TryParse(inputFieldZ.text, out value))
             {
-                Vector3 currentValue = Value;
+                if (ConstrainProportions)
+                {
+                    Value = new Vector3(value * constrainedProportions.x, value * constrainedProportions.y, value);
+                }
+                else
+                {
+                    Vector3 currentValue = Value;
 
-                currentValue.z = value;
+                    currentValue.z = value;
 
-                Value = currentValue;
+                    Value = currentValue;
+                }
             }
 
             editingZ = false;
+        }
+
+        private void ApplyConstrainedProportions(int axis)
+        {
+            float scale = _value[axis];
+
+            constrainedProportions = (scale == 0f) ? Vector3.one : (_value / scale);
+        }
+
+        public void OnConstrainProportionsChanged()
+        {
+            ConstrainProportions = constrainProportionsToggle.isOn;
         }
     }
 }
