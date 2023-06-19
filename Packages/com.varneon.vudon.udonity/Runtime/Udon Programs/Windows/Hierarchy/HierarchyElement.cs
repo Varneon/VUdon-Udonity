@@ -36,6 +36,9 @@ namespace Varneon.VUdon.Udonity.Windows.Hierarchy
         private RectTransform expandArrow;
 
         [SerializeField]
+        private Image gameObjectIcon;
+
+        [SerializeField]
         private TextMeshProUGUI nameText;
 
         [SerializeField, HideInInspector]
@@ -52,6 +55,7 @@ namespace Varneon.VUdon.Udonity.Windows.Hierarchy
         private bool expanded;
 
         private Color
+            disabledGameObjectIconColor = new Color(0.666f, 0.666f, 0.666f),
             inactiveTextColor = new Color(0.5f, 0.5f, 0.5f),
             activeInHierarchyColor = new Color(0.8f, 0.8f, 0.8f);
 
@@ -145,7 +149,7 @@ namespace Varneon.VUdon.Udonity.Windows.Hierarchy
 
             if (!activeInHierarchy)
             {
-                nameText.color = inactiveTextColor;
+                SetElementActiveColor(false);
             }
 
             activeToggle.SetIsOnWithoutNotify(targetActiveSelf);
@@ -175,7 +179,7 @@ namespace Varneon.VUdon.Udonity.Windows.Hierarchy
 
             if (targetActiveSelf != active)
             {
-                nameText.color = active ? activeInHierarchyColor : inactiveTextColor;
+                SetElementActiveColor(active);
 
                 activeToggle.SetIsOnWithoutNotify(active);
 
@@ -206,7 +210,7 @@ namespace Varneon.VUdon.Udonity.Windows.Hierarchy
 
         internal void SetActive(bool active)
         {
-            nameText.color = active ? activeInHierarchyColor : inactiveTextColor;
+            SetElementActiveColor(active);
 
             activeToggle.SetIsOnWithoutNotify(active);
 
@@ -219,7 +223,14 @@ namespace Varneon.VUdon.Udonity.Windows.Hierarchy
 
         internal void SetActiveInHierarchyState(bool active)
         {
-            nameText.color = (targetActiveSelf && active) ? activeInHierarchyColor : inactiveTextColor;
+            SetElementActiveColor(targetActiveSelf && active);
+        }
+
+        private void SetElementActiveColor(bool active)
+        {
+            gameObjectIcon.color = active ? Color.white : disabledGameObjectIconColor;
+
+            nameText.color = active ? activeInHierarchyColor : inactiveTextColor;
         }
 
 #if !COMPILER_UDONSHARP
