@@ -205,6 +205,8 @@ namespace Varneon.VUdon.Udonity
             //if(minDistance == EnterXY)
             if (minDistance == distXY)
             {
+                if(Vector3.Distance(posXY, transformPos) > maxRange) { return; }
+
                 LockedAxis = Axis.Z;
 
                 originalPos = transformPos; Offset = posXY - transformPos;
@@ -213,6 +215,8 @@ namespace Varneon.VUdon.Udonity
             }
             else if (minDistance == distYZ)
             {
+                if (Vector3.Distance(posYZ, transformPos) > maxRange) { return; }
+
                 LockedAxis = Axis.X;
 
                 originalPos = transformPos; Offset = posYZ - transformPos;
@@ -221,6 +225,8 @@ namespace Varneon.VUdon.Udonity
             }
             else if (minDistance == distZX)
             {
+                if (Vector3.Distance(posZX, transformPos) > maxRange) { return; }
+
                 LockedAxis = Axis.Y;
 
                 originalPos = transformPos; Offset = posZX - transformPos;
