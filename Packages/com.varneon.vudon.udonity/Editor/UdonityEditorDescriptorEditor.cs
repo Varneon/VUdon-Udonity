@@ -26,8 +26,6 @@ namespace Varneon.VUdon.Udonity.Editor
 
         private UdonAssetDatabase.UdonAssetDatabase udonAssetDatabase;
 
-        protected override string FoldoutPersistenceKey => null;
-
         protected override InspectorHeader Header => new InspectorHeaderBuilder()
             .WithTitle("Udonity Editor")
             .WithDescription("Runtime Unity Editor for VRChat worlds")
