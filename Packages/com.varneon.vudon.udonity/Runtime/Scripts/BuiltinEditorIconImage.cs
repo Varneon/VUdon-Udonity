@@ -11,7 +11,11 @@ namespace Varneon.VUdon.Udonity
     [RequireComponent(typeof(Image))]
     public class BuiltinEditorIconImage : MonoBehaviour
     {
+#if UNITY_2022_3_OR_NEWER
+        public string IconName => iconName.Replace('-', ' ');
+#else
         public string IconName => iconName;
+#endif
 
         [SerializeField]
         private string iconName = string.Empty;
