@@ -117,6 +117,8 @@ namespace Varneon.VUdon.Udonity.Editor
 
                     importer.maxTextureSize = 64;
 
+                    importer.textureCompression = TextureImporterCompression.Uncompressed;
+
                     importer.SaveAndReimport();
                 }
             }
