@@ -6,6 +6,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Varneon.VUdon.Editors.Editor;
 
+// PrefabStageUtility.GetCurrentPrefabStage() went out of Experimental in 2021.2
+// Yes, Unity automatically updates this API after importing to newer Unity version, but preventing the API update prompt from showing up will speed up migration workflow
+#if UNITY_2021_2_OR_NEWER
+using UnityEditor.SceneManagement;
+#else
+using UnityEditor.Experimental.SceneManagement;
+#endif
+
 namespace Varneon.VUdon.Udonity.Editor
 {
     [CustomEditor(typeof(UdonityEditorDescriptor))]
@@ -44,7 +52,7 @@ namespace Varneon.VUdon.Udonity.Editor
             canvasRectTransform = editorDescriptor.GetComponentInChildren<Canvas>().GetComponent<RectTransform>();
 
             // If we are currently not in prefab editing mode and the descriptor is not part of a prefab asset, hide the placeholder canvas
-            if(UnityEditor.Experimental.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage() == null && !PrefabUtility.IsPartOfPrefabAsset(editorDescriptor))
+            if(PrefabStageUtility.GetCurrentPrefabStage() == null && !PrefabUtility.IsPartOfPrefabAsset(editorDescriptor))
             {
                 foreach(Transform t in canvasRectTransform.GetComponentsInChildren<Transform>())
                 {
