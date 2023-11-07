@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Varneon.VUdon.Udonity.Fields;
 
 namespace Varneon.VUdon.Udonity.Editors
@@ -10,7 +11,8 @@ namespace Varneon.VUdon.Udonity.Editors
     {
         [Header("Transform EditorElement References")]
         [SerializeField]
-        private Vector3Field positionVector3Field;
+        [FormerlySerializedAs("positionVector3Field")]
+        private Vector3Field localPositionVector3Field;
 
         [SerializeField]
         private Vector3Field localEulerAnglesVector3Field;
@@ -41,7 +43,7 @@ namespace Varneon.VUdon.Udonity.Editors
 
             if (lastLocalPosition != localPosition)
             {
-                positionVector3Field.SetValueWithoutNotify(localPosition);
+                localPositionVector3Field.SetValueWithoutNotify(localPosition);
 
                 lastLocalPosition = localPosition;
             }
@@ -69,7 +71,7 @@ namespace Varneon.VUdon.Udonity.Editors
 
         public void OnPositionChanged()
         {
-            target.localPosition = positionVector3Field.Value;
+            target.localPosition = localPositionVector3Field.Value;
         }
 
         public void OnRotationChanged()
@@ -130,7 +132,7 @@ namespace Varneon.VUdon.Udonity.Editors
 
         protected override void OnInitializedOnBuild()
         {
-            if (positionVector3Field) { positionVector3Field.RegisterValueChangedCallback(this, nameof(OnPositionChanged)); }
+            if (localPositionVector3Field) { localPositionVector3Field.RegisterValueChangedCallback(this, nameof(OnPositionChanged)); }
 
             if (localEulerAnglesVector3Field) { localEulerAnglesVector3Field.RegisterValueChangedCallback(this, nameof(OnRotationChanged)); }
 
