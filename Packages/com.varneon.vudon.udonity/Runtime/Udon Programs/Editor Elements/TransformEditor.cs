@@ -22,6 +22,12 @@ namespace Varneon.VUdon.Udonity.Editors
 
         private Transform target;
 
+        private Vector3 lastLocalPosition;
+
+        private Vector3 lastLocalEulerAngles;
+
+        private Vector3 lastLocalScale;
+
         protected override void OnEditorInitialized(Component component)
         {
             target = (Transform)component;
@@ -31,13 +37,34 @@ namespace Varneon.VUdon.Udonity.Editors
 
         public void UpdateFields()
         {
-            positionVector3Field.SetValueWithoutNotify(target.localPosition);
+            Vector3 localPosition = target.localPosition;
 
-            localEulerAnglesVector3Field.SetValueWithoutNotify(target.localEulerAngles);
+            if (lastLocalPosition != localPosition)
+            {
+                positionVector3Field.SetValueWithoutNotify(localPosition);
 
-            localScaleVector3Field.SetValueWithoutNotify(target.localScale);
+                lastLocalPosition = localPosition;
+            }
 
-            SendCustomEventDelayedFrames(nameof(UpdateFields), 0);
+            Vector3 localEulerAngles = target.localEulerAngles;
+
+            if(lastLocalEulerAngles != localEulerAngles)
+            {
+                localEulerAnglesVector3Field.SetValueWithoutNotify(target.localEulerAngles);
+
+                lastLocalEulerAngles = localEulerAngles;
+            }
+
+            Vector3 localScale = target.localScale;
+
+            if (lastLocalScale != localScale)
+            {
+                localScaleVector3Field.SetValueWithoutNotify(localScale);
+
+                lastLocalScale = localScale;
+            }
+
+            if (Expanded) { SendCustomEventDelayedFrames(nameof(UpdateFields), 0); }
         }
 
         public void OnPositionChanged()
@@ -94,6 +121,11 @@ namespace Varneon.VUdon.Udonity.Editors
         private void ResetTransformScale()
         {
             target.localScale = Vector3.one;
+        }
+
+        protected override void OnToggleExpanded(bool expanded)
+        {
+            if (expanded) { UpdateFields(); }
         }
 
         protected override void OnInitializedOnBuild()
