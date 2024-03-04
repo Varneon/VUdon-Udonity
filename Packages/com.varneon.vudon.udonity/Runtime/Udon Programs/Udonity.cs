@@ -44,7 +44,13 @@ namespace Varneon.VUdon.Udonity
 
         public MeshColliderVisualizer MeshColliderVisualizerPrefab => meshColliderVisualizerPrefab;
 
+        public Toggle ToggleFieldPrefab => toggleFieldPrefab;
+
+        public TextField TextFieldPrefab => textFieldPrefab;
+
         public ColorField ColorFieldPrefab => colorFieldPrefab;
+
+        public Vector2Field Vector2FieldPrefab => vector2FieldPrefab;
 
         public Vector3Field Vector3FieldPrefab => vector3FieldPrefab;
 
@@ -119,7 +125,16 @@ namespace Varneon.VUdon.Udonity
         private MeshColliderVisualizer meshColliderVisualizerPrefab;
 
         [SerializeField]
+        private Toggle toggleFieldPrefab;
+
+        [SerializeField]
+        private TextField textFieldPrefab;
+
+        [SerializeField]
         private ColorField colorFieldPrefab;
+
+        [SerializeField]
+        private Vector2Field vector2FieldPrefab;
 
         [SerializeField]
         private Vector3Field vector3FieldPrefab;
@@ -262,7 +277,10 @@ namespace Varneon.VUdon.Udonity
 
             boxColliderVisualizerPrefab = Instantiate(boxColliderVisualizerPrefab, runtimePrefabParent);
             meshColliderVisualizerPrefab = Instantiate(meshColliderVisualizerPrefab, runtimePrefabParent);
+            toggleFieldPrefab = Instantiate(toggleFieldPrefab, runtimePrefabParent);
+            textFieldPrefab = Instantiate(textFieldPrefab, runtimePrefabParent);
             colorFieldPrefab = Instantiate(colorFieldPrefab, runtimePrefabParent);
+            vector2FieldPrefab = Instantiate(vector2FieldPrefab, runtimePrefabParent);
             vector3FieldPrefab = Instantiate(vector3FieldPrefab, runtimePrefabParent);
             floatFieldPrefab = Instantiate(floatFieldPrefab, runtimePrefabParent);
             rangedFloatFieldPrefab = Instantiate(rangedFloatFieldPrefab, runtimePrefabParent);
