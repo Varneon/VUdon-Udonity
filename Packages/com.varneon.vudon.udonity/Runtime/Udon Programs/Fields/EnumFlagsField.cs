@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,10 @@ namespace Varneon.VUdon.Udonity.Fields
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class EnumFlagsField : Abstract.Field
     {
+        public override object AbstractValue => _value;
+
+        public override Type FieldType => typeof(int);
+
         [SerializeField]
         private Dropdown dropdown;
 
@@ -107,6 +112,15 @@ namespace Varneon.VUdon.Udonity.Fields
                     Value |= mask;
                 }
             }
+        }
+
+        public override bool TrySetAbstractValueWithoutNotify(object value)
+        {
+            if (value == null || !value.GetType().Equals(FieldType)) { return false; }
+
+            SetValueWithoutNotify((int)value);
+
+            return true;
         }
     }
 }

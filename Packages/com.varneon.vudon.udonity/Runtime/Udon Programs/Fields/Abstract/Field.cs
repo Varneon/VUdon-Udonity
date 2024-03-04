@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UdonSharp;
 using UnityEngine;
 
@@ -7,6 +8,10 @@ namespace Varneon.VUdon.Udonity.Fields.Abstract
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public abstract class Field : UdonSharpBehaviour
     {
+        public abstract object AbstractValue { get; }
+
+        public abstract Type FieldType { get; }
+
         public bool Interactive
         {
             get => interactive;
@@ -37,6 +42,11 @@ namespace Varneon.VUdon.Udonity.Fields.Abstract
         [SerializeField, HideInInspector]
         private int fieldId = -1;
 
+        public void SetLabelText(string text)
+        {
+            fieldLabel.text = text;
+        }
+
         public void RegisterValueChangedCallback(UdonSharpBehaviour callbackReceiver, string methodName)
         {
             valueChangedCallbackReceiver = callbackReceiver;
@@ -65,5 +75,7 @@ namespace Varneon.VUdon.Udonity.Fields.Abstract
         }
 
         protected virtual void OnInteractiveChanged(bool interactive) { }
+
+        public abstract bool TrySetAbstractValueWithoutNotify(object value);
     }
 }

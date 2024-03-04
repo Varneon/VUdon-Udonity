@@ -1,4 +1,5 @@
-﻿using UdonSharp;
+﻿using System;
+using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,10 @@ namespace Varneon.VUdon.Udonity.Fields
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ColorField : Abstract.Field
     {
+        public override object AbstractValue => _value;
+
+        public override Type FieldType => typeof(Color);
+
         public bool HasAlpha => hasAlpha;
 
         public bool IsHDR => isHDR;
@@ -81,6 +86,15 @@ namespace Varneon.VUdon.Udonity.Fields
         internal void EndColorEditing()
         {
             lockForDialogEditing = false;
+        }
+
+        public override bool TrySetAbstractValueWithoutNotify(object value)
+        {
+            if(value == null || !value.GetType().Equals(FieldType)) { return false; }
+
+            SetValueWithoutNotify((Color)value);
+
+            return true;
         }
 
 #if !COMPILER_UDONSHARP
