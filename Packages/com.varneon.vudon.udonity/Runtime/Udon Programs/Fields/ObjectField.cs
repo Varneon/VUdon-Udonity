@@ -1,6 +1,8 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UdonSharp;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Varneon.VUdon.Udonity.Fields
 {
@@ -9,6 +11,10 @@ namespace Varneon.VUdon.Udonity.Fields
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class ObjectField : Abstract.Field
     {
+        public override object AbstractValue => _value;
+
+        public override Type FieldType => typeof(Object);
+
         [SerializeField]
         private TextMeshProUGUI valueLabel;
 
@@ -111,6 +117,15 @@ namespace Varneon.VUdon.Udonity.Fields
         internal void EndObjectDialogSelection()
         {
             lockForDialogEditing = false;
+        }
+
+        public override bool TrySetAbstractValueWithoutNotify(object value)
+        {
+            if (value != null && !value.GetType().Equals(FieldType)) { return false; }
+
+            SetValueWithoutNotify((Object)value);
+
+            return true;
         }
 
 #if !COMPILER_UDONSHARP

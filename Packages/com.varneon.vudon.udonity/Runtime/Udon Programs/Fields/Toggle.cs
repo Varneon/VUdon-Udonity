@@ -1,4 +1,5 @@
-﻿using UdonSharp;
+﻿using System;
+using UdonSharp;
 using UnityEngine;
 
 namespace Varneon.VUdon.Udonity.Fields
@@ -8,6 +9,10 @@ namespace Varneon.VUdon.Udonity.Fields
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class Toggle : Abstract.Field
     {
+        public override object AbstractValue => _value;
+
+        public override Type FieldType => typeof(bool);
+
         [SerializeField]
         private UnityEngine.UI.Toggle toggle;
 
@@ -30,6 +35,15 @@ namespace Varneon.VUdon.Udonity.Fields
         protected override void OnInteractiveChanged(bool interactive)
         {
             toggle.interactable = interactive;
+        }
+
+        public override bool TrySetAbstractValueWithoutNotify(object value)
+        {
+            if (value == null || !value.GetType().Equals(FieldType)) { return false; }
+
+            SetValueWithoutNotify((bool)value);
+
+            return true;
         }
     }
 }

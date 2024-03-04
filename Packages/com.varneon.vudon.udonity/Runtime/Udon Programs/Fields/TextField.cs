@@ -1,4 +1,5 @@
-﻿using UdonSharp;
+﻿using System;
+using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,10 @@ namespace Varneon.VUdon.Udonity.Fields
     [UdonBehaviourSyncMode(BehaviourSyncMode.None)]
     public class TextField : Abstract.Field
     {
+        public override object AbstractValue => _value;
+
+        public override Type FieldType => typeof(string);
+
         [SerializeField]
         private InputField inputField;
 
@@ -54,6 +59,15 @@ namespace Varneon.VUdon.Udonity.Fields
             fieldLockedForEdit = false;
 
             inputField.OnDeselect(null);
+        }
+
+        public override bool TrySetAbstractValueWithoutNotify(object value)
+        {
+            if (value != null && !value.GetType().Equals(FieldType)) { return false; }
+
+            SetValueWithoutNotify((string)value);
+
+            return true;
         }
     }
 }
