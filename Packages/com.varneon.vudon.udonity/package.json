@@ -1,7 +1,7 @@
 {
   "name": "com.varneon.vudon.udonity",
   "displayName": "VUdon - Udonity",
-  "version": "0.0.1",
+  "version": "0.1.0-pre-alpha.8",
   "unity": "2019.4",
   "unityRelease": "29f1",
   "description": "Runtime Unity Editor made with Udon for editing VRChat worlds in game",
@@ -11,19 +11,19 @@
   },
   "resolutionStrategy": "highestMinor",
   "dependencies": {
-    "com.vrchat.udonsharp": "1.1.8",
-    "com.varneon.vudon.array-extensions": "0.3.0",
-    "com.varneon.vudon.layermask-dropdown": "0.1.0-alpha.2",
-    "com.varneon.vudon.logger": "0.4.0-alpha.3",
-    "com.varneon.vudon.player-scale-utility": "0.1.0-beta.1",
-    "com.varneon.vudon.udon-asset-database": "0.1.0-alpha.2"
+    "com.vrchat.worlds": "3.4.0",
+    "com.varneon.vudon.array-extensions": "0.3.1",
+    "com.varneon.vudon.layermask-dropdown": "0.1.1-alpha.1",
+    "com.varneon.vudon.logger": "0.4.0-alpha.4",
+    "com.varneon.vudon.player-scale-utility": "0.1.2-beta.1",
+    "com.varneon.vudon.udon-asset-database": "0.1.1-alpha.2"
   },
   "vpmDependencies": {
-    "com.vrchat.udonsharp": ">=1.1.8 <2.0.0",
-    "com.varneon.vudon.array-extensions": ">=0.3.0",
-    "com.varneon.vudon.layermask-dropdown": ">=0.1.0-alpha.2",
-    "com.varneon.vudon.logger": ">=0.4.0-alpha.3",
-    "com.varneon.vudon.player-scale-utility": ">=0.1.0-beta.1",
-    "com.varneon.vudon.udon-asset-database": ">=0.1.0-alpha.2"
+    "com.vrchat.worlds": ">=3.4.0 <4.0.0",
+    "com.varneon.vudon.array-extensions": ">=0.3.1",
+    "com.varneon.vudon.layermask-dropdown": ">=0.1.1-alpha.1",
+    "com.varneon.vudon.logger": ">=0.4.0-alpha.4",
+    "com.varneon.vudon.player-scale-utility": ">=0.1.2-beta.1",
+    "com.varneon.vudon.udon-asset-database": ">=0.1.1-alpha.2"
   }
 }
