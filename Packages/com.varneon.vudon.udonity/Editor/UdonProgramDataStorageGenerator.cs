@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using UdonSharp;
 using UnityEditor;
@@ -41,7 +42,7 @@ namespace Varneon.VUdon.UdonProgramDataStorage
 
                 IUdonSymbolTable symbolTable = program.SymbolTable;
 
-                System.Collections.Immutable.ImmutableArray<string> symbols = symbolTable.GetSymbols();
+                ImmutableArray<string> symbols = symbolTable.GetSymbols();
 
                 IUdonHeap heap = program.Heap;
 
@@ -63,7 +64,7 @@ namespace Varneon.VUdon.UdonProgramDataStorage
 
                 programInfos.Add(header);
 
-                IEnumerable<string> filteredSymbols = symbols;//.Where(s => !s.StartsWith("__"));
+                IEnumerable<string> filteredSymbols = symbols.Sort();//.Where(s => !s.StartsWith("__"));
 
                 programSymbols.Add(filteredSymbols.ToArray());
 
@@ -71,7 +72,7 @@ namespace Varneon.VUdon.UdonProgramDataStorage
 
                 IUdonSymbolTable entryPointTable = program.EntryPoints;
 
-                IEnumerable<string> filteredEntryPoints = entryPointTable.GetSymbols().Where(s => !s.StartsWith("_onVarChange_"));
+                IEnumerable<string> filteredEntryPoints = entryPointTable.GetSymbols().Where(s => !s.StartsWith("_onVarChange_")).ToImmutableSortedSet();
 
                 programEntryPoints.Add(filteredEntryPoints.ToArray());
 
