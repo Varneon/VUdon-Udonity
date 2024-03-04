@@ -81,7 +81,7 @@ namespace Varneon.VUdon.Udonity.Windows.Scene
 
             FrameLockedTransform();
 
-            SendCustomEventDelayedFrames(nameof(OnFollowTarget), 0);
+            SendCustomEventDelayedFrames(nameof(OnFollowTarget), 0, VRC.Udon.Common.Enums.EventTiming.LateUpdate);
         }
 
         internal void FrameTransform(Transform target)
