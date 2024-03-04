@@ -408,6 +408,10 @@ namespace Varneon.VUdon.Udonity.Editor
 
             if(udonMonitorWindow == null) { return; }
 
+            udonMonitorWindow.InitializeOnBuild();
+
+            udonMonitorWindow.udonity = udonity;
+
             udonMonitorWindow.programDataStorage = editorRoot.GetComponentInChildren<UdonProgramDataStorage>(true);
         }
 
