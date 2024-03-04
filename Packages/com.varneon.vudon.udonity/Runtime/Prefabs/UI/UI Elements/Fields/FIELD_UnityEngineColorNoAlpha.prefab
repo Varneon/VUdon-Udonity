@@ -199,11 +199,15 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 3520249248457926944}
-  Interactive: 0
+  fieldLabel: {fileID: 7970240061960880597}
   valueChangedCallbackReceiver: {fileID: 0}
   valueChangedCallbackMethod: 
+  fieldId: -1
   colorPreview: {fileID: 9143130771163774868}
   colorAlphaFill: {fileID: 0}
+  colorAlphaFillRectTransform: {fileID: 0}
+  hasAlpha: 0
+  isHDR: 0
 --- !u!114 &3520249248457926944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,3 +359,15 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 520601027101411184}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7970240061960880597 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7611770545860855461, guid: db8b077ae8e04ed4b9e2a6fe1e697f8b,
+    type: 3}
+  m_PrefabInstance: {fileID: 520601027101411184}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

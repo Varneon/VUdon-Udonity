@@ -727,9 +727,10 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _udonSharpBackingUdonBehaviour: {fileID: 8050412139372910301}
-  Interactive: 0
+  fieldLabel: {fileID: 4768368341759178100}
   valueChangedCallbackReceiver: {fileID: 0}
   valueChangedCallbackMethod: 
+  fieldId: -1
   inputFieldX: {fileID: 824855958875568045}
   inputFieldY: {fileID: 1638171938795341752}
 --- !u!114 &8050412139372910301
@@ -967,6 +968,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 3138680485758596049}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4768368341759178100 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7611770545860855461, guid: db8b077ae8e04ed4b9e2a6fe1e697f8b,
+    type: 3}
+  m_PrefabInstance: {fileID: 3138680485758596049}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3909975427656588467
 PrefabInstance:
   m_ObjectHideFlags: 0

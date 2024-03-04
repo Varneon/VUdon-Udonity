@@ -37,6 +37,11 @@ namespace Varneon.VUdon.Udonity.Fields.Abstract
         [SerializeField, HideInInspector]
         private int fieldId = -1;
 
+        public void SetLabelText(string text)
+        {
+            fieldLabel.text = text;
+        }
+
         public void RegisterValueChangedCallback(UdonSharpBehaviour callbackReceiver, string methodName)
         {
             valueChangedCallbackReceiver = callbackReceiver;
