@@ -322,6 +322,11 @@ namespace Varneon.VUdon.Udonity.Windows.Hierarchy
 
         public void IterateHierarchyElements()
         {
+            SendCustomEventDelayedFrames(nameof(IterateHierarchyElements), 0);
+
+            // Skip iteration if the hierarchy is empty
+            if (objectCount == 0) { return; }
+
             // Do not check for negative index. If everything is working, negative index should never occur
             if(elementIteratorIndex >= objectCount) { elementIteratorIndex = 0; }
 
@@ -343,8 +348,6 @@ namespace Varneon.VUdon.Udonity.Windows.Hierarchy
                 // If nothing was removed, increment iterator
                 elementIteratorIndex++;
             }
-
-            SendCustomEventDelayedFrames(nameof(IterateHierarchyElements), 0);
         }
 
         [Obsolete("Use RemoveHierarchyElementTreeAtIndex instead")]
