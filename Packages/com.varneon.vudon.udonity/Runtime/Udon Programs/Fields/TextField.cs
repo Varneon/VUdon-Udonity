@@ -61,6 +61,11 @@ namespace Varneon.VUdon.Udonity.Fields
             inputField.OnDeselect(null);
         }
 
+        protected override void OnInteractiveChanged(bool interactive)
+        {
+            inputField.interactable = interactive;
+        }
+
         public override bool TrySetAbstractValueWithoutNotify(object value)
         {
             if (value != null && !value.GetType().Equals(FieldType)) { return false; }
