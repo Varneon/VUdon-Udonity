@@ -1,3 +1,7 @@
+[Unreleased]
+Fixed
+* Searching objects via hierarchy search field will return the root of the hierarchy instead of the child object, which wouldn't show up if the root didn't exist in the hierarchy yet
+
 [0.1.0-pre-alpha.8] - 2024-03-04
 Added
 * Added ability to edit following UdonBehaviour symbols via UdonMonitor: Boolean, Int32, Single, String, Vector2, Vector3 and Color

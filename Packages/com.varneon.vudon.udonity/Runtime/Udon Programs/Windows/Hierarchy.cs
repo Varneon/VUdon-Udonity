@@ -626,7 +626,9 @@ namespace Varneon.VUdon.Udonity.Windows.Hierarchy
                 return;
             }
 
-            if (foundObject.transform.root.name.Equals("UdonityEditor(Clone)"))
+            foundObject = foundObject.transform.root.gameObject;
+
+            if (foundObject.name.Equals("UdonityEditor(Clone)"))
             {
                 LogError("Found object was an internal Udonity Editor object!");
 
