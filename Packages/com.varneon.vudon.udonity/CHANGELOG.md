@@ -1,6 +1,7 @@
 [Unreleased]
 Added
 * Implemented rotation tool handle
+* Implemented basic scale tool handle (bugs still exist, but it does the job for now)
 
 Changes
 * Replaced GameObject header's "Tag" field with a field that displays the current owner of the object

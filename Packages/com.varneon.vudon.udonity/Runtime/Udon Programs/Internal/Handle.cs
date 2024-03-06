@@ -80,6 +80,10 @@ namespace Varneon.VUdon.Udonity
 
         private object undoData;
 
+        private Vector3 originalScale;
+
+        private float scaleMultiplier;
+
         private void Start()
         {
             vrEnabled = (localPlayer = Networking.LocalPlayer).IsUserInVR();
@@ -99,11 +103,15 @@ namespace Varneon.VUdon.Udonity
                         if (Target) { transform.position = Target.position; }
                         HandleRotationGrab();
                         break;
+                    case HandleType.Scale:
+                        if (Target) { transform.SetPositionAndRotation(Target.position, lockedRotation); }
+                        HandleScaleGrab();
+                        break;
                 }
             }
             else
             {
-                if (Target) { transform.SetPositionAndRotation(Target.position, SpaceMode == Space.World ? Quaternion.identity : Target.rotation); }
+                if (Target) { transform.SetPositionAndRotation(Target.position, (SpaceMode == Space.World && handleType != HandleType.Scale) ? Quaternion.identity : Target.rotation); }
             }
         }
 
@@ -152,6 +160,9 @@ namespace Varneon.VUdon.Udonity
                             case HandleType.Rotation:
                                 udonUndo.EndRecordObject(Target, TransformUndoType.LocalRotation, "Rotate", undoData);
                                 break;
+                            case HandleType.Scale:
+                                udonUndo.EndRecordObject(Target, TransformUndoType.LocalScale, "Scale", undoData);
+                                break;
                         }
                     }
                 }
@@ -168,6 +179,9 @@ namespace Varneon.VUdon.Udonity
                     break;
                 case HandleType.Rotation:
                     InitializeRotationGrab();
+                    break;
+                case HandleType.Scale:
+                    InitializeScaleGrab();
                     break;
             }
         }
@@ -403,6 +417,109 @@ namespace Varneon.VUdon.Udonity
                 {
                     Target.rotation = targetRotation;
                 }
+            }
+        }
+
+        private void InitializeScaleGrab()
+        {
+            Vector3 headPos = pointer.RightHandOrigin;
+
+            Vector3 headForward = pointer.RightHandDirection;
+
+            // If the handle is behind the ray's forward direction, reject the grabbing action
+            if (Vector3.Angle(headForward, transform.position - headPos) > 90f) { return; }
+
+            Vector3 transformPos = transform.position;
+
+            HitXY = pointer.TryGetPointOnPlane(transform, transform.forward, out Vector3 posXY);
+            HitYZ = pointer.TryGetPointOnPlane(transform, transform.right, out Vector3 posYZ);
+            HitZX = pointer.TryGetPointOnPlane(transform, transform.up, out Vector3 posZX);
+
+            float distXY = Vector3.Distance(posXY, headPos);
+            float distYZ = Vector3.Distance(posYZ, headPos);
+            float distZX = Vector3.Distance(posZX, headPos);
+
+            float maxRange = Size; // TODO: Separate range detection to each axis separately
+
+            distXY = Vector3.Distance(posXY, transformPos) < maxRange ? distXY : float.MaxValue;
+            distYZ = Vector3.Distance(posYZ, transformPos) < maxRange ? distYZ : float.MaxValue;
+            distZX = Vector3.Distance(posZX, transformPos) < maxRange ? distZX : float.MaxValue;
+
+            LockedAxis = Axis.Z;
+
+            float minDistance = Mathf.Min(distXY, distYZ, distZX);
+
+            if (minDistance == distXY)
+            {
+                if (Vector3.Distance(posXY, transformPos) > maxRange) { return; }
+
+                Vector3 localPos = transform.InverseTransformPoint(posXY);
+
+                LockedAxis = Vector3.Dot(Vector3.up, localPos.normalized) >= 0.5f ? Axis.Y : Axis.X;
+
+                Offset = localPos;
+            }
+            else if (minDistance == distYZ)
+            {
+                if (Vector3.Distance(posYZ, transformPos) > maxRange) { return; }
+
+                Vector3 localPos = transform.InverseTransformPoint(posYZ);
+
+                LockedAxis = Vector3.Dot(Vector3.up, localPos.normalized) >= 0.5f ? Axis.Y : Axis.Z;
+
+                Offset = localPos;
+            }
+            else if (minDistance == distZX)
+            {
+                if (Vector3.Distance(posZX, transformPos) > maxRange) { return; }
+
+                Vector3 localPos = transform.InverseTransformPoint(posZX);
+
+                LockedAxis = Vector3.Dot(Vector3.right, localPos.normalized) >= 0.5f ? Axis.X : Axis.Z;
+
+                Offset = localPos;
+            }
+
+            grabbing = true;
+
+            if (grabbing && Target)
+            {
+                scaleMultiplier = 1f / Offset[(int)LockedAxis - 1];
+
+                originalScale = Target.localScale;
+
+                undoData = udonUndo.BeginRecordObject(Target, TransformUndoType.LocalScale);
+            }
+
+            lockedRotation = Target.rotation;
+        }
+
+        private void HandleScaleGrab()
+        {
+            Vector3 scale = Vector3.one;
+
+            switch (LockedAxis)
+            {
+                case Axis.Z:
+                    Vector3 dir = Quaternion.LookRotation(transform.forward, pointer.RightHandOrigin - transform.position) * Vector3.up;
+                    if (!pointer.TryGetPointOnPlane(transform, dir, out Vector3 posZ)) { return; }
+                    scale = new Vector3(1f, 1f, 1f + (transform.InverseTransformPoint(posZ).z - Offset.z) * scaleMultiplier);
+                    break;
+                case Axis.X:
+                    dir = Quaternion.LookRotation(transform.right, pointer.RightHandOrigin - transform.position) * Vector3.up;
+                    if (!pointer.TryGetPointOnPlane(transform, dir, out Vector3 posX)) { return; }
+                    scale = new Vector3(1f + (transform.InverseTransformPoint(posX).x - Offset.x) * scaleMultiplier, 1f, 1f);
+                    break;
+                case Axis.Y:
+                    dir = Quaternion.LookRotation(transform.up, pointer.RightHandOrigin - transform.position) * Vector3.up;
+                    if (!pointer.TryGetPointOnPlane(transform, dir, out Vector3 posY)) { return; }
+                    scale = new Vector3(1f, 1f + (transform.InverseTransformPoint(posY).y - Offset.y) * scaleMultiplier, 1f);
+                    break;
+            }
+
+            if (Target)
+            {
+                Target.localScale = Vector3.Scale(originalScale, scale);
             }
         }
 
