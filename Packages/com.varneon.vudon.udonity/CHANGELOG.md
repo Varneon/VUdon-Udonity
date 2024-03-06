@@ -1,4 +1,7 @@
 [Unreleased]
+Added
+* Implemented rotation tool handle
+
 Fixed
 * Searching objects via hierarchy search field will return the root of the hierarchy instead of the child object, which wouldn't show up if the root didn't exist in the hierarchy yet
 

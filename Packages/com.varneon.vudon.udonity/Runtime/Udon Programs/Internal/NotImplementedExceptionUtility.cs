@@ -16,11 +16,6 @@ namespace Varneon.VUdon.Udonity.Utilities
             logger.LogError("Static Editor Flags are not implemented!");
         }
 
-        public void ThrowRotationToolNotImplementedException()
-        {
-            logger.LogError("Rotation tool is not implemented yet, only visual preview is available");
-        }
-
         public void ThrowScaleToolNotImplementedException()
         {
             logger.LogError("Scale tool is not implemented yet, only visual preview is available");
