@@ -2,6 +2,9 @@
 Added
 * Implemented rotation tool handle
 
+Changes
+* Replaced GameObject header's "Tag" field with a field that displays the current owner of the object
+
 Fixed
 * Searching objects via hierarchy search field will return the root of the hierarchy instead of the child object, which wouldn't show up if the root didn't exist in the hierarchy yet
 
