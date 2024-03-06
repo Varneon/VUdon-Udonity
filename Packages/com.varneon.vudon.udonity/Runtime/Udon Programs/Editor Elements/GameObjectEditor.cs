@@ -1,4 +1,5 @@
-﻿using UdonSharp;
+﻿using TMPro;
+using UdonSharp;
 using UnityEditor;
 using UnityEngine;
 using Varneon.VUdon.Udonity.Fields;
@@ -25,6 +26,9 @@ namespace Varneon.VUdon.Udonity.Editors
         [SerializeField]
         private Toggle staticToggle;
 
+        [SerializeField]
+        private TextMeshProUGUI ownerLabel;
+
         private GameObject target;
 
         private HierarchyElement linkedElement;
@@ -44,6 +48,10 @@ namespace Varneon.VUdon.Udonity.Editors
             layerField.SetValueWithoutNotify(target.layer);
 
             staticToggle.SetValueWithoutNotify(target.isStatic);
+
+            VRCPlayerApi owner = Networking.GetOwner(target);
+
+            ownerLabel.text = string.Format("<color=#555><voffset=1>[</voffset>{0}<voffset=1>]</voffset></color> {1}", owner.playerId, owner.displayName);
 
             //EnableTargetHighlight();
         }
