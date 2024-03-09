@@ -81,6 +81,12 @@ namespace Varneon.VUdon.Udonity.Editor
         [MenuItem("Varneon/VUdon/Udonity/Load Builtin Editor Icons")]
         internal static void LoadBuiltinEditorIcons()
         {
+            // Ensure that the icon directory exists before we start saving icons
+            if (!Directory.Exists(IconDirectory))
+            {
+                Directory.CreateDirectory(IconDirectory);
+            }
+
             ImmutableArray<string> icons = GetAllBuiltinEditorIconNames();
 
             foreach (string iconName in icons)
@@ -158,11 +164,6 @@ namespace Varneon.VUdon.Udonity.Editor
 
         private static void SaveIcon(Texture2D icon)
         {
-            if (!Directory.Exists(IconDirectory))
-            {
-                Directory.CreateDirectory(IconDirectory);
-            }
-
             File.WriteAllBytes(GetIconSavePath(icon.name), icon.EncodeToPNG());
         }
 
