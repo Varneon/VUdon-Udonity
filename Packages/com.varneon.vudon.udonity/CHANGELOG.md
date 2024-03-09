@@ -8,6 +8,7 @@ Changes
 
 Fixed
 * Searching objects via hierarchy search field will return the root of the hierarchy instead of the child object, which wouldn't show up if the root didn't exist in the hierarchy yet
+* Editor descriptor scale detection now warns the user properly about scaled hierarchies
 
 [0.1.0-pre-alpha.8] - 2024-03-04
 Added
