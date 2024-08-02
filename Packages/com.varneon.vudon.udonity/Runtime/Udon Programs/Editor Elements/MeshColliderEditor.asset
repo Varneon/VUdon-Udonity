@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: MeshColliderEditor
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 3426fb4d8c5595643ab1dc17afabda85,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: ec2004fe14b37de4f9af56cef606e350,
     type: 2}
   udonAssembly: 
   assemblyError: 

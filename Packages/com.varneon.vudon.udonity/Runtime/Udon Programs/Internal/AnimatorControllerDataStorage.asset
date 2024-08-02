@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: AnimatorControllerDataStorage
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 8d79fea7b3f07b04eadd08bb7e323c48,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 0a3b7c80d0ef66042926b763fa9bc4fa,
     type: 2}
   udonAssembly: 
   assemblyError: 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: LayerMaskField
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 5d033a9bb154ddd48bc795f94d240340,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 198e1e4454a2fb94a8cf9dd00f938578,
     type: 2}
   udonAssembly: 
   assemblyError: 

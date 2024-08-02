@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: Profiler
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 85260f7720d3962438bcb39d3246f8c9,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 302b2e59764bf8041af47338ab17f86c,
     type: 2}
   udonAssembly: 
   assemblyError: 

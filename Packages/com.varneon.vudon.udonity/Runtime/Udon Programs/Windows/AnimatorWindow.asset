@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: AnimatorWindow
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 87d39130d89dff447911fb0074ffc91f,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 010449cbc4b34ff4d9ca1f57fe9d881b,
     type: 2}
   udonAssembly: 
   assemblyError: 

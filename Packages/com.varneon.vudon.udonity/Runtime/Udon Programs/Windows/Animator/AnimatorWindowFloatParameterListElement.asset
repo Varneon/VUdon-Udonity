@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: AnimatorWindowFloatParameterListElement
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: b153e89b62a86b241a822e2387a852e8,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: f64101b43b05f214baada2e01178217d,
     type: 2}
   udonAssembly: 
   assemblyError: 

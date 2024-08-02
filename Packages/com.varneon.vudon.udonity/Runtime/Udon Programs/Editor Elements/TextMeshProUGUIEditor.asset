@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: TextMeshProUGUIEditor
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: d6cbab3e08342db4c9a8200526df2ffa,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 9a6f6e112e259a6408c317272358ecb7,
     type: 2}
   udonAssembly: 
   assemblyError: 

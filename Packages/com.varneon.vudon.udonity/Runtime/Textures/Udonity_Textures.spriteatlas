@@ -28,6 +28,8 @@ SpriteAtlas:
       allowAlphaSplitting: 0
       enableRotation: 1
       enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: 6124c1d668bdc524b9cdfd118d69891f, type: 3}
@@ -41,6 +43,19 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 89850a7d15e2db74faf3776997e2fb9d, type: 3}
     - {fileID: 2800000, guid: 39323e1071ccbd84198cae08c73b925f, type: 3}
     bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 39323e1071ccbd84198cae08c73b925f: 21300000
+    - b278136356da01d478e1df7ebced188b: 21300000
+    - c1853b04c2bdc2a44ba5238a1c637a38: 21300000
+    - 6a325515ff1f1d542989eeaacf7bb969: 21300000
+    - 6124c1d668bdc524b9cdfd118d69891f: 21300000
+    - cd278438b1038194b9200166d0e1e423: 21300000
+    - fade1c2bdd28e074fa96e76a2366c39b: 21300000
+    - 5a4475cb17be5b5409023d63f5b77cac: 21300000
+    - 89850a7d15e2db74faf3776997e2fb9d: 21300000
+    - 40661def2c0729b409ab25197c5d739a: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 39323e1071ccbd84198cae08c73b925f, type: 3}
@@ -64,5 +79,6 @@ SpriteAtlas:
   - Icon_VRC_Component_Addition
   - Icon_File_Generic
   - Icon_Restore_Window
+  m_RenderDataMap: {}
   m_Tag: Udonity_Textures
   m_IsVariant: 0

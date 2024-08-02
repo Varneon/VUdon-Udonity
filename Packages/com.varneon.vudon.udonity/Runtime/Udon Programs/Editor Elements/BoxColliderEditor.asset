@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: BoxColliderEditor
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 2a87230fa0f3eb04aade62ce3bb92328,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 77999a5d9ebad9046bbba27999e5de59,
     type: 2}
   udonAssembly: 
   assemblyError: 

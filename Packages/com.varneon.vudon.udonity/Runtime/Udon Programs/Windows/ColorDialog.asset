@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: ColorDialog
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: d87949d2408d03e40b19a9bebd1bfd55,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 0a0c419eedfc78e4692bfcbfe6defb5b,
     type: 2}
   udonAssembly: 
   assemblyError: 

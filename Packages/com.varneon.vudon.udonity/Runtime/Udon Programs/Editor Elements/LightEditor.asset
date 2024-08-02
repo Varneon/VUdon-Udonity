@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: LightEditor
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: a6ea46df71c18c44397a4c0857a249b3,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: b9349865b874af142bd22bb30b61efbd,
     type: 2}
   udonAssembly: 
   assemblyError: 

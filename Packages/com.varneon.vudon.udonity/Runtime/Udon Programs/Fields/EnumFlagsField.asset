@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: EnumFlagsField
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 42cab441165543b4a8ab635f8de3ce54,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 3bafb0489df30234b86ae2d49ac18f7f,
     type: 2}
   udonAssembly: 
   assemblyError: 

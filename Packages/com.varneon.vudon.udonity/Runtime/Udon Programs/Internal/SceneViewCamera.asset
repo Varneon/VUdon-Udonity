@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: SceneViewCamera
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 2abd810743de0024fa47bb26e91d9460,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: f2279eac3a8104443b17adf7fb32b1f3,
     type: 2}
   udonAssembly: 
   assemblyError: 

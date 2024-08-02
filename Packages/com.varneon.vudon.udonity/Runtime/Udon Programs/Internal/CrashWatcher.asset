@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: CrashWatcher
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 90381b63f948b9046b13840de6ba0b04,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 8f6f2c6a28545b145b059fe89778ad11,
     type: 2}
   udonAssembly: 
   assemblyError: 

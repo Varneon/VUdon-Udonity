@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: FoldoutToggle
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: b1c8decb58b72d149827e1092509ac3d,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 49b2aac61e1fd164ab302d38f59a42c8,
     type: 2}
   udonAssembly: 
   assemblyError: 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: VRCObjectSyncEditor
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: b2fc14b5a0f4b3a4e9455afed2ae955f,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: f7d98bdc596484e4c8fd247ac014709e,
     type: 2}
   udonAssembly: 
   assemblyError: 

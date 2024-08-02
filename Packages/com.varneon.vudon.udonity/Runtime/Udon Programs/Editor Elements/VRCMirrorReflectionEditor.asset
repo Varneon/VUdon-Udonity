@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: VRCMirrorReflectionEditor
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: e0f8e053a3230e741be9e9e3515278a3,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: c0dc23682c23a03449c7d8e31234a22b,
     type: 2}
   udonAssembly: 
   assemblyError: 

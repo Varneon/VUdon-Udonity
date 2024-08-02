@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
   m_Name: UdonityPlayerScaleCallbackReceiver
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 965271c023269984fa202e3a43f45695,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: 058ab6df2daba244eba9e63206ea1125,
     type: 2}
   udonAssembly: 
   assemblyError: 
