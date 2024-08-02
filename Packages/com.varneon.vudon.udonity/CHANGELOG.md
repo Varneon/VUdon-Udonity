@@ -4,6 +4,7 @@ Added
 * Implemented basic scale tool handle (bugs still exist, but it does the job for now)
 
 Changes
+* Minimum required Unity Editor version is now 2022.3.6f1
 * Replaced GameObject header's "Tag" field with a field that displays the current owner of the object
 
 Fixed
