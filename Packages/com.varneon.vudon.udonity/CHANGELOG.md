@@ -6,6 +6,7 @@ Added
 Changes
 * Minimum required Unity Editor version is now 2022.3.6f1
 * Replaced GameObject header's "Tag" field with a field that displays the current owner of the object
+* Updated hierarchy window scene header graphic
 
 Fixed
 * Searching objects via hierarchy search field will return the root of the hierarchy instead of the child object, which wouldn't show up if the root didn't exist in the hierarchy yet
