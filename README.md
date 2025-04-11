@@ -1,7 +1,9 @@
-> # :construction: Udonity hasn't been released yet!
-> This repository is public for tracking the development progress before a release is available for the public. If you want to know when Udonity can be downloaded and used, keep an eye on this milestone: https://github.com/Varneon/VUdon-Udonity/milestone/1
-
-> You can try out Udonity in its current state it the pre-alpha demo world: https://vrchat.com/home/world/wrld_f1197ac6-72de-4ee1-a56f-ddcc01f6e75d
+>[!NOTE]
+>Udonity's development has been temporarily halted until VRChat has released [Soba](https://feedback.vrchat.com/udon/p/soba) due to Udon being the primary limiting factor of Udonity.
+>
+>You can try out Udonity's latest Udon-based pre-alpha build by following the instructions in this wiki page: [How to Get Started with Udonity Pre‐Alpha](https://github.com/Varneon/VUdon-Udonity/wiki/How-to-Get-Started-with-Udonity-Pre%E2%80%90Alpha)
+>
+>You can also visit the demo world in VRChat: https://vrchat.com/home/world/wrld_f1197ac6-72de-4ee1-a56f-ddcc01f6e75d
 
 <div>
 
@@ -54,7 +56,7 @@ Upcoming runtime Unity Editor made with Udon for editing VRChat worlds in game
 
 ## Developed by Varneon with :hearts:
 
-[![Twitter Follow](https://img.shields.io/static/v1?style=for-the-badge&label=@Varneon&message=4.9K&color=1b9df0&logo=twitter)](https://twitter.com/Varneon)
+[![Twitter Follow](https://img.shields.io/static/v1?style=for-the-badge&label=@Varneon&message=7.7K&color=1b9df0&logo=twitter)](https://twitter.com/Varneon)
 [![YouTube Channel Subscribers](https://img.shields.io/youtube/channel/subscribers/UCKTxeXy7gyaxr-YA9qGWOYg?color=%23FF0000&label=Varneon&logo=YouTube&style=for-the-badge)](https://www.youtube.com/Varneon)
 [![GitHub followers](https://img.shields.io/github/followers/Varneon?color=%23303030&label=Varneon&logo=GitHub&style=for-the-badge)](https://github.com/Varneon)
 
